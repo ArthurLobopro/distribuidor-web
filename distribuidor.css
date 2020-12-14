@@ -1,0 +1,87 @@
+#dist{
+    border:2px solid blue;
+    padding: 10px;
+    width: 45%;
+    height: auto;
+    border-radius: 5px;
+    margin-right: 5px;
+    text-align: left;
+}
+#numat{
+    border:2px solid blue;
+    border-radius: 5px;
+    margin-left: 5px;
+    text-align: center;
+    padding-top: 5px;
+    width: 45%;
+    height: 295px;
+   
+}
+#menu{
+    width: auto;
+    height: auto;
+    padding: 15px;
+    width: auto;
+    border-radius: 5px;
+    display: flex;
+    flex: 1;
+    justify-content: center;
+}
+#string{
+    border:2px solid blue;
+    border-radius: 5px;
+    margin: auto;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 5px;
+    width: 45%;
+    height: 200px;
+}
+#central{
+    text-align: left;
+    width: 58%;
+    position: relative;
+    top: 25%;
+    left: 30%;
+    
+}
+#simbolo{
+    width: 170px;
+}
+.center{
+    position: relative;
+    top: 40%;
+}
+body {
+    padding-right:auto;
+    padding-left: auto;
+}
+.aviso{
+    border: 2px solid black;
+    width: auto;
+    text-align: center;
+}
+#res{
+    display: flex;
+    flex: 1;
+}
+.historico{
+    padding: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    width: auto;
+}
+.res{
+    border:2px solid blue;
+    border-radius: 5px;
+    width: auto;
+    height: 40%;
+    padding: 10px;
+    margin-left: 10px;
+}
+.number{
+    width: 40px;
+}
+red{
+    color: red;
+}
