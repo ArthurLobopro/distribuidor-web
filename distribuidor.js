@@ -26,11 +26,7 @@ function bpde() {
     let carga=Number(document.getElementById("carga").value)
     let num=s1+s2+p2+s3+p3+d3+s4+p4+d4+f4+s5+p5+d5+f5+s6+p6+d6+s7+p7
 	content=""
-    if (carga<0){
-        num+=carga
-    }else{
-        num-=carga
-    }
+    num+=(-carga)
     if (num>0 && num<=118){
         nome=nomeatomo(num)
         simbolo=simboloatomo(num)
@@ -65,11 +61,7 @@ function bpna(){
     let numbackup=num
     let carga=Number(document.getElementById("carga2").value)
     content=""
-    if (carga<0){
-        num+=carga
-    }else{
-        num-=carga
-    }
+    num+=(-carga)
         distribuidor(num)
         nome=nomeatomo(numbackup)
         simbolo=simboloatomo(numbackup)
