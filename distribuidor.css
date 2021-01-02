@@ -1,7 +1,8 @@
 #dist{
     border:2px solid blue;
     padding: 10px;
-    width: 274px;
+    width: 45%;
+    height: auto;
     border-radius: 5px;
     margin-right: 5px;
     text-align: left;
@@ -9,14 +10,12 @@
 #numat{
     border:2px solid blue;
     border-radius: 5px;
-    margin: 0 5px;
+    margin-left: 5px;
     text-align: center;
     padding-top: 5px;
-    width: 354px;
-}
-#dist,#numat,#string{
-    height: 304px;
-    box-sizing: border-box;
+    width: 45%;
+    height: 295px;
+    
 }
 div.flex{
     display: flex;
@@ -24,43 +23,45 @@ div.flex{
     align-items: center;
     height: inherit;
 }
-#menu {
+#menu{
     width: auto;
     height: auto;
     padding: 15px;
     width: auto;
     border-radius: 5px;
+    display: flex;
+    flex: 1;
     justify-content: center;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 15px;
 }
 #string{
     border:2px solid blue;
     border-radius: 5px;
-    margin: 0 auto 0px 5px;
+    box-sizing: border-box;
+    margin: 0 auto 20px;
     text-align: center;
     padding: 5px 15px;
-    width: 340px;
+    width: 45%;
     display: flex;
+    height: 200px;
 }
 #central{
     text-align: left;
     width: max-content;
     margin: auto;
 }
-body{
-    min-width: 730px;
-}
 .msg{
     margin: auto;
     text-align: left;
+}
+#simbolo{
+    width: 170px;
 }
 div.center{
     text-align: center;
 }
 .aviso{
     border: 2px solid black;
+    width: auto;
     text-align: center;
 }
 #res{
@@ -86,11 +87,6 @@ div.center{
     color: red;
     font-weight: bold;
 }
-input:invalid{
-    border-width:2px;
-    outline: 1px solid red;
-    outline-offset: -3px;
-}
 /* Função apagar div*/
 .circle{
     width: 18px;
@@ -111,27 +107,3 @@ input:invalid{
     width: 10px;
     height: 10px;
 }
-/*Fim Função apaga div*/
-/*Redimensionamento*/
-@media only screen and (max-width:1023px){
-    #dist{
-        grid-area: dist;
-        width: 354px;
-    }
-    #numat{
-        grid-area: numat;
-    }
-    #string{
-        grid-area: string;
-        height: max-content;
-    }
-    #dist,#numat,#string{
-        margin: auto;
-    }
-    #menu{
-        grid-template-areas: 
-        'dist dist numat numat' 
-        'string string string string';
-    }
-}
-/*Fim Redicionamento*/
