@@ -25,8 +25,8 @@ function bpde() {
     s7=Number(document.getElementById("7s").value), p7=Number(document.getElementById("7p").value)
     let carga=Number(document.getElementById("carga").value)
     let num=s1+s2+p2+s3+p3+d3+s4+p4+d4+f4+s5+p5+d5+f5+s6+p6+d6+s7+p7
-	content=""
-    num+=(-carga)
+    content=""
+    num+=carga
     if (num>0 && num<=118){
         nome=nomeatomo(num)
         simbolo=simboloatomo(num)
@@ -78,7 +78,7 @@ function bpna(){
         content+=
         (carga>0) ? `Símbolo: ${simbolo} <sup>+${carga}</sup><br>` :
             (carga<0) ? `Símbolo: ${simbolo} <sup>${carga}</sup><br>` : `Símbolo: ${simbolo}<br>`
-        content+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br><br>` 
+        content+=`Número atômico: ${numbackup}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br><br>` 
         ede()
         escrevacamadas()
         ecdv()
