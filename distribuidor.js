@@ -58,11 +58,7 @@ function bpna(){
     let numbackup=num
     let carga=Number(document.getElementById("carga2").value)
     res=""
-    if (carga<0){
-        num+=carga
-        }else{
-        num-=carga
-        }
+    num+=(-carga)
         distribuidor(num)
         nome=nomeatomo(numbackup)
         simbolo=simboloatomo(numbackup)
