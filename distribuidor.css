@@ -1,7 +1,8 @@
 #dist{
     border:2px solid blue;
     padding: 10px;
-    width: 274px;
+    width: 45%;
+    height: auto;
     border-radius: 5px;
     margin-right: 5px;
     text-align: left;
@@ -9,129 +10,55 @@
 #numat{
     border:2px solid blue;
     border-radius: 5px;
-    margin: 0 5px;
+    margin-left: 5px;
     text-align: center;
     padding-top: 5px;
-    width: 354px;
+    width: 45%;
+    height: 295px;
+   
 }
-#dist,#numat,#string{
-    height: 304px;
-    box-sizing: border-box;
-}
-div.flex{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: inherit;
-}
-#menu {
+#menu{
     width: auto;
     height: auto;
     padding: 15px;
     width: auto;
     border-radius: 5px;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 15px;
-}
-#string{
-    border:2px solid blue;
-    border-radius: 5px;
-    margin: 0 auto 0px 5px;
-    text-align: center;
-    padding: 5px 15px;
-    width: 340px;
     display: flex;
+    flex: 1;
+    justify-content: center;
 }
-#central{
-    text-align: left;
-    width: max-content;
-    margin: auto;
+.center{
+    position: relative;
+    top: 40%;
 }
-body{
-    min-width: 730px;
 }
-.msg{
-    margin: auto;
-    text-align: left;
-}
-div.center{
-    text-align: center;
+body {
+    padding-right:auto;
+    padding-left: auto;
 }
 .aviso{
     border: 2px solid black;
+    width: auto;
     text-align: center;
 }
 #res{
+    display: flex;
+    flex: 1;
+}
+.historico{
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
-    width: 95%;
-    display: none;
+    width: auto;
 }
 .res{
     border:2px solid blue;
     border-radius: 5px;
-    width: max-content;
+    width: auto;
     height: 40%;
     padding: 10px;
     margin-left: 10px;
-    float: left;
 }
 .number{
-    width: 35px;
+    width: 40px;
 }
-.atention{
-    color: red;
-    font-weight: bold;
-}
-input:invalid{
-    border-width:2px;
-    outline: 1px solid red;
-    outline-offset: -3px;
-}
-/* Função apagar div*/
-.circle{
-    width: 18px;
-    float:right;
-    box-sizing: border-box;
-    height: 18px;
-    border: 1.5px solid black;
-    border-radius: 50%;
-    display: flex;
-    margin: -8px -8px auto auto;
-    user-select: none;
-}
-.circle:hover{
-    background-color: lightgray;
-}
-.circle img{
-    margin: auto;
-    width: 10px;
-    height: 10px;
-}
-/*Fim Função apaga div*/
-/*Redimensionamento*/
-@media only screen and (max-width:1023px){
-    #dist{
-        grid-area: dist;
-        width: 354px;
-    }
-    #numat{
-        grid-area: numat;
-    }
-    #string{
-        grid-area: string;
-        height: max-content;
-    }
-    #dist,#numat,#string{
-        margin: auto;
-    }
-    #menu{
-        grid-template-areas: 
-        'dist dist numat numat' 
-        'string string string string';
-    }
-}
-/*Fim Redicionamento*/
