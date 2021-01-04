@@ -1,70 +1,66 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="utf-8">
-    <title>Distribuidor Eletrônico</title>
-    <link rel="stylesheet" href="distribuidor.css">
-    <link rel="icon" href="midia/atomo.png">
-</head>
-<body>
-    <div id="menu">
-        <div id="dist">
+    <head>
+        <meta charset="utf-8">
+        <title>Distribuidor Eletrônico</title>
+        <link rel="stylesheet" href="distribuidor.css">
+        <link rel="icon" href="atomo.png">
+    </head>
+    <body>
+        <div id="menu">
+            <div id="dist"><form>
             <div class="center">Encontrar por distribuição</div><br>
-            1s<input type="number" id="1s" value="1" min="1" max="2" class="number" onkeydown="prox(event, '2s')"><br>
-            2s<input type="number" id="2s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '2p')">
-            2p<input type="number" id="2p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '3s')"><br>
-            3s<input type="number" id="3s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '3p')">
-            3p<input type="number" id="3p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '4s')">
-            3d<input type="number" id="3d" value="0" min="0" max="10" class="number" onkeydown="prox(event, '4p')"><br>
-            4s<input type="number" id="4s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '3d')">
-            4p<input type="number" id="4p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '5s')">
-            4d<input type="number" id="4d" value="0" min="0" max="10" class="number" onkeydown="prox(event, '5p')">
-            4f<input type="number" id="4f" value="0" min="0" max="14" class="number" onkeydown="prox(event, '5d')"><br>
-            5s<input type="number" id="5s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '4d')">
-            5p<input type="number" id="5p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '6s')">
-            5d<input type="number" id="5d" value="0" min="0" max="10" class="number" onkeydown="prox(event, '6p')">
-            5f<input type="number" id="5f" value="0" min="0" max="14" class="number" onkeydown="prox(event, '6d')"><br>
-            6s<input type="number" id="6s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '4f')">
-            6p<input type="number" id="6p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '7s')">
-            6d<input type="number" id="6d" value="0" min="0" max="10" class="number" onkeydown="prox(event, '7p')"><br>
-            7s<input type="number" id="7s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '5f')">
-            7p<input type="number" id="7p" value="0" min="0" max="6" class="number" onkeydown="prox(event, 'carga')"><br><br>
-            Carga: <input type="number" id="carga" value="0" onkeydown="auto_submit(event,0)"><br> <br>
+            1s<input type="number" id="1s" value="0" min="1" max="2" class="number"><br>
+            2s<input type="number" id="2s" value="0" min="0" max="2" class="number">
+            2p<input type="number" id="2p" value="0" min="0" max="6" class="number"><br> 
+            3s<input type="number" id="3s" value="0" min="0" max="2" class="number">    
+            3p<input type="number" id="3p" value="0" min="0" max="6" class="number">   
+            3d<input type="number" id="3d" value="0" min="0" max="10" class="number"><br>
+            4s<input type="number" id="4s" value="0" min="0" max="2" class="number">
+            4p<input type="number" id="4p" value="0" min="0" max="6" class="number">
+            4d<input type="number" id="4d" value="0" min="0" max="10" class="number">
+            4f<input type="number" id="4f" value="0" min="0" max="14" class="number"><br>   
+            5s<input type="number" id="5s" value="0" min="0" max="2" class="number">
+            5p<input type="number" id="5p" value="0" min="0" max="6" class="number">
+            5d<input type="number" id="5d" value="0" min="0" max="10" class="number">
+            5f<input type="number" id="5f" value="0" min="0" max="14" class="number"><br>
+            6s<input type="number" id="6s" value="0" min="0" max="2" class="number"> 
+            6p<input type="number" id="6p" value="0" min="0" max="6" class="number">   
+            6d<input type="number" id="6d" value="0" min="0" max="10" class="number"><br>
+            7s<input type="number" id="7s" value="0" min="0" max="2" class="number">
+            7p<input type="number" id="7p" value="0" min="0" max="6" class="number"><br><br>
+            Carga<input type="number" id="carga" value="0"><br>    
+            <br>
             <input type="button" value="Enviar" onclick="bpde()">
-            <input type="button" value="Limpar" onclick="reseta_dist()"><br><br>
-        </div>
-        <div id="numat">
+            <input type="reset" value="Limpar"><br><br>
+            </form></div>
+            <div id="numat">
             Encontrar por Número Atômico/Número de prótons<br>
-            <div class="flex">
-                <div class="center">
-                    Num. Atômico/Num. de Prótons
-                    <input type="number" min="1" max="118" value="" id="num" onkeydown="auto_submit(event,1)"><br><br>
-                    Carga: 
-                    <input type="number" id="carga2" value="0" onkeydown="auto_submit(event,1)"><br><br>
-                    <input type="button" value="Enviar" onclick="bpna()">
+            <span class="center">Num. Atômico/Num. de Prótons
+            <input type="number" min="1" max="118" value="0" id="num"><br>
+            <br>
+            Carga<input type="number" id="carga2" value="0"><br><br>
+            <input type="button" value="Enviar" onclick="bpna()">
+            </span>
+            </div><br>
+        </div><br>
+            <div id="string">
+                <div id="central">
+                    <div class="center">
+                        Busca por nome:<br> <input type="text" id="nome"> <input type="button" onclick="bpn()" value="Buscar" ><br>
+                        Busca por símbolo:<br> <input type="text" id="simbolo"> <input type="button" onclick="bps()" value="Buscar">
+                    </div><br>
+                    <span class="msg"><span class="atention">Atenção!!!</span> O programa não é case sensitive, porém é necessário por os acentos e não conter espaços.</span>
                 </div>
             </div>
+            
+            <div class="aviso">Obs: Este programa não verifica se o estado do átomo é possível, ou seja se um íon for informado independente de exixtir ou não ele será mostrado, por isso verifique se as informações inseridas estão corretas.
+            </div><br><br>
+        
+        <div class="historico">
+            Respostas:<br><br>
+            <span id="res"></span>
         </div>
-        <div id="string">
-            <div id="central">
-                <div class="center">
-                    Busca por nome:<br> <input type="text" id="nome" onkeydown="auto_submit(event,2)"> 
-                    <input type="button" onclick="bpn()" value="Buscar"><br>
-                    Busca por símbolo:<br> <input type="text" id="simbolo" onkeydown="auto_submit(event,3)">
-                    <input type="button" onclick="bps()" value="Buscar">
-                </div><br>
-                <span class="msg"><span class="atention">Atenção!!!</span> O programa não é case sensitive, porém é
-                    necessário por os acentos.</span>
-            </div>
-        </div>
-    </div>   
-    <div class="aviso">Obs: Este programa não verifica se o estado do átomo é possível, ou seja se um íon for informado
-        independente de exixtir ou não ele será mostrado, por isso verifique se as informações inseridas estão corretas.
-    </div><br><br>
-    <div id="res">
-        Respostas:<br><br>
-    </div>
-    <script src="distribuidor.js"></script>
-
-</body>
+        <script src="distribuidor.js"></script>
+    </body>
 </html>
