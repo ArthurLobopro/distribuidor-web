@@ -1,7 +1,7 @@
 var nome,simbolo,familia,periodo,grupo
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
-var res = document.getElementById("res")
+var res
 var s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7
 var atomos = {
     nomes: ["Hidrogênio","Hélio","Lítio","Berílio","Boro","Carbono","Nitrogênio","Oxigênio","Flúor","Neônio","Sódio","Magnésio","Alumínio","Silício","Fósforo","Enxofre","Cloro","Argônio","Potássio","Cálcio","Escândio","Titânio","Vanádio","Crômio","Manganês","Ferro","Cobalto","Níquel","Cobre","Zinco","Gálio","Germânio","Arsênio","Selênio","Bromo","Criptônio","Rubídio","Estrôncio","Ítrio","Zircônio","Nióbio","Molibdênio","Tecnécio","Rutênio","Ródio","Paládio","Prata","Cádmio","Índio","Estanho","Antimônio","Telúrio","Iodo","Xenônio","Césio","Bário","Lantânio","Cério","Praseodímio","Neodímio","Promécio","Samário","Európio","Gadolínio","Térbio","Disprósio","Hôlmio","Érbio","Túlio","Itérbio","Lutécio","Háfnio","Tântalo","Tungstênio","Rênio","Ósmio","Irídio","Platina","Ouro","Mercúrio","Tálio","Chumbo","Bismuto","Polônio","Astato","Radônio","Frâncio","Rádio","Actínio","Tório","Protactínio","Urânio","Neptúnio","Plutônio","Amerício","Cúrio","Berquélio","Califórnio","Enstênio","Férmio","Mendelévio","Nobélio","Laurêncio","Rutherfórdio","Dúbnio","Seabórgio","Bóhrio","Hássio","Meitnério","Darmstádtio","Roentgênio","Copernício","Nihônio","Fleróvio","Moscóvio","Livermório","Tennesso","Oganessônio"],
@@ -11,10 +11,6 @@ var atomos = {
     "Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db",
     "Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"]
 }
-var subcamadas = {
-    nomes: ['1s','2s','2p','3s','3p','3d','4s','4p','4d','4f','5s','5p','5d','5f','6s','6p','6d','7s','7p']
-}
-var id = 1
 //bpde= Busca por Distribuição eletrônica, busca o atomo pela distribuição eletrônica informada acima.
 function bpde() {
     s1=Number(document.getElementById("1s").value)
@@ -28,7 +24,7 @@ function bpde() {
     s7=Number(document.getElementById("7s").value), p7=Number(document.getElementById("7p").value)
     let carga=Number(document.getElementById("carga").value)
     let num=s1+s2+p2+s3+p3+d3+s4+p4+d4+f4+s5+p5+d5+f5+s6+p6+d6+s7+p7
-	let content=""
+	res=""
     num+=carga
     if (num>0 && num<=118){
         nome=nomeatomo(num)
@@ -38,22 +34,19 @@ function bpde() {
         achafamilia(num)
         camadas()
 
-        content+=`<div class='res' id="div${id}">Distribuição fornecida:
-        <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div><br>`
-        content+=ede()
-        content+=`Carga: ${carga}<br><br>`
-        content+=
+        res+=`<div class='res'>Distribuição fornecida:<br>`
+        ede()
+        res+=`Carga: ${carga}<br><br>`
+        res+=
         (carga>0) ? `Átomo encontrado: ${nome} <sup>+${carga}</sup><br>` :
             (carga<0) ? `Átomo encontrado: ${nome} <sup>${carga}</sup><br>` : `Átomo encontrado: ${nome}<br>`
-        content+=
+        res+=
         (carga>0) ? `Símbolo: ${simbolo} <sup>+${carga}</sup><br><br>` :
             (carga<0) ? `Símbolo: ${simbolo} <sup>${carga}</sup><br><br>` : `Símbolo: ${simbolo}<br>`  
-        content+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br>`      
-        content+=escrevacamadas()
-        content+=ecdv()
-        res.innerHTML+=content
-        mostra_res()
-        id++
+        res+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br>`      
+        escrevacamadas()
+        ecdv()
+        document.getElementById("res").innerHTML+=res
     }else{
         alert("Você informou algum número inválido, confira as informações e tente novamente")
     }
@@ -63,7 +56,7 @@ function bpna(){
     let num =Number(document.getElementById("num").value)
     let numbackup=num
     let carga=Number(document.getElementById("carga2").value)
-    let content=""
+    res=""
     num+=(-carga)
         distribuidor(num)
         nome=nomeatomo(numbackup)
@@ -72,30 +65,30 @@ function bpna(){
         achaperiodo(numbackup)
         achafamilia(numbackup)
         camadas()
-        content+=`<div class="res" id="div${id}">
-        <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div>
-        Você informou: ${numbackup}<br>Carga: ${carga}<br><br>`
-        content+=
+        res+=(`<div class="res">Você informou: ${numbackup}<br>Carga: ${carga}<br><br>`)
+        res+=
         (carga>0) ? `Nome do átomo: ${nome} <sup>+${carga}</sup><br>` :
             (carga<0) ? `Nome do átomo: ${nome} <sup>${carga}</sup><br>` :`Nome do átomo: ${nome}<br>`
-        content+=
+        res+=
         (carga>0) ? `Símbolo: ${simbolo} <sup>+${carga}</sup><br>` :
             (carga<0) ? `Símbolo: ${simbolo} <sup>${carga}</sup><br>` : `Símbolo: ${simbolo}<br>`
-        content+=`Número atômico: ${numbackup}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br><br>` 
-        content+=ede()
-        content+=escrevacamadas()
-        content+=ecdv()
-        res.innerHTML+=content
-        mostra_res()
-        id++
+        res+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br><br>` 
+        ede()
+        escrevacamadas()
+        ecdv()
+        document.getElementById("res").innerHTML+=res
 }
 //Busca pelo nome
 function bpn(){
     let name=document.getElementById("nome").value
-    name=name.replaceAll(' ','')
+    let teste=0 //Enquanto tiver espaços irá ser diferente de -1
+    do{
+        name=name.replace(' ','')
+        teste=name.indexOf(' ')
+    }while(teste!=-1)
     let num=0
     let erro=true
-    let content=""
+    res=""
     for(let i=0;i<118;i++){
         if(name.toUpperCase() == atomos.nomes[i].toUpperCase()){
            num=i+1
@@ -113,16 +106,12 @@ function bpn(){
         achaperiodo(num)
         achafamilia(num)
         camadas()
-        content+=`<div class="res" id="div${id}">
-        <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div>
-        Nome informado: ${name}<br><br>
+        res+=`<div class="res">Nome informado: ${name}<br><br>
         Nome: ${nome}<br>Símbolo: ${simbolo}<br>Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
-        content+=ede()
-        content+=escrevacamadas()
-        content+=ecdv()
-        res.innerHTML+=content
-        mostra_res()
-        id++
+        ede()
+        escrevacamadas()
+        ecdv()
+        document.getElementById("res").innerHTML+=res
     }
     document.getElementById("nome").value=("")
 }
@@ -130,9 +119,13 @@ function bpn(){
 function bps(){
     let simbol=document.getElementById("simbolo").value
     let num=0
-    simbol=simbol.replace(' ','')
+    let teste=0 //Enquanto tiver espaços irá ser diferente de -1
+    do{
+        simbol=simbol.replace(' ','')
+        teste=simbol.indexOf(' ')
+    }while(teste!=-1)
     let erro=true
-    let content=""
+    res=""
     for(let i=0;i<118;i++){
         if(simbol.toUpperCase() == atomos.simbolos[i].toUpperCase()){
            num=i+1
@@ -150,16 +143,12 @@ function bps(){
             achaperiodo(num)
             achafamilia(num)
             camadas()
-            content+=`<div class="res" id="div${id}">
-            <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div>
-            Símbolo informado: ${simbol}<br><br>
+            res+=`<div class="res">Símbolo informado: ${simbol}<br><br>
             Nome: ${nome}<br>Símbolo: ${simbolo}<br>Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
-            content+=ede()
-            content+=escrevacamadas()
-            content+=ecdv()
-            res.innerHTML+=content
-            mostra_res()
-            id++
+            ede()
+            escrevacamadas()
+            ecdv()
+            document.getElementById("res").innerHTML+=res
         }
         document.getElementById("simbolo").value=("")
 }
@@ -326,18 +315,18 @@ function camadas(){
                             (camada[5]>0) ? 6 : 7
 }
 function escrevacamadas(){
-    return`<br>Elétrons nas camadas:
+    res+=(`<br>Elétrons nas camadas:
     <br>Camada K: ${camada[0]}
     <br>Camada L: ${camada[1]}
     <br>Camada M: ${camada[2]}
     <br>Camada N: ${camada[3]}
     <br>Camada O: ${camada[4]}
     <br>Camada P: ${camada [5]}
-    <br>Camada Q: ${camada [6]}`	
+    <br>Camada Q: ${camada [6]}`)	
 }
 //Escreve a distribuição eletrônica
 function ede(){
-    return`1s${s1} <br>
+    res+=`1s${s1} <br>
         2s${s2} 2p${p2}<br>
         3s${s3} 3p${p3} 3d${d3}<br>
         4s${s4} 4p${p4} 4d${d4} 4f${f4}<br>
@@ -348,7 +337,7 @@ function ede(){
 //Acha a família do átomo
 function achafamilia(num){
     familia = 
-    (num==1) ? "<br> Não possiu uma família específica,<br> algumas vezes é representado<br> separado de outros elementos." : 
+    (num==1) ? "O hidrogênio não possiu uma família específica,<br> em algumas tabelas periódicas ele é até representado separadamente" : 
         (num != 1 & grupo==1) ? "Metais Alcalinos" :
             (grupo == 2) ? "Metais Alcalinos Terrosos" : 
                 (grupo== 3 && num<40) ? "Metais de transição" :
@@ -394,77 +383,33 @@ function achaperiodo(num){
 }
 //Escreve as camadas de valência
 function ecdv(){
-    let content=""
     switch(camadaValencia){
         case 1:
-            content+=(`<br>A camada de valência é: 1s${s1}<br>Elétrons na camada de valência: ${s1}</div>`) 
+            res+=(`<br>A camada de valência é: 1s${s1}<br>Elétrons na camada de valência: ${s1}</div>`) 
             break
         case 2:
-            content+= (p2>2) ? `<br>A camada de valência é: 2s${s2} 2p${p2}<br>` : `<br>A camada de valência é: 2s${s2}<br>`
-            content+=`Elétrons na camada de valência: ${s2+p2}</div>`
+            res+= (p2>2) ? `<br>A camada de valência é: 2s${s2} 2p${p2}<br>` : `<br>A camada de valência é: 2s${s2}<br>`
+            res+=`Elétrons na camada de valência: ${s2+p2}</div>`
             break
         case 3:
-            content+= (p3>0) ? `<br>A camada de valência é: 3s${s3} 3p${p3}<br>` : `<br>A camada de valência é: 3s${s3}<br>`
-            content+= `Elétrons na camada de valência: ${s3+p3}</div>`
+            res+= (p3>0) ? `<br>A camada de valência é: 3s${s3} 3p${p3}<br>` : `<br>A camada de valência é: 3s${s3}<br>`
+            res+= `Elétrons na camada de valência: ${s3+p3}</div>`
             break
         case 4:
-            content+= (p4>0) ? `<br>A camada de valência é: 4s${s4} 4p${p4}<br>` : `<br>A camada de valência é: 4s${s4}<br>`
-            content+= `Elétrons na camada de valência: ${s4+p4}</div>`
+            res+= (p4>0) ? `<br>A camada de valência é: 4s${s4} 4p${p4}<br>` : `<br>A camada de valência é: 4s${s4}<br>`
+            res+= `Elétrons na camada de valência: ${s4+p4}</div>`
             break
         case 5:
-            content+= (p5>0) ? `<br>A camada de valência é: 5s${s5} 5p${p5}<br>` : `<br>A camada de valência é: 5s${s5}<br>`
-            content+= `Elétrons na camada de valência: ${s5+p5}</div>`
+            res+= (p5>0) ? `<br>A camada de valência é: 5s${s5} 5p${p5}<br>` : `<br>A camada de valência é: 5s${s5}<br>`
+            res+= `Elétrons na camada de valência: ${s5+p5}</div>`
             break
         case 6:
-            content+= (p6>0) ? `<br>A camada de valência é: 6s${s6} 6p${p6}<br>` : `<br>A camada de valência é: 6s${s6}<br>`
-            content+= `Elétrons na camada de valência: ${s6+p6}</div>`
+            res+= (p6>0) ? `<br>A camada de valência é: 6s${s6} 6p${p6}<br>` : `<br>A camada de valência é: 6s${s6}<br>`
+            res += `Elétrons na camada de valência: ${s6+p6}</div>`
             break
         case 7:
-            content+= (p7>0) ? `<br>A camada de valência é: 7s${s7} 7p${p7}<br>` : `<br>A camada de valência é: 7s${s7}<br>`
-            content+= `Elétrons na camada de valência: ${s7+p7}</div>`
+            res+= (p7>0) ? `<br>A camada de valência é: 7s${s7} 7p${p7}<br>` : `<br>A camada de valência é: 7s${s7}<br>`
+            res+= `Elétrons na camada de valência: ${s7+p7}</div>`
         break
     }
-    return content
-}
-function remove_div(num){
-    let element= document.getElementById(`div${num}`)
-    res.removeChild(element)
-    let string = res.innerHTML
-    let teste = string.indexOf("div")
-    if(teste==-1){
-        res.style.display="none"
-        id=0
-    }
-}
-function auto_submit(event,num){
-    let tecla = event.key
-    if(tecla=="Enter"){
-        switch(num){
-            case 0:
-                bpde()
-                break
-            case 1:
-                bpna()
-                break
-            case 2:
-                bpn()
-                break
-            case 3:
-                bps()
-                break
-        }
-    }
-}
-function reseta_dist(){
-    for(let i in subcamadas.nomes){
-        document.getElementById(subcamadas.nomes[i]).value=""
-    }
-}
-function prox(event, id){
-    if(event.key=='Enter'){
-        document.getElementById(id).focus()
-    }
-}
-function mostra_res(){
-    res.style.display="inline-block"
 }

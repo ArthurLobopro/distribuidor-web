@@ -44,7 +44,7 @@
     margin: auto;
 }
 .msg{
-    margin: ;
+    margin: auto;
     text-align: left;
 }
 #simbolo{
@@ -56,7 +56,6 @@
 }
 div.center{
     text-align: center;
-}
 }
 body {
     padding-right:auto;
