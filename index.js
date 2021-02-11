@@ -484,35 +484,35 @@ function ecdv(){
     }
     return content
 }
-// function remove_div(num){
-//     let element= document.getElementById(`div${num}`)
-//     res.removeChild(element)
-//     let string = res.innerHTML
-//     let teste = string.indexOf("div")
-//     if(teste==-1){
-//         res.style.display="none"
-//         id=0
-//     }
-// }
-// function auto_submit(event,num){
-//     let tecla = event.key
-//     if(tecla=="Enter"){
-//         switch(num){
-//             case 0:
-//                 bpde()
-//                 break
-//             case 1:
-//                 bpna()
-//                 break
-//             case 2:
-//                 bpn()
-//                 break
-//             case 3:
-//                 bps()
-//                 break
-//         }
-//     }
-// }
+function remove_div(num){
+    let element= document.getElementById(`div${num}`)
+    res.removeChild(element)
+    let string = res.innerHTML
+    let teste = string.indexOf("div")
+    if(teste==-1){
+        res.style.display="none"
+        id=0
+    }
+}
+function auto_submit(event,num){
+    let tecla = event.key
+    if(tecla=="Enter"){
+        switch(num){
+            case 0:
+                bpde()
+                break
+            case 1:
+                bpna()
+                break
+            case 2:
+                bpn()
+                break
+            case 3:
+                bps()
+                break
+        }
+    }
+}
 function reseta_dist(){
     for(let i in subcamadas.nomes){
         document.getElementById(subcamadas.nomes[i]).value=""
