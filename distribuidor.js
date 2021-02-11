@@ -1,20 +1,43 @@
+import atomos from "./modules/atomos.js";
 var nome,simbolo,familia,periodo,grupo
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
 var res = document.getElementById("res")
 var s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7
-var atomos = {
-    nomes: ["Hidrogênio","Hélio","Lítio","Berílio","Boro","Carbono","Nitrogênio","Oxigênio","Flúor","Neônio","Sódio","Magnésio","Alumínio","Silício","Fósforo","Enxofre","Cloro","Argônio","Potássio","Cálcio","Escândio","Titânio","Vanádio","Crômio","Manganês","Ferro","Cobalto","Níquel","Cobre","Zinco","Gálio","Germânio","Arsênio","Selênio","Bromo","Criptônio","Rubídio","Estrôncio","Ítrio","Zircônio","Nióbio","Molibdênio","Tecnécio","Rutênio","Ródio","Paládio","Prata","Cádmio","Índio","Estanho","Antimônio","Telúrio","Iodo","Xenônio","Césio","Bário","Lantânio","Cério","Praseodímio","Neodímio","Promécio","Samário","Európio","Gadolínio","Térbio","Disprósio","Hôlmio","Érbio","Túlio","Itérbio","Lutécio","Háfnio","Tântalo","Tungstênio","Rênio","Ósmio","Irídio","Platina","Ouro","Mercúrio","Tálio","Chumbo","Bismuto","Polônio","Astato","Radônio","Frâncio","Rádio","Actínio","Tório","Protactínio","Urânio","Neptúnio","Plutônio","Amerício","Cúrio","Berquélio","Califórnio","Enstênio","Férmio","Mendelévio","Nobélio","Laurêncio","Rutherfórdio","Dúbnio","Seabórgio","Bóhrio","Hássio","Meitnério","Darmstádtio","Roentgênio","Copernício","Nihônio","Fleróvio","Moscóvio","Livermório","Tennesso","Oganessônio"],
-    simbolos: ["H","He","Li","Be","B","C","N","O","F","Ne","Na","Mg","Al","Si","P","S","Cl","Ar","K","Ca","Sc","Ti","V","Cr",
-    "Mn","Fe","Co","Ni","Cu","Zn","Ga","Ge","As","Se","Br","Kr","Rb","Sr","Y","Zr","Nb","Mo","Tc","Ru","Rh","Pd","Ag","Cd","In","Sn","Sb",
-    "Te","I","Xe","Cs","Ba","La","Ce","Pr","Nd","Pm","Sm","Eu","Gd","Tb","Dy","Ho","Er","Tm","Yb","Lu","Hf","Ta","W","Re","Os","Ir","Pt",
-    "Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db",
-    "Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"]
-}
 var subcamadas = {
     nomes: ['1s','2s','2p','3s','3p','3d','4s','4p','4d','4f','5s','5p','5d','5f','6s','6p','6d','7s','7p']
 }
-var id = 1
+var id = 0
+// Detecção de eventos
+
+//Busca por símbolo
+const bps_input = document.getElementById('simbolo')
+const bps_buttom = document.getElementById('bps') 
+bps_input.onkeydown = (event) =>{
+    if(event.key=='Enter'){ bps() }
+}
+bps_buttom.onclick=() => bps() 
+
+//Busca por nome
+const bpn_input = document.getElementById('nome')
+const bpn_buttom = document.getElementById('bpn')
+bpn_input.onkeydown = (event) =>{
+    if(event.key=='Enter'){ bpn() }
+}
+bpn_buttom.onclick=() => bpn() 
+
+//Busca por número atômico
+const bpna_input = document.getElementById('num')
+const bpna_buttom = document.getElementById('bpna')
+const bpna_carga = document.getElementById('bpna-carga')
+bpna_input.onkeydown = (event) =>{
+    if(event.key=='Enter'){ bpna() }
+}
+bpna_carga.onkeydown = (event) =>{
+    if(event.key=='Enter'){ bpna() }
+}
+bpna_buttom.onclick = () => bpna()
+
 //bpde= Busca por Distribuição eletrônica, busca o atomo pela distribuição eletrônica informada acima.
 function bpde() {
     s1=Number(document.getElementById("1s").value)
@@ -60,9 +83,9 @@ function bpde() {
 }
 //Busca por número atômico
 function bpna(){
-    let num =Number(document.getElementById("num").value)
+    let num =Number(bpna_input.value)
     let numbackup=num
-    let carga=Number(document.getElementById("carga2").value)
+    let carga=Number(bpna_carga.value)
     let content=""
     num+=(-carga)
         distribuidor(num)
@@ -91,7 +114,7 @@ function bpna(){
 }
 //Busca pelo nome
 function bpn(){
-    let name=document.getElementById("nome").value
+    let name =bpn_input.value
     name=name.replaceAll(' ','')
     let num=0
     let erro=true
@@ -128,7 +151,7 @@ function bpn(){
 }
 //Busca pelo símbolo
 function bps(){
-    let simbol=document.getElementById("simbolo").value
+    let simbol = bps_input.value
     let num=0
     simbol=simbol.replace(' ','')
     let erro=true
@@ -426,45 +449,45 @@ function ecdv(){
     }
     return content
 }
-function remove_div(num){
-    let element= document.getElementById(`div${num}`)
-    res.removeChild(element)
-    let string = res.innerHTML
-    let teste = string.indexOf("div")
-    if(teste==-1){
-        res.style.display="none"
-        id=0
-    }
-}
-function auto_submit(event,num){
-    let tecla = event.key
-    if(tecla=="Enter"){
-        switch(num){
-            case 0:
-                bpde()
-                break
-            case 1:
-                bpna()
-                break
-            case 2:
-                bpn()
-                break
-            case 3:
-                bps()
-                break
-        }
-    }
-}
-function reseta_dist(){
-    for(let i in subcamadas.nomes){
-        document.getElementById(subcamadas.nomes[i]).value=""
-    }
-}
-function prox(event, id){
-    if(event.key=='Enter'){
-        document.getElementById(id).focus()
-    }
-}
+// function remove_div(num){
+//     let element= document.getElementById(`div${num}`)
+//     res.removeChild(element)
+//     let string = res.innerHTML
+//     let teste = string.indexOf("div")
+//     if(teste==-1){
+//         res.style.display="none"
+//         id=0
+//     }
+// }
+// function auto_submit(event,num){
+//     let tecla = event.key
+//     if(tecla=="Enter"){
+//         switch(num){
+//             case 0:
+//                 bpde()
+//                 break
+//             case 1:
+//                 bpna()
+//                 break
+//             case 2:
+//                 bpn()
+//                 break
+//             case 3:
+//                 bps()
+//                 break
+//         }
+//     }
+// }
+// function reseta_dist(){
+//     for(let i in subcamadas.nomes){
+//         document.getElementById(subcamadas.nomes[i]).value=""
+//     }
+// }
+// function prox(event, id){
+//     if(event.key=='Enter'){
+//         document.getElementById(id).focus()
+//     }
+// }
 function mostra_res(){
     res.style.display="inline-block"
 }
