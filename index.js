@@ -1,12 +1,12 @@
-import atomos from "./modules/atomos.js"
 var periodo,grupo
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
-var res = document.getElementById("res")
+const res = document.getElementById("res")
 var s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7
 var subcamadas = {
     nomes: ['1s','2s','2p','3s','3p','3d','4s','4p','4d','4f','5s','5p','5d','5f','6s','6p','6d','7s','7p']
 }
+
 var id = 0
 
 const reverse = (str)=>{
@@ -15,29 +15,30 @@ const reverse = (str)=>{
     array = String(array).replaceAll(',','')
     return array
 }
+const get = id =>  document.getElementById(id)
 var id = 0
 // Detecção de eventos
 
 //Busca por símbolo
-const bps_input = document.getElementById('simbolo')
-const bps_buttom = document.getElementById('bps') 
+const bps_input = get('simbolo')
+const bps_buttom = get('bps') 
 bps_input.onkeydown = (event) =>{
     if(event.key=='Enter'){ bps() }
 }
 bps_buttom.onclick=() => bps() 
 
 //Busca por nome
-const bpn_input = document.getElementById('nome')
-const bpn_buttom = document.getElementById('bpn')
+const bpn_input = get('nome')
+const bpn_buttom = get('bpn')
 bpn_input.onkeydown = (event) =>{
     if(event.key=='Enter'){ bpn() }
 }
 bpn_buttom.onclick=() => bpn() 
 
 //Busca por número atômico
-const bpna_input = document.getElementById('num')
-const bpna_buttom = document.getElementById('bpna')
-const bpna_carga = document.getElementById('bpna-carga')
+const bpna_input = get('num')
+const bpna_buttom = get('bpna')
+const bpna_carga = get('bpna-carga')
 bpna_input.onkeydown = (event) =>{
     if(event.key=='Enter'){ bpna() }
 }
@@ -47,22 +48,34 @@ bpna_carga.onkeydown = (event) =>{
 bpna_buttom.onclick = () => bpna()
 
 // Busca por distribuição eletrônica
+const teste = (event)=> console.log(event.key)
 const sub_inputs = {
-    get: id =>  document.getElementById(id)
-    
+    events: [],
+    add: function() {
+        for(let i of subcamadas.nomes){
+            this[reverse(i)]= get(i)
+        }
+        this.addEvent()
+    },
+    addEvent: function(){
+        for(let i of subcamadas.nomes){
+            this.events.push(this[reverse(i)].addEventListener('keydown',teste,false))
+        }
+    }
 }
+document.body.addEventListener('DOMContetLoad',sub_inputs.add,false)
 
 //bpde= Busca por Distribuição eletrônica, busca o atomo pela distribuição eletrônica informada acima.
 function bpde() {
-    s1=Number(document.getElementById("1s").value)
-    s2=Number(document.getElementById("2s").value), p2=Number(document.getElementById("2p").value) 
-    s3=Number(document.getElementById("3s").value), p3=Number(document.getElementById("3p").value), d3=Number(document.getElementById("3d").value)
-    s4=Number(document.getElementById("4s").value), p4=Number(document.getElementById("4p").value)
-    d4=Number(document.getElementById("4d").value), f4=Number(document.getElementById("4f").value) 
-    s5=Number(document.getElementById("5s").value), p5=Number(document.getElementById("5p").value)
-    d5=Number(document.getElementById("5d").value), f5=Number(document.getElementById("5f").value)
-    s6=Number(document.getElementById("6s").value), p6=Number(document.getElementById("6p").value), d6=Number(document.getElementById("6d").value) 
-    s7=Number(document.getElementById("7s").value), p7=Number(document.getElementById("7p").value)
+    s1=Number(get("1s").value)
+    s2=Number(get("2s").value), p2=Number(get("2p").value) 
+    s3=Number(get("3s").value), p3=Number(get("3p").value), d3=Number(get("3d").value)
+    s4=Number(get("4s").value), p4=Number(get("4p").value)
+    d4=Number(get("4d").value), f4=Number(get("4f").value) 
+    s5=Number(get("5s").value), p5=Number(get("5p").value)
+    d5=Number(get("5d").value), f5=Number(get("5f").value)
+    s6=Number(get("6s").value), p6=Number(get("6p").value), d6=Number(get("6d").value) 
+    s7=Number(get("7s").value), p7=Number(get("7p").value)
     let carga=Number(document.getElementById("carga").value)
     let num=s1+s2+p2+s3+p3+d3+s4+p4+d4+f4+s5+p5+d5+f5+s6+p6+d6+s7+p7
 	let content=""

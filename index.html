@@ -5,30 +5,31 @@
     <title>Distribuidor Eletrônico</title>
     <link rel="stylesheet" href="distribuidor.css">
     <link rel="icon" href="midia/atomo.png">
+    <script src="scripts/atomos.js"></script>
 </head>
 <body>
     <div id="menu">
         <div id="dist">
             <div class="center">Encontrar por distribuição</div><br>
-            1s<input type="number" id="1s" value="1" min="1" max="2" class="number" onkeydown="prox(event, '2s')"><br>
-            2s<input type="number" id="2s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '2p')">
-            2p<input type="number" id="2p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '3s')"><br>
-            3s<input type="number" id="3s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '3p')">
-            3p<input type="number" id="3p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '4s')">
-            3d<input type="number" id="3d" value="0" min="0" max="10" class="number" onkeydown="prox(event, '4p')"><br>
-            4s<input type="number" id="4s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '3d')">
-            4p<input type="number" id="4p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '5s')">
-            4d<input type="number" id="4d" value="0" min="0" max="10" class="number" onkeydown="prox(event, '5p')">
-            4f<input type="number" id="4f" value="0" min="0" max="14" class="number" onkeydown="prox(event, '5d')"><br>
-            5s<input type="number" id="5s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '4d')">
-            5p<input type="number" id="5p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '6s')">
-            5d<input type="number" id="5d" value="0" min="0" max="10" class="number" onkeydown="prox(event, '6p')">
-            5f<input type="number" id="5f" value="0" min="0" max="14" class="number" onkeydown="prox(event, '6d')"><br>
-            6s<input type="number" id="6s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '4f')">
-            6p<input type="number" id="6p" value="0" min="0" max="6" class="number" onkeydown="prox(event, '7s')">
-            6d<input type="number" id="6d" value="0" min="0" max="10" class="number" onkeydown="prox(event, '7p')"><br>
-            7s<input type="number" id="7s" value="0" min="0" max="2" class="number" onkeydown="prox(event, '5f')">
-            7p<input type="number" id="7p" value="0" min="0" max="6" class="number" onkeydown="prox(event, 'carga')"><br><br>
+            1s<input type="number" id="1s" value="1" min="1" max="2" class="number" ><br>
+            2s<input type="number" id="2s" value="0" min="0" max="2" class="number" >
+            2p<input type="number" id="2p" value="0" min="0" max="6" class="number" ><br>
+            3s<input type="number" id="3s" value="0" min="0" max="2" class="number" >
+            3p<input type="number" id="3p" value="0" min="0" max="6" class="number" >
+            3d<input type="number" id="3d" value="0" min="0" max="10" class="number" ><br>
+            4s<input type="number" id="4s" value="0" min="0" max="2" class="number" >
+            4p<input type="number" id="4p" value="0" min="0" max="6" class="number" >
+            4d<input type="number" id="4d" value="0" min="0" max="10" class="number" >
+            4f<input type="number" id="4f" value="0" min="0" max="14" class="number" ><br>
+            5s<input type="number" id="5s" value="0" min="0" max="2" class="number" >
+            5p<input type="number" id="5p" value="0" min="0" max="6" class="number" >
+            5d<input type="number" id="5d" value="0" min="0" max="10" class="number" >
+            5f<input type="number" id="5f" value="0" min="0" max="14" class="number" ><br>
+            6s<input type="number" id="6s" value="0" min="0" max="2" class="number" >
+            6p<input type="number" id="6p" value="0" min="0" max="6" class="number" >
+            6d<input type="number" id="6d" value="0" min="0" max="10" class="number"><br>
+            7s<input type="number" id="7s" value="0" min="0" max="2" class="number" >
+            7p<input type="number" id="7p" value="0" min="0" max="6" class="number"><br><br>
             Carga: <input type="number" id="carga" value="0" onkeydown="auto_submit(event,0)"><br> <br>
             <input type="button" value="Enviar" onclick="bpde()">
             <input type="button" value="Limpar" onclick="reseta_dist()"><br><br>
@@ -64,7 +65,7 @@
     <div id="res">
         Respostas:<br><br>
     </div>
-    <script src="index.js" type="module"></script>
+    <script src="index.js"></script>
 
 </body>
 </html>
