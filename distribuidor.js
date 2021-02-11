@@ -1,4 +1,5 @@
 import atomos from "./modules/atomos.js";
+
 var nome,simbolo,familia,periodo,grupo
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
@@ -6,6 +7,13 @@ var res = document.getElementById("res")
 var s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7
 var subcamadas = {
     nomes: ['1s','2s','2p','3s','3p','3d','4s','4p','4d','4f','5s','5p','5d','5f','6s','6p','6d','7s','7p']
+}
+
+const reverse = (str)=>{
+    let array = String(str).split('')
+    array.reverse()
+    array = String(array).replaceAll(',','')
+    return array
 }
 var id = 0
 // Detecção de eventos
@@ -37,6 +45,12 @@ bpna_carga.onkeydown = (event) =>{
     if(event.key=='Enter'){ bpna() }
 }
 bpna_buttom.onclick = () => bpna()
+
+// Busca por distribuição eletrônica
+const sub_inputs = {
+    get: id =>  document.getElementById(id)
+    
+}
 
 //bpde= Busca por Distribuição eletrônica, busca o atomo pela distribuição eletrônica informada acima.
 function bpde() {
