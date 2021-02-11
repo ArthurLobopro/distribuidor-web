@@ -1,4 +1,4 @@
-var nome,simbolo,familia,periodo,grupo
+var periodo,grupo
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
 var res = document.getElementById("res")
@@ -31,11 +31,11 @@ function bpde() {
 	let content=""
     num+=carga
     if (num>0 && num<=118){
-        nome=nomeatomo(num)
-        simbolo=simboloatomo(num)
-        achagrupo(num)
+        let nome=nomeatomo(num)
+        let simbolo=simboloatomo(num)
+        let grupo = achagrupo(num)
         achaperiodo(num)
-        achafamilia(num)
+        let familia = achafamilia(num)
         camadas()
 
         content+=`<div class='res' id="div${id}">Distribuição fornecida:
@@ -66,11 +66,11 @@ function bpna(){
     let content=""
     num+=(-carga)
         distribuidor(num)
-        nome=nomeatomo(numbackup)
-        simbolo=simboloatomo(numbackup)
-        achagrupo(numbackup)
+        let nome=nomeatomo(numbackup)
+        let simbolo=simboloatomo(numbackup)
+        let grupo = achagrupo(numbackup)
         achaperiodo(numbackup)
-        achafamilia(numbackup)
+        let familia = achafamilia(numbackup)
         camadas()
         content+=`<div class="res" id="div${id}">
         <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div>
@@ -107,11 +107,11 @@ function bpn(){
     }
     if (erro==false){
         distribuidor(num)
-        nome=nomeatomo(num)
-        simbolo=simboloatomo(num)
-        achagrupo(num)
+        let nome=nomeatomo(num)
+        let simbolo=simboloatomo(num)
+        let grupo = achagrupo(num)
         achaperiodo(num)
-        achafamilia(num)
+        let familia = achafamilia(num)
         camadas()
         content+=`<div class="res" id="div${id}">
         <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div>
@@ -144,11 +144,11 @@ function bps(){
     }
     if (erro==false){
             distribuidor(num)
-            nome=nomeatomo(num)
-            simbolo=simboloatomo(num)
-            achagrupo(num)
+            let nome=nomeatomo(num)
+            let simbolo=simboloatomo(num)
+            let grupo = achagrupo(num)
             achaperiodo(num)
-            achafamilia(num)
+            let familia = achafamilia(num)
             camadas()
             content+=`<div class="res" id="div${id}">
             <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div>
@@ -175,14 +175,14 @@ function simboloatomo (num){
 function distribuidor(num){
     if (num-2>=0){
         s1=2
-        num=num-2
+        num-=2
     }else{
         s1=num
         num=0
     }
-    if (num - 2 >= 0){
+    if (num-2 >= 0){
         s2 = 2
-        num = num -2
+        num-=2
     }else {
         s2 = num
         num = 0
@@ -196,112 +196,112 @@ function distribuidor(num){
     }
     if (num - 2 >= 0){
         s3 = 2
-        num = num -2
+        num-= 2
     }else {
         s3 = num
         num = 0
     }
     if(num-6>=0){
         p3=6
-        num=num-6
+        num-=6
     }else{
         p3=num
         num=0
     }
     if (num - 2 >= 0){
         s4 = 2
-        num = num -2
+        num-=2
     }else {
         s4 = num
         num = 0
     }
     if(num-10>=0){
         d3=10
-        num=num-10
+        num-=10
     }else{
         d3=num
         num=0
     }
     if(num-6>=0){
         p4=6
-        num=num-6
+        num-= 6
     }else{
         p4=num
         num=0
     }
     if (num - 2 >= 0){
         s5 = 2
-        num = num -2
+        num-=2
     }else {
         s5 = num
         num = 0
     }
     if(num-10>=0){
         d4=10
-        num=num-10
+        num-=10
     }else{
         d4=num
         num=0
     }
     if(num-6>=0){
         p5=6
-        num=num-6
+        num-=6
     }else{
         p5=num
         num=0
     }
     if (num - 2 >= 0){
         s6 = 2
-        num = num -2
+        num-=2
     }else {
         s6 = num
         num = 0
     }
     if(num-14>=0){
         f4=14
-        num=num-14
+        num-=14
     }else{
         f4=num
         num=0
     }
     if(num-10>=0){
         d5=10
-        num=num-10
+        num-=10
     }else{
         d5=num
         num=0
     }
     if(num-6>=0){
         p6=6
-        num=num-6
+        num-=6
     }else{
         p6=num
         num=0
     }
     if (num - 2 >= 0){
         s7 = 2
-        num = num -2
+        num-=2
     }else {
         s7 = num
         num = 0
     }
     if(num-14>=0){
         f5=14
-        num=num-14
+        num-=14
     }else{
         f5=num
         num=0
     }
     if(num-10>=0){
         d6=10
-        num=num-10
+        num-=10
     }else{
         d6=num
         num=0
     }
     if(num-6>=0){
         p7=6
-        num=num-6
+        num-=6
     }else{
         p7=num
         num=0
@@ -337,7 +337,8 @@ function escrevacamadas(){
 }
 //Escreve a distribuição eletrônica
 function ede(){
-    return`1s${s1} <br>
+    return`
+        1s${s1} <br>
         2s${s2} 2p${p2}<br>
         3s${s3} 3p${p3} 3d${d3}<br>
         4s${s4} 4p${p4} 4d${d4} 4f${f4}<br>
@@ -347,7 +348,7 @@ function ede(){
 }
 //Acha a família do átomo
 function achafamilia(num){
-    familia = 
+    return (
     (num==1) ? "<br> Não possiu uma família específica,<br> algumas vezes é representado<br> separado de outros elementos." : 
         (num != 1 & grupo==1) ? "Metais Alcalinos" :
             (grupo == 2) ? "Metais Alcalinos Terrosos" : 
@@ -360,27 +361,34 @@ function achafamilia(num){
                                         (grupo==15) ? "Grupo do Nitrogênio" :
                                             (grupo==16) ? "Calcogênios" :
                                                 (grupo==17) ? "Halogênios" : "Gases Nobres"
+    )
 }
 //Acha o grupo do átomo na tabela periódica.
 function achagrupo (num){
-    grupo = 
-    (num==1 || num==3 || num==11 || num==19 || num==37 || num==55 || num==87) ? 1 :
-        (num==4 || num==12 || num==20 || num==38 || num==56 || num==88) ? 2 :
-            (num==21 || num==39 || (num>=57 && num<=71) || (num>=89 && num<=103)) ? 3 :
-                (num==22 || num==40 || num==72 || num==104) ? 4 :
-                    (num==23 || num==41 || num==73 || num==105) ? 5 :
-                        (num==24 || num==42 || num==74 || num==106) ? 6 :
-                            (num==25 || num==43 || num==75 || num==107) ? 7 :
-                                (num==26 || num==44 || num==76 || num==108) ? 8 :
-                                    (num==27 || num==45 || num==77 || num==109) ? 9 :
-                                        (num==28 || num==46 || num==78 || num==110) ? 10 :
-                                            (num==29 || num==47 || num==79 || num==111) ? 11 :
-                                                (num==30 || num==48 || num==80 || num==112) ? 12 :
-                                                    (num==5 || num==13 || num==31 || num==49 || num==81 || num==113) ? 13 :
-                                                        (num==6 || num==14 || num==32 || num==50 || num==82 || num==114) ? 14 :
-                                                            (num==7 || num==15 || num==33 || num==51 || num==83 || num==115) ? 15 :
-                                                                (num==8 || num==16 || num==34 || num==52 || num==84 || num==116) ? 16 :
-                                                                    (num==9 || num==17 || num==35 || num==53 || num==85 || num==117) ? 17 : 18
+    if ((num>=57 && num<=71) || (num>=89 && num<=103)){ return 3 }
+    const grupos = [
+        [1, 3, 11, 19, 37, 55, 87],
+        [4, 12, 20, 38, 56, 88],
+        [21, 39],
+        [22,40,72,104],
+        [23, 41, 73, 105],
+        [24, 42, 74, 106],
+        [25, 43, 75, 107],
+        [26, 44, 76, 108],
+        [27, 45, 77, 109],
+        [28, 46, 78, 110],
+        [29, 47, 79, 111],
+        [30, 48, 80, 112],
+        [5, 13, 31, 49, 81, 113],
+        [6, 14, 32, 50, 82, 114],
+        [7, 15, 33, 51, 83, 115],
+        [8, 16, 34, 52, 84, 116],
+        [9,17,35,53,85]
+    ]
+    for( i in grupos){
+        if(grupos[i].indexOf(num)!=-1){ return Number(i+1) }
+    }
+    return 18
 }
 //Acha o período do atomo na tabela periódica
 function achaperiodo(num){
@@ -468,3 +476,7 @@ function prox(event, id){
 function mostra_res(){
     res.style.display="inline-block"
 }
+const nome = document.getElementById('nome')
+const simbolo = document.getElementById('simbolo')
+nome.onkeydown = event => auto_submit(event,2)
+simbolo.onkeydown = event => auto_submit(event,3)
