@@ -1,3 +1,22 @@
+body{
+    background-color: #56CCF2;
+}
+section {
+    border-radius: 10px;
+    color: black;
+    background-color: white;
+    margin: auto;
+}
+#menu{
+    width: 400px;
+    padding: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+#div-input-type{
+    margin: 10px auto 5px;
+}
 #dist{
     border:2px solid blue;
     padding: 10px;
@@ -24,7 +43,7 @@ div.flex{
     align-items: center;
     height: inherit;
 }
-#menu {
+/* #menu {
     width: auto;
     height: auto;
     padding: 15px;
@@ -34,7 +53,7 @@ div.flex{
     display: grid;
     grid-template-columns: auto auto auto;
     grid-gap: 15px;
-}
+} */
 #string{
     border:2px solid blue;
     border-radius: 5px;
