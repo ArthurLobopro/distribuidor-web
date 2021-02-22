@@ -3,13 +3,12 @@ var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
 const res = document.getElementById("res")
 var s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7
-var subcamadas = {
-    nomes: ['1s','2s','2p','3s','3p','3d','4s','4p','4d','4f','5s','5p','5d','5f','6s','6p','6d','7s','7p']
-}
+const subcamadas = ["1s","2s","2p","3s","3p","4s","3d","4p","5s","4d","5p","6s","4f","5d","6p","7s","5f","6d","7p"]
+
 
 var id = 0
 
-const reverse = (str)=>{
+const reverse = str =>{
     let array = String(str).split('')
     array.reverse()
     array = String(array).replaceAll(',','')
@@ -17,53 +16,7 @@ const reverse = (str)=>{
 }
 const get = id =>  document.getElementById(id)
 var id = 0
-// Detecção de eventos
 
-//Busca por símbolo
-const bps_input = get('simbolo')
-const bps_buttom = get('bps') 
-bps_input.onkeydown = (event) =>{
-    if(event.key=='Enter'){ bps() }
-}
-bps_buttom.onclick=() => bps() 
-
-//Busca por nome
-const bpn_input = get('nome')
-const bpn_buttom = get('bpn')
-bpn_input.onkeydown = (event) =>{
-    if(event.key=='Enter'){ bpn() }
-}
-bpn_buttom.onclick=() => bpn() 
-
-//Busca por número atômico
-const bpna_input = get('num')
-const bpna_buttom = get('bpna')
-const bpna_carga = get('bpna-carga')
-bpna_input.onkeydown = (event) =>{
-    if(event.key=='Enter'){ bpna() }
-}
-bpna_carga.onkeydown = (event) =>{
-    if(event.key=='Enter'){ bpna() }
-}
-bpna_buttom.onclick = () => bpna()
-
-// Busca por distribuição eletrônica
-const teste = (event)=> console.log(event.key)
-const sub_inputs = {
-    events: [],
-    add: function() {
-        for(let i of subcamadas.nomes){
-            this[reverse(i)]= get(i)
-        }
-        this.addEvent()
-    },
-    addEvent: function(){
-        for(let i of subcamadas.nomes){
-            this.events.push(this[reverse(i)].addEventListener('keydown',teste,false))
-        }
-    }
-}
-document.body.addEventListener('DOMContetLoad',sub_inputs.add,false)
 
 //bpde= Busca por Distribuição eletrônica, busca o atomo pela distribuição eletrônica informada acima.
 function bpde() {
@@ -76,7 +29,7 @@ function bpde() {
     d5=Number(get("5d").value), f5=Number(get("5f").value)
     s6=Number(get("6s").value), p6=Number(get("6p").value), d6=Number(get("6d").value) 
     s7=Number(get("7s").value), p7=Number(get("7p").value)
-    let carga=Number(document.getElementById("carga").value)
+    let carga=Number(get("dist-carga").value)
     let num=s1+s2+p2+s3+p3+d3+s4+p4+d4+f4+s5+p5+d5+f5+s6+p6+d6+s7+p7
 	let content=""
     num+=carga
@@ -526,3 +479,79 @@ function prox(event, id){
 function mostra_res(){
     res.style.display="inline-block"
 }
+// Detecção de eventos
+
+//Busca por símbolo
+
+// const bps_input = get('simbolo')
+// const bps_buttom = get('bps') 
+// bps_input.onkeydown = (event) =>{
+//     if(event.key=='Enter'){ bps() }
+// }
+// bps_buttom.onclick=() => bps() 
+
+//Busca por nome
+
+// const bpn_input = get('nome')
+// const bpn_buttom = get('bpn')
+// bpn_input.onkeydown = (event) =>{
+//     if(event.key=='Enter'){ bpn() }
+// }
+// bpn_buttom.onclick=() => bpn() 
+
+//Busca por número atômico
+
+// const bpna_input = get('num')
+// const bpna_buttom = get('bpna')
+// const bpna_carga = get('bpna-carga')
+// bpna_input.onkeydown = (event) =>{
+//     if(event.key=='Enter'){ bpna() }
+// }
+// bpna_carga.onkeydown = (event) =>{
+//     if(event.key=='Enter'){ bpna() }
+// }
+// bpna_buttom.onclick = () => bpna()
+
+// Busca por distribuição eletrônica
+const teste = event => console.log(event.key)
+const subcamadas_inputs = document.querySelectorAll('#sub-inputs input')
+const dist_carga = get("dist-carga")
+const clean_button = get("clean-btn")
+const bpde_button = get("bpde-btn")
+const sub_functions = event => {
+    const id = String(event.target.id)
+    const key = event.key
+    if(key === 'Enter'){
+        event.target.id !== "7p" ? 
+            get(subcamadas[ subcamadas.indexOf(id) +1 ]).focus() :
+                dist_carga.focus()
+    }
+    if(key === 'c' || key === 'C' ){
+        for(let i of subcamadas){
+            if(i !== id){ get(i).value = get(i).max }
+            else{ break }
+        }
+    }
+    if(key === 'm' || key ==='M'){ get(id).value = get(id).max }
+}
+
+dist_carga.onkeydown = event => { if(event.key === "Enter"){ bpde() } }
+bpde_button.onclick = bpde
+clean_button.onclick = () => { for(let i of subcamadas_inputs){ i.value = i.min } }
+for(let i of subcamadas_inputs){ i.onkeydown = sub_functions }
+
+// const sub_inputs = {
+//     events: [],
+//     add: function() {
+//         for(let i of subcamadas.nomes){
+//             this[reverse(i)]= get(i)
+//         }
+//         this.addEvent()
+//     },
+//     addEvent: function(){
+//         for(let i of subcamadas.nomes){
+//             this.events.push(this[reverse(i)].addEventListener('keydown',teste,false))
+//         }
+//     }
+// }
+// window.addEventListener('DOMContetLoad',sub_inputs.add,false)
