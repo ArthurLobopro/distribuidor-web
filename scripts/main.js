@@ -19,7 +19,7 @@ const addEvent = () => {
         }
     }
 }
-const circle = id => `<div class="circle" data-id="${id}"><img src="../midia/close-icon.png" data-id="${id}"></div>`
+const circle = id => `<div class="circle" data-id="${id}"><img src="midia/close-icon.png" data-id="${id}"></div>`
 //Variáveis para export
 const id = new ID()
 const atomos = {
