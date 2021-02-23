@@ -1,5 +1,12 @@
+*{
+    box-sizing: border-box;
+}
 body{
     background-color: #56CCF2;
+    padding: 0;
+    margin: 0;
+    height: calc(100vh - 11px);
+    min-width: 320px;
 }
 section {
     border-radius: 10px;
@@ -7,13 +14,25 @@ section {
     background-color: white;
     margin: auto;
 }
+footer{
+    text-align: center;
+    font-family: 'Roboto Slab', cursive, Arial;
+    color: white;
+    @media screen and (max-width: 400px) {
+        width: max-content;
+        margin: 0 auto 10px;
+    }
+}
 #menu{
     width: 400px;
-    margin: 0 auto 15px;
+    margin: 10px auto 15px;
     padding: 10px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    @media screen and (max-width: 400px) {
+        width: 355px;
+    }
 }
 #div-input-type{
     margin: 10px auto 5px;
@@ -24,7 +43,7 @@ section {
     margin: 0 5px;
     text-align: center;
     padding: 5px 5px 10px;
-    width: 354px;
+    width: 350px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -40,9 +59,9 @@ section {
     margin-right: 5px;
     text-align: left;
 }
-#dist,#string{
-    height: 304px;
-    box-sizing: border-box;
+#msg{
+    width: 100%;
+    text-align: center;
 }
 .width_full{
     width: 100%;
@@ -56,18 +75,7 @@ div.flex{
     align-items: center;
     height: inherit;
 }
-/* #menu {
-    width: auto;
-    height: auto;
-    padding: 15px;
-    width: auto;
-    border-radius: 5px;
-    justify-content: center;
-    display: grid;
-    grid-template-columns: auto auto auto;
-    grid-gap: 15px;
-} */
-#string{
+#name{
     border:2px solid blue;
     border-radius: 5px;
     margin: 0 auto 0px 5px;
@@ -80,9 +88,6 @@ div.flex{
     text-align: left;
     width: max-content;
     margin: auto;
-}
-body{
-    min-width: 740px;
 }
 .msg{
     margin: auto;
@@ -99,8 +104,15 @@ div.center{
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
-    width: 95%;
+    width: 85%;
     display: none;
+    margin: 0 auto 15px;
+    flex-wrap: wrap;
+    @media screen and (max-width: 400px) {
+        width: inherit;
+        margin: 0 0 15px;
+        justify-content: center;
+    }
 }
 .res{
     border:2px solid blue;
@@ -108,11 +120,11 @@ div.center{
     width: max-content;
     height: 40%;
     padding: 10px;
-    margin-left: 10px;
+    margin: 10px 10px 0 0 ;
     float: left;
 }
 .number{
-    width: 35px;
+    width: 38px;
 }
 .atention{
     color: red;
@@ -144,26 +156,10 @@ input:invalid{
     height: 10px;
 }
 /*Fim Função apaga div*/
-/*Redimensionamento*/
-@media only screen and (max-width:1023px){
-    #dist{
-        grid-area: dist;
-        width: 354px;
-    }
-    #numat{
-        grid-area: numat;
-    }
-    #string{
-        grid-area: string;
-        height: max-content;
-    }
-    #dist,#numat,#string{
-        margin: auto;
-    }
-    #menu{
-        grid-template-areas: 
-        'dist dist numat numat' 
-        'string string string string';
-    }
+@font-face {
+    font-family: 'Roboto Slab';
+    src: url('./fontes/RobotoSlab-Medium.ttf');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
 }
-/*Fim Redicionamento*/
