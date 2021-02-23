@@ -30,8 +30,16 @@ const formataSimbolo = (simbolo, carga) => {
     return (carga>0) ? `Símbolo: ${simbolo} <sup>+${carga}</sup><br><br>` :
         (carga<0) ? `Símbolo: ${simbolo} <sup>${carga}</sup><br><br>` : `Símbolo: ${simbolo}<br>` 
 }
-const formataDados = dados => {
-    return `<em>Dados Fornecidos:</em><br><br>${dados}<em>Resultado:</em><br><br>`
+const formataInput = input => {
+    return `<em>Dados Fornecidos:</em><br><br>${input}<em>Resultado:</em><br><br>`
+}
+const formataDados = (nome,simbolo,num,familia,grupo,periodo) => {
+    return `Elemento: ${nome}<br>Símbolo: ${simbolo}<br>Número atômico: ${num}<br><br>Família: ${familia}<br>
+    Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
+}
+const getInfo = (num) => {
+    let grupo = achagrupo(num)
+    return { nome: nomeatomo(num), simbolo:simboloatomo(num) , grupo, familia:achafamilia(num,grupo), periodo:achaperiodo(num) }
 }
 //bpde= Busca por Distribuição eletrônica, busca o atomo pela distribuição eletrônica informada acima.
 function bpde() {
@@ -49,13 +57,10 @@ function bpde() {
 	let content=""
     num+=carga
     if (num>0 && num<=118){
-        let nome=nomeatomo(num)
-        let simbolo=simboloatomo(num)
-        let grupo = achagrupo(num)
-        let periodo = achaperiodo(num)
-        let familia = achafamilia(num,grupo)
+        let nome, simbolo, grupo, familia, periodo
+        ({nome, simbolo, grupo, familia, periodo} = getInfo(num))
         camadas()
-        content+=formataDados(`Destribuição:<br>${ede()}<br>Carga: ${carga}<br><br>`)
+        content+=formataInput(`Destribuição:<br>${ede()}<br>Carga: ${carga}<br><br>`)
         content+=formataAtomo(nome,carga)
         content+=formataSimbolo(simbolo,carga)  
         content+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br>Distribuição Eletrônica:<br>`      
@@ -75,15 +80,12 @@ function bpna(){
     }else{
         let carga=Number(bpna_carga.value)
         let content=""
-        let nome = nomeatomo(num)
-        let simbolo = simboloatomo(num)
-        let grupo = achagrupo(num)
-        let periodo = achaperiodo(num)
-        let familia = achafamilia(num,grupo)
+        let nome, simbolo, grupo, familia, periodo
+        ({nome, simbolo, grupo, familia, periodo} = getInfo(num))
         num+=(-carga)
         distribuidor(num)
         camadas()
-        content+=formataDados(`Número Atômico: ${num}<br>Carga: ${carga}<br><br>`)
+        content+=formataInput(`Número Atômico: ${num}<br>Carga: ${carga}<br><br>`)
         content+=formataAtomo(nome,carga)
         content+=formataSimbolo(simbolo,carga)
         content+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br><br>Distribuição Eletrônica:<br>` 
@@ -113,14 +115,11 @@ function bpn(){
     }
     if (erro==false){
         distribuidor(num)
-        let nome=nomeatomo(num)
-        let simbolo=simboloatomo(num)
-        let grupo = achagrupo(num)
-        let familia = achafamilia(num,grupo)
-        let periodo = achaperiodo(num)
+        let nome, simbolo, grupo, familia, periodo
+        ({nome, simbolo, grupo, familia, periodo} = getInfo(num))
         camadas()
-        content+=`${formataDados(`Nome: ${name}<br><br>`)}
-        Nome: ${nome}<br>Símbolo: ${simbolo}<br>Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
+        content+=formataInput(`Nome: ${name}<br><br>`)
+        content+=formataDados(nome,simbolo,num,familia,grupo,periodo)
         content+=ede()
         content+=escrevacamadas()
         content+=ecdv()
@@ -146,13 +145,10 @@ function bps(){
     }
     if (erro==false){
             distribuidor(num)
-            let nome=nomeatomo(num)
-            let simbolo=simboloatomo(num)
-            let grupo = achagrupo(num)
-            let periodo = achaperiodo(num)
-            let familia = achafamilia(num,grupo)
+            let nome, simbolo, grupo, familia, periodo
+            ({nome, simbolo, grupo, familia, periodo} = getInfo(num))
             camadas()
-            content+=`${formataDados(`Símbolo: ${simbol}<br><br>`)}
+            content+=`${formataInput(`Símbolo: ${simbol}<br><br>`)}
             Nome: ${nome}<br>Símbolo: ${simbolo}<br>Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
             content+=ede()
             content+=escrevacamadas()
