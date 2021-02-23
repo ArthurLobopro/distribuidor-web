@@ -20,6 +20,11 @@ const addEvent = () => {
     }
 }
 const circle = id => `<div class="circle" data-id="${id}"><img src="midia/close-icon.png" data-id="${id}"></div>`
+const range = (min,max,pass=1) => {
+    let array = []
+    for(let i = min;i<max;i+=pass){ array.push(i) }
+    return array
+}
 //Variáveis para export
 const id = new ID()
 const atomos = {
@@ -32,4 +37,4 @@ const atomos = {
     "Au","Hg","Tl","Pb","Bi","Po","At","Rn","Fr","Ra","Ac","Th","Pa","U","Np","Pu","Am","Cm","Bk","Cf","Es","Fm","Md","No","Lr","Rf","Db",
     "Sg","Bh","Hs","Mt","Ds","Rg","Cn","Nh","Fl","Mc","Lv","Ts","Og"]
 }
-export { addEvent, circle, id, atomos }
+export { addEvent, circle, range, id, atomos }
