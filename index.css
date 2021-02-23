@@ -183,6 +183,14 @@ div.center {
 
 .number {
   width: 38px;
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+  margin: 1px 0 0 0;
+}
+
+.number::-webkit-inner-spin-button {
+  display: none;
 }
 
 .atention {
@@ -190,10 +198,26 @@ div.center {
   font-weight: bold;
 }
 
+/*Botões e inputs*/
+input {
+  border-radius: 2px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #767676;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 1px;
+}
+
 input:invalid {
   border-width: 2px;
   outline: 1px solid red;
   outline-offset: -3px;
+}
+
+input[type="button"] {
+  cursor: pointer;
+  padding: 1px 3px;
 }
 
 /* Função apagar div*/
