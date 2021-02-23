@@ -1,23 +1,38 @@
-var periodo,grupo
+import {addEvent, circle, id, atomos} from "./scripts/main.js";
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
 const res = document.getElementById("res")
-var s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7
+let s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7
 const subcamadas = ["1s","2s","2p","3s","3p","4s","3d","4p","5s","4d","5p","6s","4f","5d","6p","7s","5f","6d","7p"]
 
-
-var id = 0
-
-const reverse = str =>{
-    let array = String(str).split('')
-    array.reverse()
-    array = String(array).replaceAll(',','')
-    return array
-}
 const get = id =>  document.getElementById(id)
-var id = 0
+//Acha o nome do átomo.
+const nomeatomo =num => atomos.nomes[num-1]
+//Acha o símbolo do átomo.
+const simboloatomo = (num)=> atomos.simbolos[num-1] 
 
+const escreve = (content) =>{
+    res.innerHTML+= `
+    <div class='res' id="div${id.id}">
+        ${circle(id.id)}
 
+        ${content}
+    </div>`
+    addEvent()
+    id.increase()
+    res.style.display="flex"
+}
+const formataAtomo = (nome,carga) => {
+    return (carga>0) ? `Elemento: ${nome} <sup>+${carga}</sup><br>` :
+        (carga<0) ? `Elemento: ${nome} <sup>${carga}</sup><br>` : `Elemento: ${nome}<br>`
+}
+const formataSimbolo = (simbolo, carga) => {
+    return (carga>0) ? `Símbolo: ${simbolo} <sup>+${carga}</sup><br><br>` :
+        (carga<0) ? `Símbolo: ${simbolo} <sup>${carga}</sup><br><br>` : `Símbolo: ${simbolo}<br>` 
+}
+const formataDados = dados => {
+    return `<em>Dados Fornecidos:</em><br><br>${dados}<em>Resultado:</em><br><br>`
+}
 //bpde= Busca por Distribuição eletrônica, busca o atomo pela distribuição eletrônica informada acima.
 function bpde() {
     s1=Number(get("1s").value)
@@ -37,26 +52,17 @@ function bpde() {
         let nome=nomeatomo(num)
         let simbolo=simboloatomo(num)
         let grupo = achagrupo(num)
-        achaperiodo(num)
-        let familia = achafamilia(num)
+        let periodo = achaperiodo(num)
+        let familia = achafamilia(num,grupo)
         camadas()
-
-        content+=`<div class='res' id="div${id}">Distribuição fornecida:
-        <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div><br>`
-        content+=ede()
-        content+=`Carga: ${carga}<br><br>`
-        content+=
-        (carga>0) ? `Átomo encontrado: ${nome} <sup>+${carga}</sup><br>` :
-            (carga<0) ? `Átomo encontrado: ${nome} <sup>${carga}</sup><br>` : `Átomo encontrado: ${nome}<br>`
-        content+=
-        (carga>0) ? `Símbolo: ${simbolo} <sup>+${carga}</sup><br><br>` :
-            (carga<0) ? `Símbolo: ${simbolo} <sup>${carga}</sup><br><br>` : `Símbolo: ${simbolo}<br>`  
-        content+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br>`      
+        content+=formataDados(`Destribuição:<br>${ede()}<br>Carga: ${carga}<br><br>`)
+        content+=formataAtomo(nome,carga)
+        content+=formataSimbolo(simbolo,carga)  
+        content+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br>Distribuição Eletrônica:<br>`      
         content+=escrevacamadas()
         content+=ecdv()
-        res.innerHTML+=content
-        mostra_res()
-        id++
+        escreve(content)
+        clean_button.click()
     }else{
         alert("Você informou algum número inválido, confira as informações e tente novamente")
     }
@@ -64,33 +70,30 @@ function bpde() {
 //Busca por número atômico
 function bpna(){
     let num =Number(bpna_input.value)
-    let numbackup=num
-    let carga=Number(bpna_carga.value)
-    let content=""
-    num+=(-carga)
+    if(num == 0){
+        alert('Não existe um átomo de número atômico 0, por favor informe um valor entre 1 e 118')
+    }else{
+        let carga=Number(bpna_carga.value)
+        let content=""
+        let nome = nomeatomo(num)
+        let simbolo = simboloatomo(num)
+        let grupo = achagrupo(num)
+        let periodo = achaperiodo(num)
+        let familia = achafamilia(num,grupo)
+        num+=(-carga)
         distribuidor(num)
-        let nome=nomeatomo(numbackup)
-        let simbolo=simboloatomo(numbackup)
-        let grupo = achagrupo(numbackup)
-        achaperiodo(numbackup)
-        let familia = achafamilia(numbackup)
         camadas()
-        content+=`<div class="res" id="div${id}">
-        <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div>
-        Você informou: ${numbackup}<br>Carga: ${carga}<br><br>`
-        content+=
-        (carga>0) ? `Nome do átomo: ${nome} <sup>+${carga}</sup><br>` :
-            (carga<0) ? `Nome do átomo: ${nome} <sup>${carga}</sup><br>` :`Nome do átomo: ${nome}<br>`
-        content+=
-        (carga>0) ? `Símbolo: ${simbolo} <sup>+${carga}</sup><br>` :
-            (carga<0) ? `Símbolo: ${simbolo} <sup>${carga}</sup><br>` : `Símbolo: ${simbolo}<br>`
-        content+=`Número atômico: ${numbackup}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br><br>` 
+        content+=formataDados(`Número Atômico: ${num}<br>Carga: ${carga}<br><br>`)
+        content+=formataAtomo(nome,carga)
+        content+=formataSimbolo(simbolo,carga)
+        content+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br><br>Distribuição Eletrônica:<br>` 
         content+=ede()
         content+=escrevacamadas()
         content+=ecdv()
-        res.innerHTML+=content
-        mostra_res()
-        id++
+        escreve(content)
+        bpna_input.value=""
+        bpna_carga.value=""
+    }
 }
 //Busca pelo nome
 function bpn(){
@@ -113,19 +116,15 @@ function bpn(){
         let nome=nomeatomo(num)
         let simbolo=simboloatomo(num)
         let grupo = achagrupo(num)
-        achaperiodo(num)
-        let familia = achafamilia(num)
+        let familia = achafamilia(num,grupo)
+        let periodo = achaperiodo(num)
         camadas()
-        content+=`<div class="res" id="div${id}">
-        <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div>
-        Nome informado: ${name}<br><br>
+        content+=`${formataDados(`Nome: ${name}<br><br>`)}
         Nome: ${nome}<br>Símbolo: ${simbolo}<br>Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
         content+=ede()
         content+=escrevacamadas()
         content+=ecdv()
-        res.innerHTML+=content
-        mostra_res()
-        id++
+        escreve(content)
     }
     bpn_input.value=""
 }
@@ -150,29 +149,17 @@ function bps(){
             let nome=nomeatomo(num)
             let simbolo=simboloatomo(num)
             let grupo = achagrupo(num)
-            achaperiodo(num)
-            let familia = achafamilia(num)
+            let periodo = achaperiodo(num)
+            let familia = achafamilia(num,grupo)
             camadas()
-            content+=`<div class="res" id="div${id}">
-            <div class="circle" onclick="remove_div(${id})"><img src="midia/close-icon.png"></div>
-            Símbolo informado: ${simbol}<br><br>
+            content+=`${formataDados(`Símbolo: ${simbol}<br><br>`)}
             Nome: ${nome}<br>Símbolo: ${simbolo}<br>Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
             content+=ede()
             content+=escrevacamadas()
             content+=ecdv()
-            res.innerHTML+=content
-            mostra_res()
-            id++
+            escreve(content)
         }
         bps_input.value=""
-}
-//Acha o nome do átomo.
-function nomeatomo(num){
-    return atomos.nomes[num-1]
-}
-//Acha o símbolo do átomo.
-function simboloatomo (num){
-    return atomos.simbolos[num-1]
 }
 //Faz a distribuição eletrônica de acordo o número de prótons
 function distribuidor(num){
@@ -335,8 +322,8 @@ function escrevacamadas(){
     <br>Camada M: ${camada[2]}
     <br>Camada N: ${camada[3]}
     <br>Camada O: ${camada[4]}
-    <br>Camada P: ${camada [5]}
-    <br>Camada Q: ${camada [6]}`	
+    <br>Camada P: ${camada[5]}
+    <br>Camada Q: ${camada[6]}`	
 }
 //Escreve a distribuição eletrônica
 function ede(){
@@ -350,10 +337,11 @@ function ede(){
         7s${s7} 2p${p7}<br>`
 }
 //Acha a família do átomo
-function achafamilia(num){
+function achafamilia(num,grupo){
+    console.log(`num ${num}, grupo ${grupo}`);
     return (
-    (num==1) ? "<br> Não possiu uma família específica,<br> algumas vezes é representado<br> separado de outros elementos." : 
-        (num != 1 & grupo==1) ? "Metais Alcalinos" :
+    (num==1) ? "<br> Não possiu uma família específica." : 
+        (num != 1 && grupo==1) ? "Metais Alcalinos" :
             (grupo == 2) ? "Metais Alcalinos Terrosos" : 
                 (grupo== 3 && num<40) ? "Metais de transição" :
                     (num>=57 && num<=71) ? "Lantanídeos" :
@@ -370,38 +358,39 @@ function achafamilia(num){
 function achagrupo (num){
     if ((num>=57 && num<=71) || (num>=89 && num<=103)){ return 3 }
     const grupos = [
-        [1, 3, 11, 19, 37, 55, 87],
-        [4, 12, 20, 38, 56, 88],
-        [21, 39],
-        [22,40,72,104],
-        [23, 41, 73, 105],
-        [24, 42, 74, 106],
-        [25, 43, 75, 107],
-        [26, 44, 76, 108],
-        [27, 45, 77, 109],
-        [28, 46, 78, 110],
-        [29, 47, 79, 111],
-        [30, 48, 80, 112],
-        [5, 13, 31, 49, 81, 113],
-        [6, 14, 32, 50, 82, 114],
-        [7, 15, 33, 51, 83, 115],
-        [8, 16, 34, 52, 84, 116],
-        [9,17,35,53,85]
+        [1, 3, 11, 19, 37, 55, 87], //1
+        [4, 12, 20, 38, 56, 88],    //2
+        [21, 39],                   //3
+        [22,40,72,104],             //4
+        [23, 41, 73, 105],          //5
+        [24, 42, 74, 106],          //6
+        [25, 43, 75, 107],          //7
+        [26, 44, 76, 108],          //8
+        [27, 45, 77, 109],          //9
+        [28, 46, 78, 110],          //10
+        [29, 47, 79, 111],          //11
+        [30, 48, 80, 112],          //12
+        [5, 13, 31, 49, 81, 113],   //13
+        [6, 14, 32, 50, 82, 114],   //14
+        [7, 15, 33, 51, 83, 115],   //15
+        [8, 16, 34, 52, 84, 116],   //16
+        [9,17,35,53,85]             //17
     ]
     for(let i in grupos){
-        if(grupos[i].indexOf(num)!=-1){ return Number(i+1) }
+        if(grupos[i].indexOf(num)!=-1){ return (Number(i) + 1) }
     }
     return 18
 }
 //Acha o período do atomo na tabela periódica
 function achaperiodo(num){
-    periodo =  
+    let periodo =  
     (num==1 || num==2) ? 1 :
         (num>=3 && num<=10) ? 2 :
             (num>=11 && num<=18) ? 3 :
                 (num>=19 && num<=36) ? 4 :
                     (num>=37 && num<=54) ? 5 :
                         (num>=55 && num<=86) ? 6 : 7
+    return periodo
 }
 //Escreve as camadas de valência
 function ecdv(){
@@ -432,85 +421,20 @@ function ecdv(){
             break
         case 7:
             content+= (p7>0) ? `<br>A camada de valência é: 7s${s7} 7p${p7}<br>` : `<br>A camada de valência é: 7s${s7}<br>`
-            content+= `Elétrons na camada de valência: ${s7+p7}</div>`
+            content+= `Elétrons na camada de valência: ${s7+p7}`
         break
     }
     return content
 }
-function remove_div(num){
-    let element= document.getElementById(`div${num}`)
-    res.removeChild(element)
-    let string = res.innerHTML
-    let teste = string.indexOf("div")
-    if(teste==-1){
-        res.style.display="none"
-        id=0
-    }
-}
-function auto_submit(event,num){
-    let tecla = event.key
-    if(tecla=="Enter"){
-        switch(num){
-            case 0:
-                bpde()
-                break
-            case 1:
-                bpna()
-                break
-            case 2:
-                bpn()
-                break
-            case 3:
-                bps()
-                break
-        }
-    }
-}
-function reseta_dist(){
-    for(let i in subcamadas.nomes){
-        document.getElementById(subcamadas.nomes[i]).value=""
-    }
-}
-function prox(event, id){
-    if(event.key=='Enter'){
-        document.getElementById(id).focus()
-    }
-}
-function mostra_res(){
-    res.style.display="inline-block"
-}
 // Detecção de eventos
 
-//Busca por símbolo
-
-// const bps_input = get('simbolo')
-// const bps_buttom = get('bps') 
-// bps_input.onkeydown = (event) =>{
-//     if(event.key=='Enter'){ bps() }
-// }
-// bps_buttom.onclick=() => bps() 
-
-//Busca por nome
-
-// const bpn_input = get('nome')
-// const bpn_buttom = get('bpn')
-// bpn_input.onkeydown = (event) =>{
-//     if(event.key=='Enter'){ bpn() }
-// }
-// bpn_buttom.onclick=() => bpn() 
-
-//Busca por número atômico
-
-// const bpna_input = get('num')
-// const bpna_buttom = get('bpna')
-// const bpna_carga = get('bpna-carga')
-// bpna_input.onkeydown = (event) =>{
-//     if(event.key=='Enter'){ bpna() }
-// }
-// bpna_carga.onkeydown = (event) =>{
-//     if(event.key=='Enter'){ bpna() }
-// }
-// bpna_buttom.onclick = () => bpna()
+// Troca de pesquisa
+const input_type = get("input-type")
+input_type.onchange = () =>{
+    const divs = [get("dist"),get("numat"),get("name")]
+    for(let i of divs){ i.style.display='none' }
+    get(input_type.value).style.display=''
+}
 
 // Busca por distribuição eletrônica
 const teste = event => console.log(event.key)
@@ -523,8 +447,7 @@ const sub_functions = event => {
     const key = event.key
     if(key === 'Enter'){
         event.target.id !== "7p" ? 
-            get(subcamadas[ subcamadas.indexOf(id) +1 ]).focus() :
-                dist_carga.focus()
+            get(subcamadas[ subcamadas.indexOf(id) +1 ]).focus() : dist_carga.focus()
     }
     if(key === 'c' || key === 'C' ){
         for(let i of subcamadas){
@@ -540,18 +463,33 @@ bpde_button.onclick = bpde
 clean_button.onclick = () => { for(let i of subcamadas_inputs){ i.value = i.min } }
 for(let i of subcamadas_inputs){ i.onkeydown = sub_functions }
 
-// const sub_inputs = {
-//     events: [],
-//     add: function() {
-//         for(let i of subcamadas.nomes){
-//             this[reverse(i)]= get(i)
-//         }
-//         this.addEvent()
-//     },
-//     addEvent: function(){
-//         for(let i of subcamadas.nomes){
-//             this.events.push(this[reverse(i)].addEventListener('keydown',teste,false))
-//         }
-//     }
-// }
-// window.addEventListener('DOMContetLoad',sub_inputs.add,false)
+//Busca por número atômico
+
+const bpna_input = get('num')
+const bpna_buttom = get('bpna')
+const bpna_carga = get('bpna-carga')
+bpna_input.onkeydown = (event) =>{
+    if(event.key=='Enter'){ bpna() }
+}
+bpna_carga.onkeydown = (event) =>{
+    if(event.key=='Enter'){ bpna() }
+}
+bpna_buttom.onclick = () => bpna()
+
+//Busca por símbolo
+
+const bps_input = get('simbolo')
+const bps_buttom = get('bps') 
+bps_input.onkeydown = (event) =>{
+    if(event.key=='Enter'){ bps() }
+}
+bps_buttom.onclick=() => bps() 
+
+//Busca por nome
+
+const bpn_input = get('nome')
+const bpn_buttom = get('bpn')
+bpn_input.onkeydown = (event) =>{
+    if(event.key=='Enter'){ bpn() }
+}
+bpn_buttom.onclick=() => bpn() 
