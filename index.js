@@ -1,4 +1,4 @@
-import {addEvent, circle, id, atomos} from "./scripts/main.js";
+import {addEvent, circle,range, id, atomos} from "./scripts/main.js";
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
 const res = document.getElementById("res")
@@ -379,44 +379,43 @@ function achagrupo (num){
 }
 //Acha o período do atomo na tabela periódica
 function achaperiodo(num){
-    let periodo =  
-    (num==1 || num==2) ? 1 :
-        (num>=3 && num<=10) ? 2 :
-            (num>=11 && num<=18) ? 3 :
-                (num>=19 && num<=36) ? 4 :
-                    (num>=37 && num<=54) ? 5 :
-                        (num>=55 && num<=86) ? 6 : 7
-    return periodo
+    return(num==1 || num==2) ? 1 :
+            (num>=3 && num<=10) ? 2 :
+                (num>=11 && num<=18) ? 3 :
+                    (num>=19 && num<=36) ? 4 :
+                        (num>=37 && num<=54) ? 5 :
+                            (num>=55 && num<=86) ? 6 : 7
 }
 //Escreve as camadas de valência
 function ecdv(){
     let content=""
+    const getString = str => `<br>A camada de valência é: ${str}<br>`
     switch(camadaValencia){
         case 1:
-            content+=(`<br>A camada de valência é: 1s${s1}<br>Elétrons na camada de valência: ${s1}</div>`) 
+            content+=(`<br>A camada de valência é: 1s${s1}<br>Elétrons na camada de valência: ${s1}`) 
             break
         case 2:
-            content+= (p2>2) ? `<br>A camada de valência é: 2s${s2} 2p${p2}<br>` : `<br>A camada de valência é: 2s${s2}<br>`
-            content+=`Elétrons na camada de valência: ${s2+p2}</div>`
+            content+= (p2>2) ? getString(`2s${s2} 2p${p2}`): getString(`2s${s2}`)
+            content+=`Elétrons na camada de valência: ${s2+p2}`
             break
         case 3:
-            content+= (p3>0) ? `<br>A camada de valência é: 3s${s3} 3p${p3}<br>` : `<br>A camada de valência é: 3s${s3}<br>`
-            content+= `Elétrons na camada de valência: ${s3+p3}</div>`
+            content+= (p3>0) ? getString(`3s${s3} 3p${p3}`) : getString(`3s${s3}`)
+            content+= `Elétrons na camada de valência: ${s3+p3}`
             break
         case 4:
-            content+= (p4>0) ? `<br>A camada de valência é: 4s${s4} 4p${p4}<br>` : `<br>A camada de valência é: 4s${s4}<br>`
-            content+= `Elétrons na camada de valência: ${s4+p4}</div>`
+            content+= (p4>0) ? getString(`4s${s4} 4p${p4}`) : getString(`4s${s4}`)
+            content+= `Elétrons na camada de valência: ${s4+p4}`
             break
         case 5:
-            content+= (p5>0) ? `<br>A camada de valência é: 5s${s5} 5p${p5}<br>` : `<br>A camada de valência é: 5s${s5}<br>`
-            content+= `Elétrons na camada de valência: ${s5+p5}</div>`
+            content+= (p5>0) ? getString(`5s${s5} 5p${p5}`) : getString(`5s${s5}`)
+            content+= `Elétrons na camada de valência: ${s5+p5}`
             break
         case 6:
-            content+= (p6>0) ? `<br>A camada de valência é: 6s${s6} 6p${p6}<br>` : `<br>A camada de valência é: 6s${s6}<br>`
-            content+= `Elétrons na camada de valência: ${s6+p6}</div>`
+            content+= (p6>0) ? getString(`6s${s6} 6p${p6}`) : getString(`6s${s6}`)
+            content+= `Elétrons na camada de valência: ${s6+p6}`
             break
         case 7:
-            content+= (p7>0) ? `<br>A camada de valência é: 7s${s7} 7p${p7}<br>` : `<br>A camada de valência é: 7s${s7}<br>`
+            content+= (p7>0) ? getString(`7s${s7} 7p${p7}`) : getString(`7s${s7}`)
             content+= `Elétrons na camada de valência: ${s7+p7}`
         break
     }
@@ -427,13 +426,17 @@ function ecdv(){
 // Troca de pesquisa
 const input_type = get("input-type")
 input_type.onchange = () =>{
-    const divs = [get("dist"),get("numat"),get("name")]
-    for(let i of divs){ i.style.display='none' }
-    get(input_type.value).style.display=''
+    if(input_type.value == "all"){
+        input_type.value="dist"
+        showAllAtoms()
+    }else{
+        const divs = [get("dist"),get("numat"),get("name")]
+        for(let i of divs){ i.style.display='none' }
+        get(input_type.value).style.display=''
+    }
 }
 
 // Busca por distribuição eletrônica
-const teste = event => console.log(event.key)
 const subcamadas_inputs = document.querySelectorAll('#sub-inputs input')
 const dist_carga = get("dist-carga")
 const clean_button = get("clean-btn")
@@ -489,3 +492,19 @@ bpn_input.onkeydown = (event) =>{
     if(event.key=='Enter'){ bpn() }
 }
 bpn_buttom.onclick=() => bpn() 
+
+// Mostrar todos
+const showAllAtoms = () => {
+    get("loading").style.display='block'
+    res.classList.add('invisible')
+    res.innerHTML=`<span id="msg">Buscas feitas:</span><br>`
+    setTimeout(() => {
+        res.classList.add('invisible')
+        for(let valor of range(1,119)){
+            bpna_input.value=valor
+            bpna_buttom.click()
+        }
+        res.classList.remove('invisible')
+        get("loading").style.display='none'
+    }, 1000);
+}
