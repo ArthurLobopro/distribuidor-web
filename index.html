@@ -12,7 +12,7 @@
     <section id="menu">
         <div id="content">
             <div id="dist">
-                <div class="center">Encontrar por distribuição</div><br>
+                <div class="center">Buscar por distribuição</div><br>
                 <div id="sub-inputs">
                     1s<input type="number" id="1s" value="1" min="1" max="2" class="number" ><br>
                     2s<input type="number" id="2s" value="0" min="0" max="2" class="number" >
@@ -39,7 +39,7 @@
                 <input type="button" value="Limpar" id="clean-btn"><br><br>
             </div>
             <div id="numat" style="display: none;">
-                <span class="width_full">Encontrar por Número Atômico(número de prótons).</span>
+                <span class="width_full">Buscar por Número Atômico(número de prótons).</span>
                     <div>
                         Num. Atômico:
                         <input type="number" min="1" max="118" value="" id="num" autocomplete="off"><br><br>
@@ -66,12 +66,14 @@
                 <option value="dist" selected>Distribuição.</option>
                 <option value="numat">Número Atômico.</option>
                 <option value="name">Nome ou símbolo.</option>
+                <option value="all">Mostrar Todos.</option>
             </select>
         </div>
     </section>
     <!-- <div class="aviso">Obs: Este programa não verifica se o estado do átomo é possível, ou seja se um íon for informado
         independente de exixtir ou não ele será mostrado, por isso verifique se as informações inseridas estão corretas.
     </div><br><br> -->
+    <div id="loading" style="display: none;"></div>
     <section id="res">
         <span id="msg">Buscas feitas:</span><br>
     </section>
