@@ -2,10 +2,10 @@
 <html lang="pt-br">
 <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuidor Eletrônico</title>
     <link rel="stylesheet" href="index.css">
     <link rel="icon" href="midia/atomo.png">
-    <script src="scripts/atomos.js"></script>
 </head>
 <body>
     <section id="menu">
@@ -33,56 +33,48 @@
                     7s<input type="number" id="7s" value="0" min="0" max="2" class="number" >
                     7p<input type="number" id="7p" value="0" min="0" max="6" class="number"><br><br>
                 </div>
-                Carga: <input type="number" id="dist-carga" value="0"><br> <br>
+                Carga: <input type="number" id="dist-carga" value="0" class="carga"><br> <br>
                 <input type="button" value="Enviar" id="bpde-btn">
                 <input type="button" value="Limpar" id="clean-btn"><br><br>
+            </div>
+            <div id="numat" style="display: none;">
+                <span class="width_full">Encontrar por Número Atômico(número de prótons).</span>
+                    <div>
+                        Num. Atômico:
+                        <input type="number" min="1" max="118" value="" id="num" autocomplete="off"><br><br>
+                        Carga: 
+                        <input type="number" id="bpna-carga" value="0" class="carga">
+                        <input type="button" value="Enviar" id="bpna">
+                    </div>
+            </div>
+            <div id="name" style="display: none;">
+                <div id="central">
+                    <div class="center">
+                        Busca por nome:<br> <input type="text" id="nome"> 
+                        <input type="button" id="bpn" value="Buscar"><br>
+                        Busca por símbolo:<br> <input type="text" id="simbolo" >
+                        <input type="button" id="bps" value="Buscar">
+                    </div><br>
+                    <span class="msg"><span class="atention">Atenção!!!</span> O programa não é case sensitive, porém é necessário por os acentos.</span>
+                </div>
             </div>
         </div>
         <div id="div-input-type">
             Buscar por: 
             <select id="input-type">
                 <option value="dist" selected>Distribuição.</option>
-                <option value="num">Número Atômico.</option>
-                <option value="type">Nome ou símbolo.</option>
+                <option value="numat">Número Atômico.</option>
+                <option value="name">Nome ou símbolo.</option>
             </select>
-            <!-- <input type="radio" name="type" value="dist">
-            <input type="radio" name="type" value="num">
-            <input type="radio" name="type" value="name"> -->
         </div>
     </section>
-    <!-- <div id="menu">
-        <div id="numat">
-            Encontrar por Número Atômico/Número de prótons<br>
-            <div class="flex">
-                <div class="center">
-                    Num. Atômico/Num. de Prótons
-                    <input type="number" min="1" max="118" value="" id="num"><br><br>
-                    Carga: 
-                    <input type="number" id="bpna-carga" value="0"><br><br>
-                    <input type="button" value="Enviar" id="bpna">
-                </div>
-            </div>
-        </div>
-        <div id="string">
-            <div id="central">
-                <div class="center">
-                    Busca por nome:<br> <input type="text" id="nome"> 
-                    <input type="button" id="bpn" value="Buscar"><br>
-                    Busca por símbolo:<br> <input type="text" id="simbolo" >
-                    <input type="button" id="bps" value="Buscar">
-                </div><br>
-                <span class="msg"><span class="atention">Atenção!!!</span> O programa não é case sensitive, porém é
-                    necessário por os acentos.</span>
-            </div>
-        </div>
-    </div>    -->
-    <div class="aviso">Obs: Este programa não verifica se o estado do átomo é possível, ou seja se um íon for informado
+    <!-- <div class="aviso">Obs: Este programa não verifica se o estado do átomo é possível, ou seja se um íon for informado
         independente de exixtir ou não ele será mostrado, por isso verifique se as informações inseridas estão corretas.
-    </div><br><br>
-    <div id="res">
-        Respostas:<br><br>
-    </div>
-    <script src="index.js"></script>
-
+    </div><br><br> -->
+    <section id="res">
+        <span id="msg">Buscas feitas:</span><br>
+    </section>
+    <footer>&copy;Arthur Lobo</footer>
+    <script src="index.js" type="module"></script>
 </body>
 </html>
