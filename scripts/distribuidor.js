@@ -133,5 +133,5 @@ export default function distribuidor(num){
         p7=num
         num=0
     }
-    return [s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7]
+    return {s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7}
 }
