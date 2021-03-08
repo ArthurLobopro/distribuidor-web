@@ -1,14 +1,17 @@
-function escrevacamadas(){
-    return`<br>Elétrons nas camadas:
-    <br>Camada K: ${camada[0]}
-    <br>Camada L: ${camada[1]}
-    <br>Camada M: ${camada[2]}
-    <br>Camada N: ${camada[3]}
-    <br>Camada O: ${camada[4]}
-    <br>Camada P: ${camada[5]}
-    <br>Camada Q: ${camada[6]}`	
+import {make_div,addEvent} from "./main.js"
+const escrevacamadas = camada => {
+    return(
+        `<br>Elétrons nas camadas:
+        <br>Camada K: ${camada[0]}
+        <br>Camada L: ${camada[1]}
+        <br>Camada M: ${camada[2]}
+        <br>Camada N: ${camada[3]}
+        <br>Camada O: ${camada[4]}
+        <br>Camada P: ${camada[5]}
+        <br>Camada Q: ${camada[6]}`
+    )
 }
-function ede(){
+function ede({s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7}){
     return`
         1s${s1} <br>
         2s${s2} 2p${p2}<br>
@@ -18,7 +21,7 @@ function ede(){
         6s${s6} 6p${p6} 6d${d6}<br>
         7s${s7} 2p${p7}<br>`
 }
-function ecdv(){
+function ecdv(camadaValencia,{s1,s2,p2,s3,p3,s4,p4,s5,p5,s6,p6,s7,p7}){
     let content=""
     const getString = str => `<br>A camada de valência é: ${str}<br>`
     switch(camadaValencia){
