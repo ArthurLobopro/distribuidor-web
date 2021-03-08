@@ -58,4 +58,4 @@ const getInfo = num => {
     let grupo = achagrupo(num)
     return { nome: nomeatomo(num), simbolo:simboloatomo(num) , grupo, familia:achafamilia(num,grupo), periodo:achaperiodo(num) }
 }
-export default getInfo
+export {getInfo,achafamilia,achagrupo,achaperiodo, nomeatomo, simboloatomo}
