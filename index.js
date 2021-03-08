@@ -1,4 +1,5 @@
-import {addEvent, circle,range, id, atomos} from "./scripts/main.js";
+import {addEvent,range, atomos} from "./scripts/main.js"
+import bpna from "./scripts/bpna.js"
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
 const res = document.getElementById("res")
@@ -11,17 +12,7 @@ const nomeatomo =num => atomos.nomes[num-1]
 //Acha o símbolo do átomo.
 const simboloatomo = (num)=> atomos.simbolos[num-1] 
 
-const escreve = (content) =>{
-    res.innerHTML+= `
-    <div class='res' id="div${id.id}">
-        ${circle(id.id)}
 
-        ${content}
-    </div>`
-    addEvent()
-    id.increase()
-    res.style.display="flex"
-}
 const formataAtomo = (nome,carga) => {
     return (carga>0) ? `Elemento: ${nome} <sup>+${carga}</sup><br>` :
         (carga<0) ? `Elemento: ${nome} <sup>${carga}</sup><br>` : `Elemento: ${nome}<br>`
@@ -70,31 +61,6 @@ function bpde() {
         clean_button.click()
     }else{
         alert("Você informou algum número inválido, confira as informações e tente novamente")
-    }
-}
-//Busca por número atômico
-function bpna(){
-    let num =Number(bpna_input.value)
-    if(num == 0){
-        alert('Não existe um átomo de número atômico 0, por favor informe um valor entre 1 e 118')
-    }else{
-        let carga=Number(bpna_carga.value)
-        let content=""
-        let nome, simbolo, grupo, familia, periodo
-        ({nome, simbolo, grupo, familia, periodo} = getInfo(num))
-        num+=(-carga)
-        distribuidor(num)
-        camadas()
-        content+=formataInput(`Número Atômico: ${num}<br>Carga: ${carga}<br><br>`)
-        content+=formataAtomo(nome,carga)
-        content+=formataSimbolo(simbolo,carga)
-        content+=`Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período: ${periodo}<br><br>Distribuição Eletrônica:<br>` 
-        content+=ede()
-        content+=escrevacamadas()
-        content+=ecdv()
-        escreve(content)
-        bpna_input.value=""
-        bpna_carga.value=""
     }
 }
 //Busca pelo nome
