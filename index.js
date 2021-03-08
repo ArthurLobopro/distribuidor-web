@@ -1,6 +1,7 @@
 import {range, atomos} from "./scripts/main.js"
 import bpna from "./scripts/main-functions/bpna.js"
-import bpn from "./scripts/main-functions/bpn.js";
+import bpn from "./scripts/main-functions/bpn.js"
+import bps from "./scripts/main-functions/bps.js"
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
 const res = document.getElementById("res")
@@ -63,80 +64,9 @@ function bpde() {
 //Busca pelo nome
 
 //Busca pelo símbolo
-function bps(){
-    let simbol = bps_input.value
-    let num=0
-    simbol=simbol.replace(' ','')
-    let erro=true
-    let content=""
-    for(let i=0;i<118;i++){
-        if(simbol.toUpperCase() == atomos.simbolos[i].toUpperCase()){
-           num=i+1
-           erro=false
-        }
-        if(i==117 && num==0){
-            alert(`"${simbol}" não foi reconhecido como símbolo de um átomo :( , verifique se digitou corretamente e tente novamente.`)
-        }
-    }
-    if (erro==false){
-            distribuidor(num)
-            let nome, simbolo, grupo, familia, periodo
-            ({nome, simbolo, grupo, familia, periodo} = getInfo(num))
-            camadas()
-            content+=`${formataInput(`Símbolo: ${simbol}<br><br>`)}
-            Nome: ${nome}<br>Símbolo: ${simbolo}<br>Número atômico: ${num}<br><br>Família: ${familia}<br>Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
-            content+=ede()
-            content+=escrevacamadas()
-            content+=ecdv()
-            escreve(content)
-        }
-        bps_input.value=""
-}
 
-//Acha o período do atomo na tabela periódica
-function achaperiodo(num){
-    return(num==1 || num==2) ? 1 :
-            (num>=3 && num<=10) ? 2 :
-                (num>=11 && num<=18) ? 3 :
-                    (num>=19 && num<=36) ? 4 :
-                        (num>=37 && num<=54) ? 5 :
-                            (num>=55 && num<=86) ? 6 : 7
-}
-//Escreve as camadas de valência
-function ecdv(){
-    let content=""
-    const getString = str => `<br>A camada de valência é: ${str}<br>`
-    switch(camadaValencia){
-        case 1:
-            content+=(`<br>A camada de valência é: 1s${s1}<br>Elétrons na camada de valência: ${s1}`) 
-            break
-        case 2:
-            content+= (p2>2) ? getString(`2s${s2} 2p${p2}`): getString(`2s${s2}`)
-            content+=`Elétrons na camada de valência: ${s2+p2}`
-            break
-        case 3:
-            content+= (p3>0) ? getString(`3s${s3} 3p${p3}`) : getString(`3s${s3}`)
-            content+= `Elétrons na camada de valência: ${s3+p3}`
-            break
-        case 4:
-            content+= (p4>0) ? getString(`4s${s4} 4p${p4}`) : getString(`4s${s4}`)
-            content+= `Elétrons na camada de valência: ${s4+p4}`
-            break
-        case 5:
-            content+= (p5>0) ? getString(`5s${s5} 5p${p5}`) : getString(`5s${s5}`)
-            content+= `Elétrons na camada de valência: ${s5+p5}`
-            break
-        case 6:
-            content+= (p6>0) ? getString(`6s${s6} 6p${p6}`) : getString(`6s${s6}`)
-            content+= `Elétrons na camada de valência: ${s6+p6}`
-            break
-        case 7:
-            content+= (p7>0) ? getString(`7s${s7} 7p${p7}`) : getString(`7s${s7}`)
-            content+= `Elétrons na camada de valência: ${s7+p7}`
-        break
-    }
-    return content
-}
+
+
 // Detecção de eventos
 
 // Troca de pesquisa
