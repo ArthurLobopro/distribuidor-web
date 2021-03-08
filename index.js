@@ -1,5 +1,5 @@
-import {addEvent,range, atomos} from "./scripts/main.js"
-import bpna from "./scripts/bpna.js"
+import {range, atomos} from "./scripts/main.js"
+import bpna from "./scripts/main-functions/bpna.js"
 var camadaValencia=0
 var camada=[0,0,0,0,0,0,0]
 const res = document.getElementById("res")
