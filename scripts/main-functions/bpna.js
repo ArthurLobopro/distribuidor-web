@@ -1,5 +1,5 @@
 import {formataInput,formataAtomo, formataSimbolo} from "../formata.js"
-import {escrevacamadas, ede, ecdv,escreve} from "../escreva.js"
+import {escrevacamadas, ede, ecdv,escreve} from "../escreve.js"
 import Atomo from "../atomo.js"
 import { get } from "../util.js";
 const bpna_input = get('num')
