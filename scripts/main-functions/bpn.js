@@ -27,7 +27,6 @@ function bpn(){
         content+=formataDados(atomo.nome,atomo.simbolo,atomo.num,atomo.familia,atomo.grupo,atomo.periodo)
         content+=ede(atomo.distribuicao)
         content+=escrevacamadas(atomo.camadas)
-        console.log(atomo.camadaValencia);
         content+=ecdv(atomo.camadaValencia,atomo.distribuicao)
         escreve(content)
     }
