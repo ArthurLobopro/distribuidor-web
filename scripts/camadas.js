@@ -16,7 +16,8 @@ const get_camadaValencia = camada => {
     camada[5]>0 ? 6 :
     camada[4]>0 ? 5 :
     camada[3]>0 ? 4 :
-    camada[2]>0 ? 1 : 0
+    camada[2]>0 ? 3 : 
+    camada[1]>0 ? 2 : 1
     return camadaValencia
 }
 export {camadas, get_camadaValencia}
