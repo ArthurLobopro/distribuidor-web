@@ -21,6 +21,6 @@ const make_div = str => {
         ${str}
     </div>`
 }
-const circle = `<div class="circle"><img src="../midia/close-icon.png"></div>`
+const circle = `<div class="circle"><img src="../../midia/close-icon.png"></div>`
 //Variáveis para export
 export { addEvent,make_div}
