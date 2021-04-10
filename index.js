@@ -57,7 +57,7 @@ bpna_input.onkeydown = (event) =>{
 bpna_carga.onkeydown = (event) =>{
     if(event.key=='Enter'){ bpna() }
 }
-bpna_buttom.onclick = () => bpna()
+bpna_buttom.onclick = bpna
 
 //Busca por símbolo
 const bps_input = get('simbolo')
@@ -65,7 +65,7 @@ const bps_buttom = get('bps')
 bps_input.onkeydown = (event) =>{
     if(event.key=='Enter'){ bps() }
 }
-bps_buttom.onclick=() => bps() 
+bps_buttom.onclick= bps
 
 //Busca por nome
 const bpn_input = get('nome')
@@ -73,7 +73,7 @@ const bpn_buttom = get('bpn')
 bpn_input.onkeydown = (event) =>{
     if(event.key=='Enter'){ bpn() }
 }
-bpn_buttom.onclick=() => bpn() 
+bpn_buttom.onclick= bpn 
 
 // Mostrar todos
 const showAllAtoms = () => {
