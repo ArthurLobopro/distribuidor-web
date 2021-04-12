@@ -29,7 +29,6 @@ function achagrupo (num){
 }
 
 function achafamilia(num,grupo){
-    console.log(`num ${num}, grupo ${grupo}`);
     return (
     (num==1) ? "<br> Não possiu uma família específica." : 
         (num != 1 && grupo==1) ? "Metais Alcalinos" :
