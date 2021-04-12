@@ -1,4 +1,4 @@
-import atomos from "./atomos.js"
+import atomos from "./info.js"
 const nomeatomo = num => atomos.nomes[num-1]
 const simboloatomo = num => atomos.simbolos[num-1] 
 function achagrupo (num){
