@@ -103,6 +103,10 @@ footer {
   text-align: center;
 }
 
+#msg > .circle {
+  float: right;
+}
+
 .width_full {
   width: 100%;
 }

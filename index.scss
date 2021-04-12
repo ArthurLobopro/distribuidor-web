@@ -63,6 +63,9 @@ footer{
 #msg{
     width: 100%;
     text-align: center;
+    & > .circle{
+        float: right;
+    }
 }
 .width_full{
     width: 100%;
