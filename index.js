@@ -79,7 +79,8 @@ bpn_buttom.onclick= bpn
 const showAllAtoms = () => {
     get("loading").style.display='block'
     res.classList.add('invisible')
-    res.innerHTML=`<span id="msg">Buscas feitas:</span><br>`
+    const removeAll = document.getElementById("remove-All")
+    removeAll.click()
     setTimeout(() => {
         res.classList.add('invisible')
         for(let valor of range(1,119)){
