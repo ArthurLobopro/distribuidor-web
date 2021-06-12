@@ -28,6 +28,7 @@ footer {
   width: -moz-max-content;
   width: max-content;
   margin: auto;
+  font-size: 20px;
 }
 
 @media screen and (max-width: 400px) {
@@ -85,11 +86,6 @@ footer {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
@@ -104,11 +100,6 @@ footer {
   width: 85%;
   display: none;
   margin: 0 auto 15px;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 @media screen and (max-width: 400px) {
@@ -123,6 +114,11 @@ footer {
 
 #menu, #res {
   font-family: "Inconsolata";
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
 #div-input-type {

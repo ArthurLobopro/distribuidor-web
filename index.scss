@@ -22,6 +22,7 @@ footer{
     color: white;
     width: max-content;
     margin: auto;
+    font-size: 20px;
     @media screen and (max-width: 400px) {
         width: max-content;
         margin: 0 auto 10px;
@@ -56,8 +57,6 @@ footer{
     margin: 10px auto 15px;
     padding: 10px 15px;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
     flex-direction: column;
     font-weight: 500;
 }
@@ -68,8 +67,6 @@ footer{
     width: 85%;
     display: none;
     margin: 0 auto 15px;
-    flex-wrap: wrap;
-    justify-content: center;
     @media screen and (max-width: 400px) {
         width: inherit;
         margin: 0 0 15px;
@@ -78,6 +75,8 @@ footer{
 }
 #menu, #res{
     font-family: "Inconsolata";
+    flex-wrap: wrap;
+    justify-content: center;
 }
 #div-input-type{
     margin: 10px auto 5px;
