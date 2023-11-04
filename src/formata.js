@@ -14,7 +14,7 @@ export const formataInput = input => (
     `<em>Dados Fornecidos:</em><br><br>${input}<em>Resultado:</em><br><br>`
 )
 
-export const formataDados = ({ nome, simbolo, num, familia, grupo, periodo }) => (
-    `Elemento: ${nome}<br>Símbolo: ${simbolo}<br>Número atômico: ${num}<br><br>Família: ${familia}<br>
+export const formataDados = ({ nome, simbolo, num, familia, grupo, periodo, carga }) => (
+    `${formataAtomo({ carga, nome })}${formataSimbolo({ simbolo, carga })}Número atômico: ${num}<br><br>Família: ${familia}<br>
     Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
 )

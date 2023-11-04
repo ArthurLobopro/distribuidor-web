@@ -1,5 +1,5 @@
-import bpde from "./main-functions/bpde.js"
 import { findByAtomicNumber } from "./main-functions/findByAtomicNumber.js"
+import { findByEletronicDistribution } from "./main-functions/findByEletronicDistribution.js"
 import { findByName } from "./main-functions/findByName.js"
 import { findBySymbol } from "./main-functions/findBySymbol.js"
 import { range } from "./util.js"
@@ -42,8 +42,8 @@ const sub_functions = event => {
     if (key === 'm' || key === 'M') { get(id).value = get(id).max }
 }
 
-dist_carga.onkeydown = event => { if (event.key === "Enter") { bpde() } }
-bpde_button.onclick = bpde
+dist_carga.onkeydown = event => { if (event.key === "Enter") { findByEletronicDistribution() } }
+bpde_button.onclick = findByEletronicDistribution
 clean_button.onclick = () => { for (let i of subcamadas_inputs) { i.value = i.min } }
 for (let i of subcamadas_inputs) { i.onkeydown = sub_functions }
 

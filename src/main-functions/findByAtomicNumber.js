@@ -1,6 +1,6 @@
 import Atomo from "../atomo.js"
 import { ecdv, ede, escrevacamadas, escreve } from "../escreve.js"
-import { formataAtomo, formataInput, formataSimbolo } from "../formata.js"
+import { formataDados, formataInput } from "../formata.js"
 import { get } from "../util.js"
 
 const bpna_input = get('num')
@@ -16,9 +16,7 @@ export function findByAtomicNumber() {
 
         let content = ""
         content += formataInput(`Número Atômico: ${atomo.num}<br>Carga: ${atomo.carga}<br><br>`)
-        content += formataAtomo(atomo)
-        content += formataSimbolo(atomo)
-        content += `Número atômico: ${atomo.num}<br><br>Família: ${atomo.familia}<br>Grupo: ${atomo.grupo}<br>Período: ${atomo.periodo}<br><br>Distribuição Eletrônica:<br>`
+        content += formataDados(atomo)
         content += ede(atomo.distribuicao)
         content += escrevacamadas(atomo.camadas)
         content += ecdv(atomo.camadaValencia, atomo.distribuicao)
