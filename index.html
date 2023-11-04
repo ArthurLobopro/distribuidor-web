@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuidor Eletrônico</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./index.css">
     <link rel="icon" href="./public/midia/atomo.png">
-    <meta name="description" content="Faz a distribuição eletrônica dos elétrons automaticamente, além de fazer buscas na tabela periódica fornecendo a distribução, nome, símbolo, número atômico, família e muito mais.">
+    <meta name="description"
+        content="Faz a distribuição eletrônica dos elétrons automaticamente, além de fazer buscas na tabela periódica fornecendo a distribução, nome, símbolo, número atômico, família e muito mais.">
+    <script src="./src/index.js" type="module"></script>
 </head>
+
 <body>
     <section id="menu">
         <div id="content">
@@ -40,32 +44,33 @@
             </div>
             <div id="numat" style="display: none;">
                 <span class="width_full">Buscar por Número Atômico(número de prótons).</span>
-                    <div>
-                        <label>
-                            Num. Atômico:
-                            <input type="number" min="1" max="118" value="" id="num" autocomplete="off">
-                        </label><br><br>
-                        <label>
-                            Carga: 
-                            <input type="number" id="bpna-carga" value="0" class="carga">
-                        </label>
-                        <input type="button" value="Enviar" id="bpna">
-                    </div>
+                <div>
+                    <label>
+                        Num. Atômico:
+                        <input type="number" min="1" max="118" value="" id="num" autocomplete="off">
+                    </label><br><br>
+                    <label>
+                        Carga:
+                        <input type="number" id="bpna-carga" value="0" class="carga">
+                    </label>
+                    <input type="button" value="Enviar" id="bpna">
+                </div>
             </div>
             <div id="name" style="display: none;">
                 <div id="central">
                     <div class="center">
-                        <label>Busca por nome: <br> <input type="text" id="nome"></label> 
+                        <label>Busca por nome: <br> <input type="text" id="nome"></label>
                         <input type="button" id="bpn" value="Buscar"><br>
                         <label>Busca por símbolo:<br> <input type="text" id="simbolo"></label>
                         <input type="button" id="bps" value="Buscar">
                     </div><br>
-                    <span class="msg"><span class="atention">Atenção!!!</span> O programa não é case sensitive, porém é necessário por os acentos.</span>
+                    <span class="msg"><span class="atention">Atenção!!!</span> O programa não é case sensitive, porém é
+                        necessário por os acentos.</span>
                 </div>
             </div>
         </div>
         <div id="div-input-type">
-            Buscar por: 
+            Buscar por:
             <select id="input-type">
                 <option value="dist" selected>Distribuição.</option>
                 <option value="numat">Número Atômico.</option>
@@ -85,9 +90,9 @@
                 <img src="././public/midia/close-icon.png">
             </div>
         </span><br>
-        
+
     </section>
     <footer>&copy;Arthur Lobo</footer>
-    <script src="index.js" type="module"></script>
 </body>
+
 </html>

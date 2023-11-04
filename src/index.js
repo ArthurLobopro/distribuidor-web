@@ -1,8 +1,8 @@
-import { range } from "./src/util.js"
-import bpna from "./src/main-functions/bpna.js"
-import bpn from "./src/main-functions/bpn.js"
-import bps from "./src/main-functions/bps.js"
-import bpde from "./src/main-functions/bpde.js"
+import { range } from "./util.js"
+import bpna from "./main-functions/bpna.js"
+import bpn from "./main-functions/bpn.js"
+import bps from "./main-functions/bps.js"
+import bpde from "./main-functions/bpde.js"
 
 const res = document.getElementById("res")
 const subcamadas = ["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p"]
