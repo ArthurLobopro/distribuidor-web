@@ -4,31 +4,31 @@ import { formataDados, formataInput } from "../formata.js"
 import atomos_info from "../info.js"
 import { get } from "../util.js"
 
-const bps_input = get('simbolo')
-const simbolos = atomos_info.simbolos
+const bpn_input = get("nome")
+const nomes = atomos_info.nomes
 
-export function findBySymbol() {
-    let simbol = bps_input.value
+export function findByName() {
+    let name = bpn_input.value
+    name = name.replaceAll(' ', '')
     let num = 0
-    simbol = simbol.replace(' ', '')
     let erro = true
     let content = ""
 
-    for (let i in simbolos) {
+    for (let i in nomes) {
         i = Number(i)
-        if (simbol.toUpperCase() == simbolos[i].toUpperCase()) {
+        if (name.toUpperCase() == nomes[i].toUpperCase()) {
             num = i + 1
             erro = false
         }
         if (i == 117 && num == 0) {
-            alert(`"${simbol}" não foi reconhecido como símbolo de um átomo :( , verifique se digitou corretamente e tente novamente.`)
+            alert(`"${name}" não foi reconhecido como nome de um átomo :( , verifique se não esqueceu algum acento ou colocou um espaço desnecessário.`)
         }
     }
 
     if (!erro) {
-        let atomo = new Atomo(num)
+        const atomo = new Atomo(num, 0)
 
-        content += `${formataInput(`Símbolo: ${simbol}<br><br>`)}`
+        content += formataInput(`Nome: ${name}<br><br>`)
         content += formataDados(atomo)
         content += ede(atomo.distribuicao)
         content += escrevacamadas(atomo.camadas)
@@ -37,5 +37,5 @@ export function findBySymbol() {
         escreve(content)
     }
 
-    bps_input.value = ""
+    bpn_input.value = ""
 }

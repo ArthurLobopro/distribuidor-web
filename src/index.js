@@ -1,6 +1,6 @@
 import bpde from "./main-functions/bpde.js"
-import bpn from "./main-functions/bpn.js"
 import { findByAtomicNumber } from "./main-functions/findByAtomicNumber.js"
+import { findByName } from "./main-functions/findByName.js"
 import { findBySymbol } from "./main-functions/findBySymbol.js"
 import { range } from "./util.js"
 
@@ -71,9 +71,9 @@ bps_buttom.onclick = findBySymbol
 const bpn_input = get('nome')
 const bpn_buttom = get('bpn')
 bpn_input.onkeydown = (event) => {
-    if (event.key == 'Enter') { bpn() }
+    if (event.key == 'Enter') { findByName() }
 }
-bpn_buttom.onclick = bpn
+bpn_buttom.onclick = findByName
 
 // Mostrar todos
 const showAllAtoms = () => {
