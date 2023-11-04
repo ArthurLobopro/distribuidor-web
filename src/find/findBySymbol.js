@@ -8,34 +8,29 @@ const bps_input = get('simbolo')
 const simbolos = atomos_info.simbolos
 
 export function findBySymbol() {
-    let simbol = bps_input.value
-    let num = 0
-    simbol = simbol.replace(' ', '')
-    let erro = true
-    let content = ""
+    const symbol = String(bps_input.value).replace(/ /g, "")
 
-    for (let i in simbolos) {
-        i = Number(i)
-        if (simbol.toUpperCase() == simbolos[i].toUpperCase()) {
-            num = i + 1
-            erro = false
-        }
-        if (i == 117 && num == 0) {
-            alert(`"${simbol}" não foi reconhecido como símbolo de um átomo :( , verifique se digitou corretamente e tente novamente.`)
-        }
+    if (!symbol) {
+        alert("Forneça um símbolo para pesquisar.")
     }
 
-    if (!erro) {
-        let atomo = new Atomo(num)
+    const index = simbolos.findIndex(value => value.toLowerCase() === symbol.toLowerCase())
 
-        content += `${formataInput(`Símbolo: ${simbol}<br><br>`)}`
-        content += formataDados(atomo)
-        content += ede(atomo.distribuicao)
-        content += escrevacamadas(atomo.camadas)
-        content += ecdv(atomo.camadaValencia, atomo.distribuicao)
-
-        escreve(content)
+    if (index === -1) {
+        return alert(`"${symbol}" não foi reconhecido encontrado , verifique se digitou corretamente.`)
     }
+
+    const atomo = new Atomo(num)
+
+    const content = [
+        formataInput(`Símbolo: ${symbol}<br><br>`),
+        formataDados(atomo),
+        ede(atomo.distribuicao),
+        escrevacamadas(atomo.camadas),
+        ecdv(atomo.camadaValencia, atomo.distribuicao)
+    ].join("")
+
+    escreve(content)
 
     bps_input.value = ""
 }
