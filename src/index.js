@@ -1,8 +1,8 @@
-import { range } from "./util.js"
-import bpna from "./main-functions/bpna.js"
-import bpn from "./main-functions/bpn.js"
-import bps from "./main-functions/bps.js"
 import bpde from "./main-functions/bpde.js"
+import bpn from "./main-functions/bpn.js"
+import { findByAtomicNumber } from "./main-functions/findByAtomicNumber.js"
+import { findBySymbol } from "./main-functions/findBySymbol.js"
+import { range } from "./util.js"
 
 const res = document.getElementById("res")
 const subcamadas = ["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p"]
@@ -52,20 +52,20 @@ const bpna_input = get('num')
 const bpna_buttom = get('bpna')
 const bpna_carga = get('bpna-carga')
 bpna_input.onkeydown = (event) => {
-    if (event.key == 'Enter') { bpna() }
+    if (event.key == 'Enter') { findByAtomicNumber() }
 }
 bpna_carga.onkeydown = (event) => {
-    if (event.key == 'Enter') { bpna() }
+    if (event.key == 'Enter') { findByAtomicNumber() }
 }
-bpna_buttom.onclick = bpna
+bpna_buttom.onclick = findByAtomicNumber
 
 //Busca por símbolo
 const bps_input = get('simbolo')
 const bps_buttom = get('bps')
 bps_input.onkeydown = (event) => {
-    if (event.key == 'Enter') { bps() }
+    if (event.key == 'Enter') { findBySymbol() }
 }
-bps_buttom.onclick = bps
+bps_buttom.onclick = findBySymbol
 
 //Busca por nome
 const bpn_input = get('nome')
