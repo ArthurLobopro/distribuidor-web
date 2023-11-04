@@ -7,24 +7,25 @@ const bpna_input = get('num')
 const bpna_carga = get('bpna-carga')
 
 export function findByAtomicNumber() {
-    let num = Number(bpna_input.value)
+    const num = Number(bpna_input.value)
+
     if (num <= 0 || num > 118) {
-        alert(`Não existe um átomo de número atômico ${num}, por favor informe um valor entre 1 e 118`)
-    } else {
-        const carga = Number(bpna_carga.value)
-        const atomo = new Atomo(num, carga)
-
-        let content = ""
-        content += formataInput(`Número Atômico: ${atomo.num}<br>Carga: ${atomo.carga}<br><br>`)
-        content += formataDados(atomo)
-        content += ede(atomo.distribuicao)
-        content += escrevacamadas(atomo.camadas)
-        content += ecdv(atomo.camadaValencia, atomo.distribuicao)
-
-        escreve(content)
-
-        bpna_input.value = ""
-        bpna_carga.value = ""
+        return alert(`Não existe um átomo de número atômico ${num}, por favor informe um valor entre 1 e 118`)
     }
 
+    const carga = Number(bpna_carga.value)
+    const atomo = new Atomo(num, carga)
+
+    const content = [
+        formataInput(`Número Atômico: ${atomo.num}<br>Carga: ${atomo.carga}<br><br>`),
+        formataDados(atomo),
+        ede(atomo.distribuicao),
+        escrevacamadas(atomo.camadas),
+        ecdv(atomo.camadaValencia, atomo.distribuicao)
+    ].join("")
+
+    escreve(content)
+
+    bpna_input.value = ""
+    bpna_carga.value = ""
 }
