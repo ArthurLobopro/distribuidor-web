@@ -1,7 +1,7 @@
-import { findByAtomicNumber } from "./main-functions/findByAtomicNumber.js"
-import { findByEletronicDistribution } from "./main-functions/findByEletronicDistribution.js"
-import { findByName } from "./main-functions/findByName.js"
-import { findBySymbol } from "./main-functions/findBySymbol.js"
+import { findByAtomicNumber } from "./find/findByAtomicNumber.js"
+import { findByEletronicDistribution } from "./find/findByEletronicDistribution.js"
+import { findByName } from "./find/findByName.js"
+import { findBySymbol } from "./find/findBySymbol.js"
 import { range } from "./util.js"
 
 const res = document.getElementById("res")
