@@ -8,34 +8,29 @@ const bpn_input = get("nome")
 const nomes = atomos_info.nomes
 
 export function findByName() {
-    let name = bpn_input.value
-    name = name.replaceAll(' ', '')
-    let num = 0
-    let erro = true
-    let content = ""
+    const name = String(bpn_input.value).replace(/ /g, "")
 
-    for (let i in nomes) {
-        i = Number(i)
-        if (name.toUpperCase() == nomes[i].toUpperCase()) {
-            num = i + 1
-            erro = false
-        }
-        if (i == 117 && num == 0) {
-            alert(`"${name}" não foi reconhecido como nome de um átomo :( , verifique se não esqueceu algum acento ou colocou um espaço desnecessário.`)
-        }
+    if (!name) {
+        alert("Forneça um nome para pesquisar")
     }
 
-    if (!erro) {
-        const atomo = new Atomo(num, 0)
+    const index = nomes.findIndex(nome => nome.toLowerCase() === name.toLowerCase())
 
-        content += formataInput(`Nome: ${name}<br><br>`)
-        content += formataDados(atomo)
-        content += ede(atomo.distribuicao)
-        content += escrevacamadas(atomo.camadas)
-        content += ecdv(atomo.camadaValencia, atomo.distribuicao)
-
-        escreve(content)
+    if (index === -1) {
+        return alert(`"${name}" não foi reconhecido como nome de um átomo, verifique se escreveu corretamente.`)
     }
+
+    const atomo = new Atomo(index + 1, 0)
+
+    const content = [
+        formataInput(`Nome: ${name}<br><br>`),
+        formataDados(atomo),
+        ede(atomo.distribuicao),
+        escrevacamadas(atomo.camadas),
+        ecdv(atomo.camadaValencia, atomo.distribuicao)
+    ].join("")
+
+    escreve(content)
 
     bpn_input.value = ""
 }
