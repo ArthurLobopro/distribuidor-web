@@ -1,4 +1,13 @@
-import { find_by_name_button, find_by_symbol_button, name_input, symbol_input } from "./constants.js"
+import {
+    find_by_atomic_number_button,
+    find_by_atomic_number_charge_input,
+    find_by_atomic_number_input,
+    find_by_name_button,
+    find_by_symbol_button,
+    name_input,
+    symbol_input
+} from "./constants.js"
+
 import { findByAtomicNumber } from "./find/findByAtomicNumber.js"
 import { findByEletronicDistribution } from "./find/findByEletronicDistribution.js"
 import { findByName } from "./find/findByName.js"
@@ -49,19 +58,16 @@ clean_button.onclick = () => { for (let i of subcamadas_inputs) { i.value = i.mi
 for (let i of subcamadas_inputs) { i.onkeydown = sub_functions }
 
 //Busca por número atômico
-const bpna_input = get('num')
-const bpna_buttom = get('bpna')
-const bpna_carga = get('bpna-carga')
-bpna_input.onkeydown = (event) => {
-    if (event.key == 'Enter') { findByAtomicNumber() }
+
+find_by_atomic_number_input.onkeydown = (event) => {
+    if (event.key === 'Enter') { findByAtomicNumber() }
 }
-bpna_carga.onkeydown = (event) => {
-    if (event.key == 'Enter') { findByAtomicNumber() }
+find_by_atomic_number_charge_input.onkeydown = (event) => {
+    if (event.key === 'Enter') { findByAtomicNumber() }
 }
-bpna_buttom.onclick = findByAtomicNumber
+find_by_atomic_number_button.onclick = findByAtomicNumber
 
 //Busca por símbolo
-
 symbol_input.onkeydown = (event) => {
     if (event.key === 'Enter') { findBySymbol() }
 }

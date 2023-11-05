@@ -1,19 +1,16 @@
 import Atomo from "../atomo.js"
+import { find_by_atomic_number_charge_input, find_by_atomic_number_input } from "../constants.js"
 import { ecdv, ede, escreve } from "../escreve.js"
 import { formatData, formatInput, formatLayers } from "../formata.js"
-import { get } from "../util.js"
-
-const bpna_input = get('num')
-const bpna_carga = get('bpna-carga')
 
 export function findByAtomicNumber() {
-    const num = Number(bpna_input.value)
+    const num = Number(find_by_atomic_number_input.value)
 
     if (num <= 0 || num > 118) {
         return alert(`Não existe um átomo de número atômico ${num}, por favor informe um valor entre 1 e 118`)
     }
 
-    const carga = Number(bpna_carga.value)
+    const carga = Number(find_by_atomic_number_charge_input.value)
     const atomo = new Atomo(num, carga)
 
     const content = [
@@ -26,6 +23,6 @@ export function findByAtomicNumber() {
 
     escreve(content)
 
-    bpna_input.value = ""
-    bpna_carga.value = ""
+    find_by_atomic_number_input.value = ""
+    find_by_atomic_number_charge_input.value = ""
 }

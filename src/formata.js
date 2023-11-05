@@ -19,13 +19,13 @@ export const formatData = ({ nome, simbolo, num, familia, grupo, periodo, carga 
     Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
 )
 
-export const formatLayers = (layer) => (
+export const formatLayers = (layers) => (
     `<br>Elétrons nas camadas:
-     <br>Camada K: ${layer[0]}
-     <br>Camada L: ${layer[1]}
-     <br>Camada M: ${layer[2]}
-     <br>Camada N: ${layer[3]}
-     <br>Camada O: ${layer[4]}
-     <br>Camada P: ${layer[5]}
-     <br>Camada Q: ${layer[6]}`
+     <br>Camada K: ${layers[0]}
+     <br>Camada L: ${layers[1]}
+     <br>Camada M: ${layers[2]}
+     <br>Camada N: ${layers[3]}
+     <br>Camada O: ${layers[4]}
+     <br>Camada P: ${layers[5]}
+     <br>Camada Q: ${layers[6]}`
 )
