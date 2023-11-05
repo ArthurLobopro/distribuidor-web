@@ -22,9 +22,14 @@ import { range } from "./util.js"
 const subcamadas = ["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p"]
 const get = id => document.getElementById(id)
 
+function doIfEnter(callback) {
+    return event => event.key === "Enter" && callback()
+}
+
 // Troca de pesquisa
 const input_type = get("input-type")
-input_type.onchange = () => {
+
+input_type.onchange = (event) => {
     if (input_type.value == "all") {
         input_type.value = "dist"
         showAllAtoms()
@@ -54,30 +59,22 @@ const sub_functions = event => {
     if (key === 'm' || key === 'M') { get(id).value = get(id).max }
 }
 
-distribuition_charge_input.onkeydown = event => { if (event.key === "Enter") { findByEletronicDistribution() } }
+distribuition_charge_input.onkeydown = doIfEnter(findByEletronicDistribution)
 find_by_eletronic_distribuition_button.onclick = findByEletronicDistribution
 clean_eletronic_distribuition_button.onclick = () => { for (let i of subcamadas_inputs) { i.value = i.min } }
 for (let i of subcamadas_inputs) { i.onkeydown = sub_functions }
 
 //Busca por número atômico
-find_by_atomic_number_input.onkeydown = (event) => {
-    if (event.key === 'Enter') { findByAtomicNumber() }
-}
-find_by_atomic_number_charge_input.onkeydown = (event) => {
-    if (event.key === 'Enter') { findByAtomicNumber() }
-}
+find_by_atomic_number_input.onkeydown = doIfEnter(findByAtomicNumber)
+find_by_atomic_number_charge_input.onkeydown = doIfEnter(findByAtomicNumber)
 find_by_atomic_number_button.onclick = findByAtomicNumber
 
 //Busca por símbolo
-symbol_input.onkeydown = (event) => {
-    if (event.key === 'Enter') { findBySymbol() }
-}
+symbol_input.onkeydown = doIfEnter(findBySymbol)
 find_by_symbol_button.onclick = findBySymbol
 
 //Busca por nome
-name_input.onkeydown = (event) => {
-    if (event.key == 'Enter') { findByName() }
-}
+name_input.onkeydown = doIfEnter(findByName)
 find_by_name_button.onclick = findByName
 
 clear_results_button.onclick = () => {
@@ -101,7 +98,7 @@ const showAllAtoms = () => {
     }, 1000)
 }
 
-const observer = new MutationObserver(() => {
+const results_observer = new MutationObserver(() => {
     const res_divs = result_wrapper.querySelectorAll(".res")
 
     if (res_divs.length === 0) {
@@ -112,4 +109,4 @@ const observer = new MutationObserver(() => {
     result_wrapper.style.display = "flex"
 })
 
-observer.observe(result_wrapper, { childList: true })
+results_observer.observe(result_wrapper, { childList: true })

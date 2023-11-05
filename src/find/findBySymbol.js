@@ -1,4 +1,4 @@
-import Atomo from "../atomo.js"
+import { Atom } from "../atomo.js"
 import { symbol_input } from "../constants.js"
 import { escreve } from "../escreve.js"
 import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formata.js"
@@ -19,7 +19,7 @@ export function findBySymbol() {
         return alert(`"${symbol}" não foi reconhecido encontrado , verifique se digitou corretamente.`)
     }
 
-    const atomo = new Atomo(num)
+    const atomo = new Atom(num)
 
     const content = [
         formatInput(`Símbolo: ${symbol}<br><br>`),

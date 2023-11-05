@@ -1,4 +1,4 @@
-import Atomo from "../atomo.js"
+import { Atom } from "../atomo.js"
 import { escreve } from "../escreve.js"
 import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formata.js"
 
@@ -65,7 +65,7 @@ export function findByEletronicDistribution() {
         return alert("Você informou algum número inválido, confira as informações e tente novamente")
     }
 
-    const atomo = new Atomo(num, carga)
+    const atomo = new Atom(num, carga)
 
     const content = [
         formatInput(`Destribuição: ...${getEnd(distArray)}<br>Carga: ${carga}<br><br>`),

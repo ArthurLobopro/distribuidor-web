@@ -1,4 +1,4 @@
-import Atomo from "../atomo.js"
+import { Atom } from "../atomo.js"
 import { name_input } from "../constants.js"
 import { escreve } from "../escreve.js"
 import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formata.js"
@@ -19,7 +19,7 @@ export function findByName() {
         return alert(`"${name}" não foi reconhecido como nome de um átomo, verifique se escreveu corretamente.`)
     }
 
-    const atomo = new Atomo(index + 1, 0)
+    const atomo = new Atom(index + 1, 0)
 
     const content = [
         formatInput(`Nome: ${name}<br><br>`),
