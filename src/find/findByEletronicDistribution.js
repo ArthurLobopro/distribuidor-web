@@ -6,7 +6,9 @@ import { get } from "../util.js"
 const getEnd = (distArray) => {
     const subcamadas = ["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p"]
 
-    const f = distArray.indexOf(0)
+    let f = distArray.indexOf(0)
+
+    f = f === -1 ? subcamadas.length : f
 
     return `${subcamadas[f - 1] + distArray[f - 1]}`
 }
@@ -20,23 +22,23 @@ function getDistribution() {
 
         s3: Number(get("3s").value),
         p3: Number(get("3p").value),
-        d3: Number(get("3d").value),
 
         s4: Number(get("4s").value),
+        d3: Number(get("3d").value),
         p4: Number(get("4p").value),
-        d4: Number(get("4d").value),
-        f4: Number(get("4f").value),
 
         s5: Number(get("5s").value),
+        d4: Number(get("4d").value),
         p5: Number(get("5p").value),
-        d5: Number(get("5d").value),
-        f5: Number(get("5f").value),
 
         s6: Number(get("6s").value),
+        f4: Number(get("4f").value),
+        d5: Number(get("5d").value),
         p6: Number(get("6p").value),
-        d6: Number(get("6d").value),
 
         s7: Number(get("7s").value),
+        f5: Number(get("5f").value),
+        d6: Number(get("6d").value),
         p7: Number(get("7p").value)
     }
 }
