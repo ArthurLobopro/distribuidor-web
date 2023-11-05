@@ -18,3 +18,14 @@ export const formatData = ({ nome, simbolo, num, familia, grupo, periodo, carga 
     `${formatAtom({ carga, nome })}${formatSymbom({ simbolo, carga })}Número atômico: ${num}<br><br>Família: ${familia}<br>
     Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
 )
+
+export const formatLayers = (layer) => (
+    `<br>Elétrons nas camadas:
+     <br>Camada K: ${layer[0]}
+     <br>Camada L: ${layer[1]}
+     <br>Camada M: ${layer[2]}
+     <br>Camada N: ${layer[3]}
+     <br>Camada O: ${layer[4]}
+     <br>Camada P: ${layer[5]}
+     <br>Camada Q: ${layer[6]}`
+)
