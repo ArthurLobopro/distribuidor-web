@@ -1,10 +1,15 @@
 import {
+    clean_eletronic_distribuition_button,
+    clear_results_button,
+    distribuition_charge_input,
     find_by_atomic_number_button,
     find_by_atomic_number_charge_input,
     find_by_atomic_number_input,
+    find_by_eletronic_distribuition_button,
     find_by_name_button,
     find_by_symbol_button,
     name_input,
+    result_wrapper,
     symbol_input
 } from "./constants.js"
 
@@ -14,7 +19,6 @@ import { findByName } from "./find/findByName.js"
 import { findBySymbol } from "./find/findBySymbol.js"
 import { range } from "./util.js"
 
-const res = document.getElementById("res")
 const subcamadas = ["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p"]
 const get = id => document.getElementById(id)
 
@@ -33,15 +37,13 @@ input_type.onchange = () => {
 
 //Detecção de enventos
 const subcamadas_inputs = document.querySelectorAll('#sub-inputs input')
-const dist_carga = get("dist-carga")
-const clean_button = get("clean-btn")
-const bpde_button = get("bpde-btn")
+
 const sub_functions = event => {
     const id = String(event.target.id)
     const key = event.key
     if (key === 'Enter') {
         event.target.id !== "7p" ?
-            get(subcamadas[subcamadas.indexOf(id) + 1]).focus() : dist_carga.focus()
+            get(subcamadas[subcamadas.indexOf(id) + 1]).focus() : distribuition_charge_input.focus()
     }
     if (key === 'c' || key === 'C') {
         for (let i of subcamadas) {
@@ -52,9 +54,9 @@ const sub_functions = event => {
     if (key === 'm' || key === 'M') { get(id).value = get(id).max }
 }
 
-dist_carga.onkeydown = event => { if (event.key === "Enter") { findByEletronicDistribution() } }
-bpde_button.onclick = findByEletronicDistribution
-clean_button.onclick = () => { for (let i of subcamadas_inputs) { i.value = i.min } }
+distribuition_charge_input.onkeydown = event => { if (event.key === "Enter") { findByEletronicDistribution() } }
+find_by_eletronic_distribuition_button.onclick = findByEletronicDistribution
+clean_eletronic_distribuition_button.onclick = () => { for (let i of subcamadas_inputs) { i.value = i.min } }
 for (let i of subcamadas_inputs) { i.onkeydown = sub_functions }
 
 //Busca por número atômico
@@ -78,19 +80,36 @@ name_input.onkeydown = (event) => {
 }
 find_by_name_button.onclick = findByName
 
+clear_results_button.onclick = () => {
+    result_wrapper.querySelectorAll(".res").forEach(el => el.remove())
+}
+
 // Mostrar todos
 const showAllAtoms = () => {
     get("loading").style.display = 'block'
-    res.classList.add('invisible')
-    const removeAll = document.getElementById("remove-All")
-    removeAll.click()
+    result_wrapper.classList.add('invisible')
+
+    clear_results_button.click()
     setTimeout(() => {
-        res.classList.add('invisible')
+        result_wrapper.classList.add('invisible')
         for (let valor of range(1, 119)) {
-            bpna_input.value = valor
-            bpna_buttom.click()
+            find_by_atomic_number_input.value = valor
+            find_by_atomic_number_button.click()
         }
-        res.classList.remove('invisible')
+        result_wrapper.classList.remove('invisible')
         get("loading").style.display = 'none'
     }, 1000)
 }
+
+const observer = new MutationObserver(() => {
+    const res_divs = result_wrapper.querySelectorAll(".res")
+
+    if (res_divs.length === 0) {
+        result_wrapper.style.display = "none"
+        return
+    }
+
+    result_wrapper.style.display = "flex"
+})
+
+observer.observe(result_wrapper, { childList: true })

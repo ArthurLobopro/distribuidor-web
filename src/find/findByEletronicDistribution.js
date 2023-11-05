@@ -1,7 +1,16 @@
 import Atomo from "../atomo.js"
 import { escreve } from "../escreve.js"
 import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formata.js"
-import { get } from "../util.js"
+
+import {
+    clean_eletronic_distribuition_button,
+    d3_input, d4_input, d5_input,
+    d6_input, distribuition_charge_input,
+    f4_input, f5_input, p2_input, p3_input,
+    p4_input, p5_input, p6_input, p7_input,
+    s1_input, s2_input, s3_input, s4_input,
+    s5_input, s6_input, s7_input
+} from "../constants.js"
 
 const getEnd = (distArray) => {
     const subcamadas = ["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p"]
@@ -15,42 +24,40 @@ const getEnd = (distArray) => {
 
 function getDistribution() {
     return {
-        s1: Number(get("1s").value),
+        s1: Number(s1_input.value),
 
-        s2: Number(get("2s").value),
-        p2: Number(get("2p").value),
+        s2: Number(s2_input.value),
+        p2: Number(p2_input.value),
 
-        s3: Number(get("3s").value),
-        p3: Number(get("3p").value),
+        s3: Number(s3_input.value),
+        p3: Number(p3_input.value),
 
-        s4: Number(get("4s").value),
-        d3: Number(get("3d").value),
-        p4: Number(get("4p").value),
+        s4: Number(s4_input.value),
+        d3: Number(d3_input.value),
+        p4: Number(p4_input.value),
 
-        s5: Number(get("5s").value),
-        d4: Number(get("4d").value),
-        p5: Number(get("5p").value),
+        s5: Number(s5_input.value),
+        d4: Number(d4_input.value),
+        p5: Number(p5_input.value),
 
-        s6: Number(get("6s").value),
-        f4: Number(get("4f").value),
-        d5: Number(get("5d").value),
-        p6: Number(get("6p").value),
+        s6: Number(s6_input.value),
+        f4: Number(f4_input.value),
+        d5: Number(d5_input.value),
+        p6: Number(p6_input.value),
 
-        s7: Number(get("7s").value),
-        f5: Number(get("5f").value),
-        d6: Number(get("6d").value),
-        p7: Number(get("7p").value)
+        s7: Number(s7_input.value),
+        f5: Number(f5_input.value),
+        d6: Number(d6_input.value),
+        p7: Number(p7_input.value)
     }
 }
-
-const clean_button = get("clean-btn")
 
 export function findByEletronicDistribution() {
     const distribuition = getDistribution()
 
     const distArray = Object.entries(distribuition).map(([key, value]) => value)
 
-    const carga = Number(get("dist-carga").value)
+    const carga = Number(distribuition_charge_input.value)
 
     const num = distArray.reduce((prev, current) => prev + current, 0) + carga
 
@@ -70,5 +77,5 @@ export function findByEletronicDistribution() {
 
     escreve(content)
 
-    clean_button.click()
+    clean_eletronic_distribuition_button.click()
 }

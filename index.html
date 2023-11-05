@@ -38,9 +38,10 @@
                     <label>7s<input type="number" id="7s" value="0" min="0" max="2" class="number"></label>
                     <label>7p<input type="number" id="7p" value="0" min="0" max="6" class="number"></label><br><br>
                 </div>
-                <label>Carga: <input type="number" id="dist-carga" value="0" class="carga"></label><br> <br>
-                <input type="button" value="Enviar" id="bpde-btn">
-                <input type="button" value="Limpar" id="clean-btn"><br><br>
+                <label>Carga: <input type="number" id="distribuition-charge" value="0" class="carga"></label><br> <br>
+                <button id="find-by-eletronic-distribuition">Enviar</button>
+                <button id="clean-eletronic-distribuition">Limpar</button>
+                <br><br>
             </div>
 
             <div id="numat" style="display: none;">
@@ -90,10 +91,10 @@
         independente de exixtir ou não ele será mostrado, por isso verifique se as informações inseridas estão corretas.
     </div><br><br> -->
     <div id="loading" style="display: none;"></div>
-    <section id="res">
+    <section id="result-wrapper">
         <span id="msg">
             Buscas feitas:
-            <div class="circle" id="remove-All">
+            <div class="circle" id="clear-results">
                 <img src="././public/midia/close-icon.png">
             </div>
         </span><br>

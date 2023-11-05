@@ -1,7 +1,6 @@
-import { addEvent, make_div } from "./main.js"
+import { result_wrapper } from "./constants.js"
+import { make_div } from "./main.js"
 
 export const escreve = (content) => {
-    res.innerHTML += make_div(content)
-    addEvent()
-    res.style.display = "flex"
+    result_wrapper.appendChild(make_div(content))
 }
