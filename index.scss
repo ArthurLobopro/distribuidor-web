@@ -70,7 +70,7 @@ footer {
     font-weight: 500;
 }
 
-#res {
+#result-wrapper {
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
@@ -86,7 +86,7 @@ footer {
 }
 
 #menu,
-#res {
+#result-wrapper {
     font-family: "Inconsolata";
     flex-wrap: wrap;
     justify-content: center;

@@ -2,8 +2,7 @@
 @import url(./public/fonts/css-import/RobotoSlab.css);
 @import url(./public/fonts/css-import/Inconsolata.css);
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body {
@@ -22,18 +21,15 @@ section {
 }
 
 footer {
-  font-family: 'Roboto Slab', cursive, Arial;
+  font-family: "Roboto Slab", cursive, Arial;
   color: white;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   margin: auto;
   font-size: 20px;
 }
-
 @media screen and (max-width: 400px) {
   footer {
-    width: -webkit-max-content;
     width: -moz-max-content;
     width: max-content;
     margin: 0 auto 10px;
@@ -47,16 +43,10 @@ footer {
   text-align: center;
   padding: 5px 5px 10px;
   width: 350px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-
 #numat > div {
   margin-top: 15px;
 }
@@ -64,36 +54,27 @@ footer {
 #dist {
   border: 2px solid blue;
   padding: 10px;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   border-radius: 5px;
   text-align: left;
 }
-
 #dist #sub-inputs {
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
 }
 
 #menu {
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   margin: 10px auto 15px;
   padding: 10px 15px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
   font-weight: 500;
 }
 
-#res {
+#result-wrapper {
   padding: 10px;
   border: 2px solid black;
   border-radius: 5px;
@@ -101,24 +82,19 @@ footer {
   display: none;
   margin: 0 auto 15px;
 }
-
 @media screen and (max-width: 400px) {
-  #res {
+  #result-wrapper {
     width: inherit;
     margin: 0 0 15px;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
   }
 }
 
-#menu, #res {
+#menu,
+#result-wrapper {
   font-family: "Inconsolata";
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #div-input-type {
@@ -129,7 +105,6 @@ footer {
   width: 100%;
   text-align: center;
 }
-
 #msg > .circle {
   float: right;
 }
@@ -143,15 +118,9 @@ footer {
 }
 
 div.flex {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  justify-content: center;
+  align-items: center;
   height: inherit;
 }
 
@@ -162,14 +131,11 @@ div.flex {
   text-align: center;
   padding: 5px 15px;
   width: 340px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
 #central {
   text-align: left;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   margin: auto;
@@ -192,7 +158,6 @@ div.center {
 .res {
   border: 2px solid blue;
   border-radius: 5px;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   height: 40%;
@@ -208,7 +173,6 @@ div.center {
           appearance: textfield;
   margin: 1px 0 0 0;
 }
-
 .number::-webkit-inner-spin-button {
   display: none;
 }
@@ -227,19 +191,16 @@ input {
   border-radius: 2px;
   border-style: solid;
   border-width: 1px;
-  border-color: #767676;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  border-color: rgb(118, 118, 118);
+  box-sizing: border-box;
   padding: 1px;
 }
-
 input:invalid {
   border-width: 2px;
   outline: 1px solid red;
   outline-offset: -3px;
 }
-
-input[type="button"] {
+input[type=button] {
   cursor: pointer;
   padding: 1px 3px;
 }
@@ -248,25 +209,20 @@ input[type="button"] {
 .circle {
   width: 18px;
   float: right;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   height: 18px;
   border: 1.5px solid black;
   border-radius: 50%;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   margin: -8px -8px auto auto;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
+  cursor: pointer;
 }
-
 .circle:hover {
   background-color: lightgray;
 }
-
 .circle img {
   margin: auto;
   width: 10px;
@@ -281,29 +237,14 @@ input[type="button"] {
   border: 10px solid rgba(118, 118, 118, 0.548);
   border-left: 10px solid rgba(0, 0, 0, 0.459);
   margin: auto;
-  -webkit-animation: loop 2s linear infinite;
-          animation: loop 2s linear infinite;
-}
-
-@-webkit-keyframes loop {
-  0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
-  }
-  0% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-  }
+  animation: loop 2s linear infinite;
 }
 
 @keyframes loop {
   0% {
-    -webkit-transform: rotate(0deg);
-            transform: rotate(0deg);
+    transform: rotate(0deg);
   }
   0% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-}
-/*# sourceMappingURL=index.css.map */
+}/*# sourceMappingURL=index.css.map */
