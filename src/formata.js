@@ -49,3 +49,45 @@ export const formatEletronicDistribuition = ({
         `7s${s7} 2p${p7}`
     ].join("<br>") + "<br>"
 )
+export function formatValencyLayer(camadaValencia, { s1, s2, p2, s3, p3, s4, p4, s5, p5, s6, p6, s7, p7 }) {
+    const getValencyLayerText = str => `<br>A camada de valência é: ${str}<br>`
+    const getEletronsOnValencyLayerText = str => `Elétrons na camada de valência: ${str}`
+
+    switch (camadaValencia) {
+        case 1:
+            return [
+                getValencyLayerText(`1s${s1}`),
+                getEletronsOnValencyLayerText(s1)
+            ].join("")
+        case 2:
+            return [
+                p2 > 2 ? getValencyLayerText(`2s${s2} 2p${p2}`) : getValencyLayerText(`2s${s2}`),
+                getEletronsOnValencyLayerText(s2 + p2)
+            ].join("")
+        case 3:
+            return [
+                p3 > 0 ? getValencyLayerText(`3s${s3} 3p${p3}`) : getValencyLayerText(`3s${s3}`),
+                getEletronsOnValencyLayerText(s3 + p3)
+            ].join("")
+        case 4:
+            return [
+                p4 > 0 ? getValencyLayerText(`4s${s4} 4p${p4}`) : getValencyLayerText(`4s${s4}`),
+                getEletronsOnValencyLayerText(s4 + p4)
+            ].join("")
+        case 5:
+            return [
+                p5 > 0 ? getValencyLayerText(`5s${s5} 5p${p5}`) : getValencyLayerText(`5s${s5}`),
+                getEletronsOnValencyLayerText(s5 + p5)
+            ].join("")
+        case 6:
+            return [
+                p6 > 0 ? getValencyLayerText(`6s${s6} 6p${p6}`) : getValencyLayerText(`6s${s6}`),
+                getEletronsOnValencyLayerText(s6 + p6)
+            ].join("")
+        case 7:
+            return [
+                p7 > 0 ? getValencyLayerText(`7s${s7} 7p${p7}`) : getValencyLayerText(`7s${s7}`),
+                getEletronsOnValencyLayerText(s7 + p7)
+            ].join("")
+    }
+}
