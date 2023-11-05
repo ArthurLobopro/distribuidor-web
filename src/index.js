@@ -1,3 +1,4 @@
+import { find_by_name_button, find_by_symbol_button, name_input, symbol_input } from "./constants.js"
 import { findByAtomicNumber } from "./find/findByAtomicNumber.js"
 import { findByEletronicDistribution } from "./find/findByEletronicDistribution.js"
 import { findByName } from "./find/findByName.js"
@@ -60,20 +61,17 @@ bpna_carga.onkeydown = (event) => {
 bpna_buttom.onclick = findByAtomicNumber
 
 //Busca por símbolo
-const bps_input = get('simbolo')
-const bps_buttom = get('bps')
-bps_input.onkeydown = (event) => {
-    if (event.key == 'Enter') { findBySymbol() }
+
+symbol_input.onkeydown = (event) => {
+    if (event.key === 'Enter') { findBySymbol() }
 }
-bps_buttom.onclick = findBySymbol
+find_by_symbol_button.onclick = findBySymbol
 
 //Busca por nome
-const bpn_input = get('nome')
-const bpn_buttom = get('bpn')
-bpn_input.onkeydown = (event) => {
+name_input.onkeydown = (event) => {
     if (event.key == 'Enter') { findByName() }
 }
-bpn_buttom.onclick = findByName
+find_by_name_button.onclick = findByName
 
 // Mostrar todos
 const showAllAtoms = () => {

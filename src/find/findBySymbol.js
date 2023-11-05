@@ -1,14 +1,13 @@
 import Atomo from "../atomo.js"
+import { symbol_input } from "../constants.js"
 import { ecdv, ede, escrevacamadas, escreve } from "../escreve.js"
 import { formataDados, formataInput } from "../formata.js"
 import atomos_info from "../info.js"
-import { get } from "../util.js"
 
-const bps_input = get('simbolo')
-const simbolos = atomos_info.simbolos
+const { simbolos } = atomos_info
 
 export function findBySymbol() {
-    const symbol = String(bps_input.value).replace(/ /g, "")
+    const symbol = String(symbol_input.value).replace(/ /g, "")
 
     if (!symbol) {
         alert("Forneça um símbolo para pesquisar.")
@@ -32,5 +31,5 @@ export function findBySymbol() {
 
     escreve(content)
 
-    bps_input.value = ""
+    symbol_input.value = ""
 }

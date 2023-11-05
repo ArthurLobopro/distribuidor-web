@@ -1,14 +1,13 @@
 import Atomo from "../atomo.js"
+import { name_input } from "../constants.js"
 import { ecdv, ede, escrevacamadas, escreve } from "../escreve.js"
 import { formataDados, formataInput } from "../formata.js"
 import atomos_info from "../info.js"
-import { get } from "../util.js"
 
-const bpn_input = get("nome")
-const nomes = atomos_info.nomes
+const { nomes } = atomos_info
 
 export function findByName() {
-    const name = String(bpn_input.value).replace(/ /g, "")
+    const name = String(name_input.value).replace(/ /g, "")
 
     if (!name) {
         alert("Forneça um nome para pesquisar")
@@ -32,5 +31,5 @@ export function findByName() {
 
     escreve(content)
 
-    bpn_input.value = ""
+    name_input.value = ""
 }
