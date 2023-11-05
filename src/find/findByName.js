@@ -1,7 +1,7 @@
 import Atomo from "../atomo.js"
 import { name_input } from "../constants.js"
-import { ecdv, ede, escreve } from "../escreve.js"
-import { formatData, formatInput, formatLayers } from "../formata.js"
+import { ecdv, escreve } from "../escreve.js"
+import { formatData, formatEletronicDistribuition, formatInput, formatLayers } from "../formata.js"
 import atomos_info from "../info.js"
 
 const { nomes } = atomos_info
@@ -24,7 +24,7 @@ export function findByName() {
     const content = [
         formatInput(`Nome: ${name}<br><br>`),
         formatData(atomo),
-        ede(atomo.distribuicao),
+        formatEletronicDistribuition(atomo.distribuicao),
         formatLayers(atomo.camadas),
         ecdv(atomo.camadaValencia, atomo.distribuicao)
     ].join("")

@@ -58,7 +58,6 @@ clean_button.onclick = () => { for (let i of subcamadas_inputs) { i.value = i.mi
 for (let i of subcamadas_inputs) { i.onkeydown = sub_functions }
 
 //Busca por número atômico
-
 find_by_atomic_number_input.onkeydown = (event) => {
     if (event.key === 'Enter') { findByAtomicNumber() }
 }
