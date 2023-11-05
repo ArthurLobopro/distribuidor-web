@@ -1,6 +1,6 @@
 import Atomo from "../atomo.js"
 import { ecdv, ede, escrevacamadas, escreve } from "../escreve.js"
-import { formataDados, formataInput } from "../formata.js"
+import { formatData, formatInput } from "../formata.js"
 import { get } from "../util.js"
 
 const getEnd = (distArray) => {
@@ -59,8 +59,8 @@ export function findByEletronicDistribution() {
     const atomo = new Atomo(num, carga)
 
     const content = [
-        formataInput(`Destribuição: ...${getEnd(distArray)}<br>Carga: ${carga}<br><br>`),
-        formataDados(atomo),
+        formatInput(`Destribuição: ...${getEnd(distArray)}<br>Carga: ${carga}<br><br>`),
+        formatData(atomo),
         ede(atomo.distribuicao),
         escrevacamadas(atomo.camadas),
         ecdv(atomo.camadaValencia, atomo.distribuicao)

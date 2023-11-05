@@ -1,7 +1,7 @@
 import Atomo from "../atomo.js"
 import { symbol_input } from "../constants.js"
 import { ecdv, ede, escrevacamadas, escreve } from "../escreve.js"
-import { formataDados, formataInput } from "../formata.js"
+import { formatData, formatInput } from "../formata.js"
 import atomos_info from "../info.js"
 
 const { simbolos } = atomos_info
@@ -22,8 +22,8 @@ export function findBySymbol() {
     const atomo = new Atomo(num)
 
     const content = [
-        formataInput(`Símbolo: ${symbol}<br><br>`),
-        formataDados(atomo),
+        formatInput(`Símbolo: ${symbol}<br><br>`),
+        formatData(atomo),
         ede(atomo.distribuicao),
         escrevacamadas(atomo.camadas),
         ecdv(atomo.camadaValencia, atomo.distribuicao)
