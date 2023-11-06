@@ -23,7 +23,7 @@ const subcamadas = ["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", 
 const get = id => document.getElementById(id)
 
 function doIfEnter(callback) {
-    return event => event.key === "Enter" && callback()
+    return event => { event.key === "Enter" && callback() }
 }
 
 // Troca de pesquisa
