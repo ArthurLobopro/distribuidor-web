@@ -1,31 +1,34 @@
-export default function distribuidor(num){
-    let s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7
+const S_MAX = 2
+const P_MAX = 6
+const D_MAX = 10
+const F_MAX = 14
 
-    const dist = quant => {
-        const ret = num-quant>=0 ? quant : num
-        num = num-quant>=0 ? num-quant : 0
+export function getDistribuition(eletronsAmount) {
+    const distribute = max => {
+        const ret = eletronsAmount - max >= 0 ? max : eletronsAmount
+        eletronsAmount = eletronsAmount - max >= 0 ? eletronsAmount - max : 0
         return ret
     }
 
-    s1 = dist(2)
-    s2 = dist(2)
-    p2 = dist(6)
-    s3 = dist(2)
-    p3 = dist(6)
-    s4 = dist(2)
-    d3 = dist(10)
-    p4 = dist(6)
-    s5 = dist(2)
-    d4 = dist(10)
-    p5 = dist(6)
-    s6 = dist(2)
-    f4 = dist(14)
-    d5 = dist(10)
-    p6 = dist(6)
-    s7 = dist(2)
-    f5 = dist(14)
-    d6 = dist(10)
-    p7 = dist(6)
-    
-    return {s1,s2,p2,s3,p3,d3,s4,p4,d4,f4,s5,p5,d5,f5,s6,p6,d6,s7,p7}
+    return {
+        s1: distribute(S_MAX),
+        s2: distribute(S_MAX),
+        p2: distribute(P_MAX),
+        s3: distribute(S_MAX),
+        p3: distribute(P_MAX),
+        s4: distribute(S_MAX),
+        d3: distribute(D_MAX),
+        p4: distribute(P_MAX),
+        s5: distribute(S_MAX),
+        d4: distribute(D_MAX),
+        p5: distribute(P_MAX),
+        s6: distribute(S_MAX),
+        f4: distribute(F_MAX),
+        d5: distribute(D_MAX),
+        p6: distribute(P_MAX),
+        s7: distribute(S_MAX),
+        f5: distribute(F_MAX),
+        d6: distribute(D_MAX),
+        p7: distribute(P_MAX)
+    }
 }
