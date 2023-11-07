@@ -67,7 +67,7 @@ const formatEletronicDistribuition = ({
         `4s${s4} 4p${p4} 4d${d4} 4f${f4}`,
         `5s${s5} 5p${p5} 5d${d5} 5f${f5}`,
         `6s${s6} 6p${p6} 6d${d6}`,
-        `7s${s7} 2p${p7}`
+        `7s${s7} 7p${p7}`
     ].join("<br>")
 )
 
