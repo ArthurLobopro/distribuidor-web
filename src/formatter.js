@@ -14,9 +14,9 @@ export const formatInput = input => (
     `<em>Dados Fornecidos:</em><br><br>${input}<em>Resultado:</em><br><br>`
 )
 
-export const formatData = ({ name, simbolo, num, family, grupo, periodo, carga }) => (
+export const formatData = ({ name, simbolo, num, family, group, period, carga }) => (
     `${formatAtom({ carga, name })}${formatSymbom({ simbolo, carga })}Número atômico: ${num}<br><br>Família: ${family}<br>
-    Grupo: ${grupo}<br>Período ${periodo}<br><br>Distribuição Eletrônica:<br>`
+    Grupo: ${group}<br>Período ${period}<br><br>Distribuição Eletrônica:<br>`
 )
 
 export const formatLayers = (layers) => (
