@@ -1,10 +1,10 @@
-const formatAtom = ({ name, charge }) => (
+const formatAtomHeader = ({ name, charge }) => (
     charge !== 0
         ? `Elemento: ${name} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br>`
         : `Elemento: ${name}<br>`
 )
 
-const formatSymbom = ({ symbol, charge }) => {
+const formatSymbol = ({ symbol, charge }) => {
     return charge !== 0
         ? `Símbolo: ${symbol} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br><br>`
         : `Símbolo: ${symbol}<br>`
@@ -15,8 +15,8 @@ export const formatInput = input => (
 )
 
 export const formatData = ({ name, symbol, num, family, group, period, charge }) => (
-    `${formatAtom({ charge, name })}${formatSymbom({ symbol, charge })}Número atômico: ${num}<br><br>Família: ${family}<br>
-    Grupo: ${group}<br>Período ${period}<br><br>Distribuição Eletrônica:<br>`
+    `${formatAtomHeader({ charge, name })}${formatSymbol({ symbol, charge })}Número atômico: ${num}<br><br>Família: ${family}<br>
+    Grupo: ${group}<br>Período: ${period}<br><br>Distribuição Eletrônica:<br>`
 )
 
 export const formatLayers = (layers) => (
