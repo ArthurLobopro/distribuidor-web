@@ -1,22 +1,37 @@
-const formatAtomHeader = ({ name, charge }) => (
+import { Atom } from "./Atom.js"
+
+const formatName = ({ name, charge }) => (
     charge !== 0
-        ? `Elemento: ${name} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br>`
-        : `Elemento: ${name}<br>`
+        ? `Nome: ${name} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br>`
+        : `Nome: ${name}<br>`
 )
 
 const formatSymbol = ({ symbol, charge }) => {
     return charge !== 0
-        ? `Símbolo: ${symbol} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br><br>`
+        ? `Símbolo: ${symbol} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br>`
         : `Símbolo: ${symbol}<br>`
 }
+
+const formatLocation = ({ group, period, family }) => (
+    [
+        `Grupo: ${group}`,
+        `Período: ${period}`,
+        `Família: ${family}<br>`
+    ].join("<br>") + "<br>"
+)
 
 export const formatInput = input => (
     `<em>Dados Fornecidos:</em><br><br>${input}<em>Resultado:</em><br><br>`
 )
 
-export const formatData = ({ name, symbol, num, family, group, period, charge }) => (
-    `${formatAtomHeader({ charge, name })}${formatSymbol({ symbol, charge })}Número atômico: ${num}<br><br>Família: ${family}<br>
-    Grupo: ${group}<br>Período: ${period}<br><br>Distribuição Eletrônica:<br>`
+/** @param {Atom} atom */
+export const formatData = (atom) => (
+    [
+        formatName(atom),
+        formatSymbol(atom),
+        `Número atômico: ${atom.num}<br><br>`,
+        formatLocation(atom)
+    ].join("")
 )
 
 export const formatLayers = (layers) => (
@@ -40,6 +55,7 @@ export const formatEletronicDistribuition = ({
     s7, p7
 }) => (
     [
+        "Distribuição Eletrônica:",
         `1s${s1}`,
         `2s${s2} 2p${p2}`,
         `3s${s3} 3p${p3} 3d${d3}`,
