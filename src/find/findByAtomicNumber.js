@@ -1,7 +1,7 @@
 import { Atom } from "../atomo.js"
 import { find_by_atomic_number_charge_input, find_by_atomic_number_input } from "../constants.js"
-import { escreve } from "../escreve.js"
 import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formata.js"
+import { appendResult } from "../main.js"
 
 export function findByAtomicNumber() {
     const num = Number(find_by_atomic_number_input.value)
@@ -21,7 +21,7 @@ export function findByAtomicNumber() {
         formatValencyLayer(atomo.camadaValencia, atomo.distribuicao)
     ].join("")
 
-    escreve(content)
+    appendResult(content)
 
     find_by_atomic_number_input.value = ""
     find_by_atomic_number_charge_input.value = ""

@@ -1,3 +1,5 @@
+import { result_wrapper } from "./constants.js"
+
 export const make_div = str => {
     const div = document.createElement("div")
     div.className = "res"
@@ -18,4 +20,8 @@ const make_close_div = (div) => {
     circle.onclick = () => div.remove()
 
     return circle
+}
+
+export const appendResult = (content) => {
+    result_wrapper.appendChild(make_div(content))
 }

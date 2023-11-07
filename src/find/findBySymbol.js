@@ -1,8 +1,8 @@
 import { Atom } from "../atomo.js"
 import { symbol_input } from "../constants.js"
-import { escreve } from "../escreve.js"
 import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formata.js"
 import atomos_info from "../info.js"
+import { appendResult } from "../main.js"
 
 const { simbolos } = atomos_info
 
@@ -29,7 +29,7 @@ export function findBySymbol() {
         formatValencyLayer(atomo.camadaValencia, atomo.distribuicao)
     ].join("")
 
-    escreve(content)
+    appendResult(content)
 
     symbol_input.value = ""
 }

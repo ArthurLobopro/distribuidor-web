@@ -49,7 +49,11 @@ export const formatEletronicDistribuition = ({
         `7s${s7} 2p${p7}`
     ].join("<br>") + "<br>"
 )
-export function formatValencyLayer(camadaValencia, { s1, s2, p2, s3, p3, s4, p4, s5, p5, s6, p6, s7, p7 }) {
+
+export function formatValencyLayer(
+    camadaValencia,
+    { s1, s2, p2, s3, p3, s4, p4, s5, p5, s6, p6, s7, p7 }
+) {
     const getValencyLayerText = str => `<br>A camada de valência é: ${str}<br>`
     const getEletronsOnValencyLayerText = str => `Elétrons na camada de valência: ${str}`
 

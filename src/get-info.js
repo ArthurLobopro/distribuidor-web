@@ -3,7 +3,7 @@ import atomos from "./info.js"
 export const getAtomName = num => atomos.nomes[num - 1]
 export const getAtomSymbol = num => atomos.simbolos[num - 1]
 
-export function achagrupo(num) {
+export function getGroup(num) {
     if ((num >= 57 && num <= 71) || (num >= 89 && num <= 103)) { return 3 }
 
     const grupos = [
@@ -31,7 +31,7 @@ export function achagrupo(num) {
     return groupIndex === -1 ? 18 : groupIndex + 1
 }
 
-export const achafamilia = (num, grupo) => (
+export const getFamily = (num, grupo) => (
     num == 1 ? "<br> Não possiu uma família específica." :
         num != 1 && grupo == 1 ? "Metais Alcalinos" :
             grupo == 2 ? "Metais Alcalinos Terrosos" :
@@ -46,7 +46,7 @@ export const achafamilia = (num, grupo) => (
                                                 grupo == 17 ? "Halogênios" : "Gases Nobres"
 )
 
-export const achaperiodo = (num) => (
+export const getPeriod = (num) => (
     num == 1 || num == 2 ? 1 :
         num >= 3 && num <= 10 ? 2 :
             num >= 11 && num <= 18 ? 3 :
@@ -55,7 +55,21 @@ export const achaperiodo = (num) => (
                         num >= 55 && num <= 86 ? 6 : 7
 )
 
-export const getInfo = num => {
-    let grupo = achagrupo(num)
-    return { nome: getAtomName(num), simbolo: getAtomSymbol(num), grupo, familia: achafamilia(num, grupo), periodo: achaperiodo(num) }
-}
+export const getLayersSum = ({
+    s1, s2, p2, s3, p3, d3, s4, p4, d4, f4, s5, p5, d5, f5, s6, p6, d6, s7, p7
+}) => ([
+    s1,
+    s2 + p2,
+    s3 + p3 + d3,
+    s4 + p4 + d4 + f4,
+    s5 + p5 + d5 + f5,
+    s6 + p6 + d6,
+    s7 + p7
+])
+
+/** @param {number[]} layerEletronsAmount */
+export const getValencyLayer = layerEletronsAmount => (
+    layerEletronsAmount.reduce((prevLayer, eletronsAmount, currentLayerIndex) => {
+        return eletronsAmount > 0 ? currentLayerIndex + 1 : prevLayer
+    }, 1)
+)

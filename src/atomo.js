@@ -1,6 +1,5 @@
-import { getLayersSum as get_camada, getValencyLayer } from "./camadas.js"
 import { getDistribuition } from "./distribuidor.js"
-import { achafamilia, achagrupo, achaperiodo, getAtomName, getAtomSymbol } from "./get-info.js"
+import { getAtomName, getAtomSymbol, getFamily, getGroup, getLayersSum, getPeriod, getValencyLayer } from "./get-info.js"
 
 export class Atom {
     constructor(num, carga = 0) {
@@ -9,11 +8,11 @@ export class Atom {
         this.eletrons = num + (-carga)
         this.nome = getAtomName(num)
         this.simbolo = getAtomSymbol(num)
-        this.grupo = achagrupo(num)
-        this.periodo = achaperiodo(num)
-        this.familia = achafamilia(num, this.grupo)
+        this.grupo = getGroup(num)
+        this.periodo = getPeriod(num)
+        this.familia = getFamily(num, this.grupo)
         this.distribuicao = getDistribuition(this.eletrons)
-        this.camadas = get_camada(this.distribuicao)
+        this.camadas = getLayersSum(this.distribuicao)
         this.camadaValencia = getValencyLayer(this.camadas)
     }
 }
