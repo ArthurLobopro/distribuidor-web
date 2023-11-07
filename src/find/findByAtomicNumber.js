@@ -1,7 +1,7 @@
+import { appendResult } from "../appendResult.js"
 import { Atom } from "../atomo.js"
 import { find_by_atomic_number_charge_input, find_by_atomic_number_input } from "../constants.js"
-import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formata.js"
-import { appendResult } from "../main.js"
+import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formatter.js"
 
 export function findByAtomicNumber() {
     const num = Number(find_by_atomic_number_input.value)

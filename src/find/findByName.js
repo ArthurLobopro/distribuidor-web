@@ -1,8 +1,8 @@
+import { appendResult } from "../appendResult.js"
 import { Atom } from "../atomo.js"
 import { name_input } from "../constants.js"
-import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formata.js"
+import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formatter.js"
 import atomos_info from "../info.js"
-import { appendResult } from "../main.js"
 
 const { nomes } = atomos_info
 

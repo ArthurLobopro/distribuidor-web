@@ -1,6 +1,10 @@
 import { result_wrapper } from "./constants.js"
 
-export const make_div = str => {
+export const appendResult = (content) => {
+    result_wrapper.appendChild(make_div(content))
+}
+
+const make_div = str => {
     const div = document.createElement("div")
     div.className = "res"
     div.innerHTML = str
@@ -12,7 +16,7 @@ export const make_div = str => {
     return div
 }
 
-/** @param {HTMLDivElement} div*/
+/** @param {HTMLDivElement} div */
 const make_close_div = (div) => {
     const circle = document.createElement("div")
     circle.className = "circle"
@@ -20,8 +24,4 @@ const make_close_div = (div) => {
     circle.onclick = () => div.remove()
 
     return circle
-}
-
-export const appendResult = (content) => {
-    result_wrapper.appendChild(make_div(content))
 }
