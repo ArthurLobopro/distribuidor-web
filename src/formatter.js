@@ -71,9 +71,9 @@ const formatEletronicDistribuition = ({
     ].join("<br>")
 )
 
-export function formatValencyLayer({
+function formatValencyLayer({
     valencyLayer,
-    distribuition: { s1, s2, p2, s3, p3, s4, p4, s5, p5, s6, p6, s7, p7 }
+    distribuition
 }) {
     const getValencyLayerText = ({ s, p }) => [
         "<br>A camada de valência é: ",
@@ -82,43 +82,13 @@ export function formatValencyLayer({
         "<br>"
     ].join("")
 
-    const getEletronsOnValencyLayerText = str => `Elétrons na camada de valência: ${str}`
+    const getEletronsOnValencyLayerText = amount => `Elétrons na camada de valência: ${amount}`
 
-    switch (valencyLayer) {
-        case 1:
-            return [
-                getValencyLayerText({ s: s1, p: 0 }),
-                getEletronsOnValencyLayerText(s1)
-            ].join("")
-        case 2:
-            return [
-                getValencyLayerText({ s: s2, p: p2 }),
-                getEletronsOnValencyLayerText(s2 + p2)
-            ].join("")
-        case 3:
-            return [
-                getValencyLayerText({ s: s3, p: p3 }),
-                getEletronsOnValencyLayerText(s3 + p3)
-            ].join("")
-        case 4:
-            return [
-                getValencyLayerText({ s: s4, p: p4 }),
-                getEletronsOnValencyLayerText(s4 + p4)
-            ].join("")
-        case 5:
-            return [
-                getValencyLayerText({ s: s5, p: p5 }),
-                getEletronsOnValencyLayerText(s5 + p5)
-            ].join("")
-        case 6:
-            return [
-                getValencyLayerText({ s: s6, p: p6 }),
-                getEletronsOnValencyLayerText(s6 + p6)
-            ].join("")
-        case 7:
-            return [
-                getValencyLayerText({ s: s7, p: p7 }),
-                getEletronsOnValencyLayerText(s7 + p7)
-            ].join("")
-    }
+    const s = distribuition["s" + valencyLayer]
+    const p = distribuition["p" + valencyLayer] ?? 0
+
+    return [
+        getValencyLayerText({ s, p }),
+        getEletronsOnValencyLayerText(s + p)
+    ].join("")
 }
