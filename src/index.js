@@ -24,6 +24,8 @@ import { findByName } from "./find/findByName.js"
 import { findBySymbol } from "./find/findBySymbol.js"
 import atomData from "./info.js"
 
+const getById = id => document.getElementById(id)
+
 const sorted_sublayers = [
     "1s", "2s", "2p", "3s",
     "3p", "4s", "3d", "4p",
@@ -71,9 +73,12 @@ const sub_functions =
         }
 
         if (key.toLowerCase() === 'c') {
-            subcamadas_inputs.some(input => {
+            sorted_sublayers.some(sublayerId => {
+                const input = getById(sublayerId)
+
                 input.value = input.max
-                return input.id === id
+
+                return sublayerId === id
             })
         }
 
