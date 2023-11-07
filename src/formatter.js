@@ -2,14 +2,14 @@ import { Atom } from "./Atom.js"
 
 const formatName = ({ name, charge }) => (
     charge !== 0
-        ? `Nome: ${name} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br>`
-        : `Nome: ${name}<br>`
+        ? `Nome: ${name} <sup>${charge > 0 ? "+" : ""}${charge}</sup>`
+        : `Nome: ${name}`
 )
 
 const formatSymbol = ({ symbol, charge }) => {
     return charge !== 0
-        ? `Símbolo: ${symbol} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br>`
-        : `Símbolo: ${symbol}<br>`
+        ? `Símbolo: ${symbol} <sup>${charge > 0 ? "+" : ""}${charge}</sup>`
+        : `Símbolo: ${symbol}`
 }
 
 const formatLocation = ({ group, period, family }) => (
@@ -17,7 +17,7 @@ const formatLocation = ({ group, period, family }) => (
         `Grupo: ${group}`,
         `Período: ${period}`,
         `Família: ${family}<br>`
-    ].join("<br>") + "<br>"
+    ].join("<br>")
 )
 
 export const formatInput = input => (
@@ -29,9 +29,10 @@ export const formatData = (atom) => (
     [
         formatName(atom),
         formatSymbol(atom),
-        `Número atômico: ${atom.num}<br><br>`,
-        formatLocation(atom)
-    ].join("")
+        `Número atômico: ${atom.num}<br>`,
+        formatLocation(atom),
+        formatEletronicDistribuition(atom.distribuition),
+    ].join("<br>") + "<br>"
 )
 
 export const formatLayers = (layers) => (
@@ -45,7 +46,7 @@ export const formatLayers = (layers) => (
      <br>Camada Q: ${layers[6]}`
 )
 
-export const formatEletronicDistribuition = ({
+const formatEletronicDistribuition = ({
     s1,
     s2, p2,
     s3, p3, d3,
@@ -63,7 +64,7 @@ export const formatEletronicDistribuition = ({
         `5s${s5} 5p${p5} 5d${d5} 5f${f5}`,
         `6s${s6} 6p${p6} 6d${d6}`,
         `7s${s7} 2p${p7}`
-    ].join("<br>") + "<br>"
+    ].join("<br>")
 )
 
 export function formatValencyLayer(
