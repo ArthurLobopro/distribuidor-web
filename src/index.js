@@ -57,43 +57,45 @@ action_type_input.onchange = () => {
     }
 }
 
+const maxfyInput = input => {
+    input.value = input.max
+}
+
+const minifyInput = input => {
+    input.value = input.min
+}
+
 //Detecção de enventos
 /** @type {HTMLInputElement[]} */
-const subcamadas_inputs = Array.from(document.querySelectorAll('#sub-inputs input'))
+const subcamadas_inputs = Array.from(document.querySelectorAll("#sub-inputs input"))
 
-const sub_functions =
-    /** @param {Event} */
-    (event) => {
-        const { key, target: { id } } = event
+const handleSubInput = (event) => {
+    const { key, target: { id } } = event
 
-        if (key === 'Enter') {
-            event.target.id !== "7p"
-                ? subcamadas_inputs[subcamadas_inputs.findIndex(input => input.id === id) + 1].focus()
-                : distribuition_charge_input.focus()
-        }
-
-        if (key.toLowerCase() === 'c') {
-            sorted_sublayers.some(sublayerId => {
-                const input = getById(sublayerId)
-
-                input.value = input.max
-
-                return sublayerId === id
-            })
-        }
-
-        if (key.toLowerCase() === 'm') {
-            const input = subcamadas_inputs.find(input => input.id === id)
-            input.value = input.max
-        }
+    if (key === "Enter") {
+        id !== "7p"
+            ? subcamadas_inputs[subcamadas_inputs.findIndex(input => input.id === id) + 1].focus()
+            : distribuition_charge_input.focus()
     }
+
+    if (key.toLowerCase() === "c") {
+        sorted_sublayers.some(sublayerId => {
+            maxfyInput(getById(sublayerId))
+
+            return sublayerId === id
+        })
+    }
+
+    if (key.toLowerCase() === "m") {
+        maxfyInput(subcamadas_inputs.find(input => input.id === id))
+    }
+}
 
 distribuition_charge_input.onkeydown = doIfEnter(findByEletronicDistribution)
 find_by_eletronic_distribuition_button.onclick = findByEletronicDistribution
-clean_eletronic_distribuition_button.onclick = () => {
-    for (let i of subcamadas_inputs) { i.value = i.min }
-}
-for (let i of subcamadas_inputs) { i.onkeydown = sub_functions }
+clean_eletronic_distribuition_button.onclick = () => subcamadas_inputs.forEach(minifyInput)
+
+subcamadas_inputs.forEach(input => input.onclick = handleSubInput)
 
 //Busca por número atômico
 find_by_atomic_number_input.onkeydown = doIfEnter(findByAtomicNumber)
@@ -114,20 +116,20 @@ clear_results_button.onclick = () => {
 
 // Mostrar todos
 const showAllAtoms = () => {
-    loading_div.style.display = 'block'
-    result_wrapper.classList.add('invisible')
+    loading_div.style.display = "block"
+    result_wrapper.classList.add("invisible")
 
     clear_results_button.click()
     setTimeout(() => {
-        result_wrapper.classList.add('invisible')
+        result_wrapper.classList.add("invisible")
 
         atomData.nomes.forEach(name => {
             name_input.value = name
             find_by_name_button.click()
         })
 
-        result_wrapper.classList.remove('invisible')
-        loading_div.style.display = 'none'
+        result_wrapper.classList.remove("invisible")
+        loading_div.style.display = "none"
     }, 1000)
 }
 
