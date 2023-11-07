@@ -36,7 +36,7 @@ footer {
   }
 }
 
-#numat {
+#atomic-number-screen {
   border: 2px solid blue;
   border-radius: 5px;
   margin: 0 5px;
@@ -47,11 +47,11 @@ footer {
   flex-wrap: wrap;
   justify-content: center;
 }
-#numat > div {
+#atomic-number-screen > div {
   margin-top: 15px;
 }
 
-#dist {
+#distribuition-screen {
   border: 2px solid blue;
   padding: 10px;
   width: -moz-max-content;
@@ -59,7 +59,7 @@ footer {
   border-radius: 5px;
   text-align: left;
 }
-#dist #sub-inputs {
+#distribuition-screen #sub-inputs {
   width: -moz-max-content;
   width: max-content;
 }
@@ -97,7 +97,7 @@ footer {
   justify-content: center;
 }
 
-#div-input-type {
+#div-action-type {
   margin: 10px auto 5px;
 }
 
@@ -124,7 +124,7 @@ div.flex {
   height: inherit;
 }
 
-#name {
+#name-or-symbol-screen {
   border: 2px solid blue;
   border-radius: 5px;
   margin: 0 auto 0px 5px;

@@ -15,7 +15,7 @@
 <body>
     <section id="menu">
         <div id="content">
-            <div id="dist">
+            <div id="distribuition-screen">
                 <div class="center">Buscar por distribuição</div><br>
                 <div id="sub-inputs">
                     <label>1s<input type="number" id="1s" value="1" min="1" max="2" class="number"></label><br>
@@ -44,7 +44,7 @@
                 <br><br>
             </div>
 
-            <div id="numat" style="display: none;">
+            <div id="atomic-number-screen" style="display: none;">
                 <span class="width_full">Buscar por Número Atômico(número de prótons).</span>
                 <div>
                     <label>
@@ -60,7 +60,7 @@
                 </div>
             </div>
 
-            <div id="name" style="display: none;">
+            <div id="name-or-symbol-screen" style="display: none;">
                 <div id="central">
                     <div class="center">
                         <label>Busca por nome: <br> <input type="text" id="name-input"></label>
@@ -77,12 +77,13 @@
                 </div>
             </div>
         </div>
-        <div id="div-input-type">
+
+        <div id="div-action-type">
             Buscar por:
-            <select id="input-type" data-oldValue="dist">
-                <option value="dist" selected>Distribuição.</option>
-                <option value="numat">Número Atômico.</option>
-                <option value="name">Nome ou símbolo.</option>
+            <select id="action-type" data-oldValue="distribuition">
+                <option value="distribuition" selected>Distribuição.</option>
+                <option value="atomic-number">Número Atômico.</option>
+                <option value="name-or-symbol">Nome ou símbolo.</option>
                 <option value="all">Mostrar Todos.</option>
             </select>
         </div>

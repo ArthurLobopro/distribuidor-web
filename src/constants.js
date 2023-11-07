@@ -41,3 +41,12 @@ export const p7_input = getById("7p")
 export const distribuition_charge_input = getById("distribuition-charge")
 export const find_by_eletronic_distribuition_button = getById("find-by-eletronic-distribuition")
 export const clean_eletronic_distribuition_button = getById("clean-eletronic-distribuition")
+
+export const distribuition_screen = getById("distribuition-screen")
+export const atomic_number_screen = getById("atomic-number-screen")
+export const name_or_symbol_screen = getById("name-or-symbol-screen")
+
+/** @type {HTMLSelectElement} */
+export const action_type_input = getById("action-type")
+
+export const loading_div = getById("loading")
