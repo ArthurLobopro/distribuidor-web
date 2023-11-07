@@ -38,14 +38,16 @@ export const formatData = (atom) => (
 )
 
 const formatLayers = (layers) => (
-    `<br>Elétrons nas camadas:
-     <br>Camada K: ${layers[0]}
-     <br>Camada L: ${layers[1]}
-     <br>Camada M: ${layers[2]}
-     <br>Camada N: ${layers[3]}
-     <br>Camada O: ${layers[4]}
-     <br>Camada P: ${layers[5]}
-     <br>Camada Q: ${layers[6]}`
+    [
+        `<br>Elétrons nas camadas:`,
+        `Camada K: ${layers[0]}`,
+        `Camada L: ${layers[1]}`,
+        `Camada M: ${layers[2]}`,
+        `Camada N: ${layers[3]}`,
+        `Camada O: ${layers[4]}`,
+        `Camada P: ${layers[5]}`,
+        `Camada Q: ${layers[6]}`
+    ].join("<br>")
 )
 
 const formatEletronicDistribuition = ({
