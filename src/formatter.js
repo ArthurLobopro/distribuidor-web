@@ -4,18 +4,18 @@ const formatAtom = ({ name, carga }) => (
         : `Elemento: ${name}<br>`
 )
 
-const formatSymbom = ({ simbolo, carga }) => {
+const formatSymbom = ({ symbol, carga }) => {
     return carga !== 0
-        ? `Símbolo: ${simbolo} <sup>${carga > 0 ? "+" : ""}${carga}</sup><br><br>`
-        : `Símbolo: ${simbolo}<br>`
+        ? `Símbolo: ${symbol} <sup>${carga > 0 ? "+" : ""}${carga}</sup><br><br>`
+        : `Símbolo: ${symbol}<br>`
 }
 
 export const formatInput = input => (
     `<em>Dados Fornecidos:</em><br><br>${input}<em>Resultado:</em><br><br>`
 )
 
-export const formatData = ({ name, simbolo, num, family, group, period, carga }) => (
-    `${formatAtom({ carga, name })}${formatSymbom({ simbolo, carga })}Número atômico: ${num}<br><br>Família: ${family}<br>
+export const formatData = ({ name, symbol, num, family, group, period, carga }) => (
+    `${formatAtom({ carga, name })}${formatSymbom({ symbol, carga })}Número atômico: ${num}<br><br>Família: ${family}<br>
     Grupo: ${group}<br>Período ${period}<br><br>Distribuição Eletrônica:<br>`
 )
 

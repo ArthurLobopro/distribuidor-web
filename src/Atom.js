@@ -7,7 +7,7 @@ export class Atom {
         this.carga = atomCharge
         this.eletrons = atomicNumber + (-atomCharge)
         this.name = getAtomName(atomicNumber)
-        this.simbolo = getAtomSymbol(atomicNumber)
+        this.symbol = getAtomSymbol(atomicNumber)
         this.group = getGroup(atomicNumber)
         this.period = getPeriod(atomicNumber)
         this.family = getFamily(atomicNumber, this.group)
