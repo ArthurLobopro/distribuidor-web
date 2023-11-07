@@ -25,7 +25,7 @@ export function findBySymbol() {
         formatInput(`Símbolo: ${symbol}<br><br>`),
         formatData(atomo),
         formatEletronicDistribuition(atomo.distribuicao),
-        formatLayers(atomo.camadas),
+        formatLayers(atomo.layers),
         formatValencyLayer(atomo.camadaValencia, atomo.distribuicao)
     ].join("")
 

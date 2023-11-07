@@ -71,7 +71,7 @@ export function findByEletronicDistribution() {
         formatInput(`Destribuição: ...${getEnd(distArray)}<br>Carga: ${carga}<br><br>`),
         formatData(atomo),
         formatEletronicDistribuition(atomo.distribuicao),
-        formatLayers(atomo.camadas),
+        formatLayers(atomo.layers),
         formatValencyLayer(atomo.camadaValencia, atomo.distribuicao)
     ].join("")
 

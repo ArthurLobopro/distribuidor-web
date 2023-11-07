@@ -1,12 +1,12 @@
-const formatAtom = ({ name, carga }) => (
-    carga !== 0
-        ? `Elemento: ${name} <sup>${carga > 0 ? "+" : ""}${carga}</sup><br>`
+const formatAtom = ({ name, charge }) => (
+    charge !== 0
+        ? `Elemento: ${name} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br>`
         : `Elemento: ${name}<br>`
 )
 
-const formatSymbom = ({ symbol, carga }) => {
-    return carga !== 0
-        ? `Símbolo: ${symbol} <sup>${carga > 0 ? "+" : ""}${carga}</sup><br><br>`
+const formatSymbom = ({ symbol, charge }) => {
+    return charge !== 0
+        ? `Símbolo: ${symbol} <sup>${charge > 0 ? "+" : ""}${charge}</sup><br><br>`
         : `Símbolo: ${symbol}<br>`
 }
 
@@ -14,8 +14,8 @@ export const formatInput = input => (
     `<em>Dados Fornecidos:</em><br><br>${input}<em>Resultado:</em><br><br>`
 )
 
-export const formatData = ({ name, symbol, num, family, group, period, carga }) => (
-    `${formatAtom({ carga, name })}${formatSymbom({ symbol, carga })}Número atômico: ${num}<br><br>Família: ${family}<br>
+export const formatData = ({ name, symbol, num, family, group, period, charge }) => (
+    `${formatAtom({ charge, name })}${formatSymbom({ symbol, charge })}Número atômico: ${num}<br><br>Família: ${family}<br>
     Grupo: ${group}<br>Período ${period}<br><br>Distribuição Eletrônica:<br>`
 )
 

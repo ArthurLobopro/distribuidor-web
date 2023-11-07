@@ -4,15 +4,15 @@ import { getAtomName, getAtomSymbol, getFamily, getGroup, getLayersSum, getPerio
 export class Atom {
     constructor(atomicNumber, atomCharge = 0) {
         this.num = atomicNumber
-        this.carga = atomCharge
-        this.eletrons = atomicNumber + (-atomCharge)
+        this.charge = atomCharge
+        this.eletronsAmount = atomicNumber + (-atomCharge)
         this.name = getAtomName(atomicNumber)
         this.symbol = getAtomSymbol(atomicNumber)
         this.group = getGroup(atomicNumber)
         this.period = getPeriod(atomicNumber)
         this.family = getFamily(atomicNumber, this.group)
-        this.distribuicao = getDistribuition(this.eletrons)
-        this.camadas = getLayersSum(this.distribuicao)
-        this.camadaValencia = getValencyLayer(this.camadas)
+        this.distribuicao = getDistribuition(this.eletronsAmount)
+        this.layers = getLayersSum(this.distribuicao)
+        this.camadaValencia = getValencyLayer(this.layers)
     }
 }

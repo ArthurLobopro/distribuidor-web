@@ -11,13 +11,14 @@ export function findByAtomicNumber() {
     }
 
     const carga = Number(find_by_atomic_number_charge_input.value)
+
     const atomo = new Atom(num, carga)
 
     const content = [
-        formatInput(`Número Atômico: ${atomo.num}<br>Carga: ${atomo.carga}<br><br>`),
+        formatInput(`Número Atômico: ${atomo.num}<br>Carga: ${carga}<br><br>`),
         formatData(atomo),
         formatEletronicDistribuition(atomo.distribuicao),
-        formatLayers(atomo.camadas),
+        formatLayers(atomo.layers),
         formatValencyLayer(atomo.camadaValencia, atomo.distribuicao)
     ].join("")
 
