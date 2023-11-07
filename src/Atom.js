@@ -10,7 +10,7 @@ export class Atom {
         this.simbolo = getAtomSymbol(atomicNumber)
         this.grupo = getGroup(atomicNumber)
         this.periodo = getPeriod(atomicNumber)
-        this.familia = getFamily(atomicNumber, this.grupo)
+        this.family = getFamily(atomicNumber, this.grupo)
         this.distribuicao = getDistribuition(this.eletrons)
         this.camadas = getLayersSum(this.distribuicao)
         this.camadaValencia = getValencyLayer(this.camadas)
