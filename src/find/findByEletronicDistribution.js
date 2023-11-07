@@ -1,4 +1,4 @@
-import { Atom } from "../atomo.js"
+import { Atom } from "../Atom.js"
 import { formatData, formatEletronicDistribuition, formatInput, formatLayers, formatValencyLayer } from "../formatter.js"
 
 import { appendResult } from "../appendResult.js"
