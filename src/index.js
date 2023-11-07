@@ -56,23 +56,32 @@ action_type_input.onchange = () => {
 }
 
 //Detecção de enventos
-const subcamadas_inputs = document.querySelectorAll('#sub-inputs input')
+/** @type {HTMLInputElement[]} */
+const subcamadas_inputs = Array.from(document.querySelectorAll('#sub-inputs input'))
 
-const sub_functions = event => {
-    const id = String(event.target.id)
-    const key = event.key
-    if (key === 'Enter') {
-        event.target.id !== "7p" ?
-            get(sorted_sublayers[sorted_sublayers.indexOf(id) + 1]).focus() : distribuition_charge_input.focus()
-    }
-    if (key === 'c' || key === 'C') {
-        for (let i of sorted_sublayers) {
-            if (i !== id) { get(i).value = get(i).max }
-            else { break }
+const sub_functions =
+    /** @param {Event} */
+    (event) => {
+        const { key, target: { id } } = event
+
+        if (key === 'Enter') {
+            event.target.id !== "7p"
+                ? subcamadas_inputs[subcamadas_inputs.findIndex(input => input.id === id) + 1].focus()
+                : distribuition_charge_input.focus()
+        }
+
+        if (key.toLowerCase() === 'c') {
+            subcamadas_inputs.some(input => {
+                input.value = input.max
+                return input.id === id
+            })
+        }
+
+        if (key.toLowerCase() === 'm') {
+            const input = subcamadas_inputs.find(input => input.id === id)
+            input.value = input.max
         }
     }
-    if (key === 'm' || key === 'M') { get(id).value = get(id).max }
-}
 
 distribuition_charge_input.onkeydown = doIfEnter(findByEletronicDistribution)
 find_by_eletronic_distribuition_button.onclick = findByEletronicDistribution
