@@ -13,6 +13,6 @@ export class Atom {
         this.family = getFamily(atomicNumber, this.group)
         this.distribuicao = getDistribuition(this.eletronsAmount)
         this.layers = getLayersSum(this.distribuicao)
-        this.camadaValencia = getValencyLayer(this.layers)
+        this.valencyLayer = getValencyLayer(this.layers)
     }
 }

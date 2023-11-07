@@ -72,7 +72,7 @@ export function findByEletronicDistribution() {
         formatData(atomo),
         formatEletronicDistribuition(atomo.distribuicao),
         formatLayers(atomo.layers),
-        formatValencyLayer(atomo.camadaValencia, atomo.distribuicao)
+        formatValencyLayer(atomo.valencyLayer, atomo.distribuicao)
     ].join("")
 
     appendResult(content)

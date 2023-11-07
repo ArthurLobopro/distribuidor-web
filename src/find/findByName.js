@@ -25,8 +25,8 @@ export function findByName() {
         formatInput(`Nome: ${name}<br><br>`),
         formatData(atomo),
         formatEletronicDistribuition(atomo.distribuicao),
-        formatLayers(atomo.camadas),
-        formatValencyLayer(atomo.camadaValencia, atomo.distribuicao)
+        formatLayers(atomo.layers),
+        formatValencyLayer(atomo.valencyLayer, atomo.distribuicao)
     ].join("")
 
     appendResult(content)
