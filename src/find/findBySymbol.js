@@ -19,7 +19,7 @@ export function findBySymbol() {
         return alert(`"${symbol}" não foi reconhecido encontrado , verifique se digitou corretamente.`)
     }
 
-    const atomo = new Atom(num)
+    const atomo = new Atom(index + 1)
 
     const content = [
         formatInput(`Símbolo: ${symbol}<br><br>`),

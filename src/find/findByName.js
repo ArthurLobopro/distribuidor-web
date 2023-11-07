@@ -19,7 +19,7 @@ export function findByName() {
         return alert(`"${name}" não foi reconhecido como nome de um átomo, verifique se escreveu corretamente.`)
     }
 
-    const atomo = new Atom(index + 1, 0)
+    const atomo = new Atom(index + 1)
 
     const content = [
         formatInput(`Nome: ${name}<br><br>`),
