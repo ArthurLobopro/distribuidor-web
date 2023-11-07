@@ -1,5 +1,5 @@
 import { getDistribuition } from "./distribuidor.js"
-import { getAtomName, getAtomSymbol, getFamily, getGroup, getLayersSum, getPeriod, getValencyLayer } from "./get-info.js"
+import { getAtomName, getAtomSymbol, getFamily, getGroup, getLayersSum, getPeriod, getValencyLayer } from "./infoGetters.js"
 
 export class Atom {
     constructor(num, carga = 0) {
