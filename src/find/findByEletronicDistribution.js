@@ -70,9 +70,9 @@ export function findByEletronicDistribution() {
     const content = [
         formatInput(`Destribuição: ...${getEnd(distArray)}<br>Carga: ${carga}<br><br>`),
         formatData(atomo),
-        formatEletronicDistribuition(atomo.distribuicao),
+        formatEletronicDistribuition(atomo.distribuition),
         formatLayers(atomo.layers),
-        formatValencyLayer(atomo.valencyLayer, atomo.distribuicao)
+        formatValencyLayer(atomo.valencyLayer, atomo.distribuition)
     ].join("")
 
     appendResult(content)

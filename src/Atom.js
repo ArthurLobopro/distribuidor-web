@@ -11,8 +11,8 @@ export class Atom {
         this.group = getGroup(atomicNumber)
         this.period = getPeriod(atomicNumber)
         this.family = getFamily(atomicNumber, this.group)
-        this.distribuicao = getDistribuition(this.eletronsAmount)
-        this.layers = getLayersSum(this.distribuicao)
+        this.distribuition = getDistribuition(this.eletronsAmount)
+        this.layers = getLayersSum(this.distribuition)
         this.valencyLayer = getValencyLayer(this.layers)
     }
 }
