@@ -75,43 +75,49 @@ export function formatValencyLayer({
     valencyLayer,
     distribuition: { s1, s2, p2, s3, p3, s4, p4, s5, p5, s6, p6, s7, p7 }
 }) {
-    const getValencyLayerText = str => `<br>A camada de valência é: ${str}<br>`
+    const getValencyLayerText = ({ s, p }) => [
+        "<br>A camada de valência é: ",
+        `${valencyLayer}s${s}`,
+        p > 0 ? ` ${valencyLayer}p${p}` : "",
+        "<br>"
+    ].join("")
+
     const getEletronsOnValencyLayerText = str => `Elétrons na camada de valência: ${str}`
 
     switch (valencyLayer) {
         case 1:
             return [
-                getValencyLayerText(`1s${s1}`),
+                getValencyLayerText({ s: s1, p: 0 }),
                 getEletronsOnValencyLayerText(s1)
             ].join("")
         case 2:
             return [
-                p2 > 2 ? getValencyLayerText(`2s${s2} 2p${p2}`) : getValencyLayerText(`2s${s2}`),
+                getValencyLayerText({ s: s2, p: p2 }),
                 getEletronsOnValencyLayerText(s2 + p2)
             ].join("")
         case 3:
             return [
-                p3 > 0 ? getValencyLayerText(`3s${s3} 3p${p3}`) : getValencyLayerText(`3s${s3}`),
+                getValencyLayerText({ s: s3, p: p3 }),
                 getEletronsOnValencyLayerText(s3 + p3)
             ].join("")
         case 4:
             return [
-                p4 > 0 ? getValencyLayerText(`4s${s4} 4p${p4}`) : getValencyLayerText(`4s${s4}`),
+                getValencyLayerText({ s: s4, p: p4 }),
                 getEletronsOnValencyLayerText(s4 + p4)
             ].join("")
         case 5:
             return [
-                p5 > 0 ? getValencyLayerText(`5s${s5} 5p${p5}`) : getValencyLayerText(`5s${s5}`),
+                getValencyLayerText({ s: s5, p: p5 }),
                 getEletronsOnValencyLayerText(s5 + p5)
             ].join("")
         case 6:
             return [
-                p6 > 0 ? getValencyLayerText(`6s${s6} 6p${p6}`) : getValencyLayerText(`6s${s6}`),
+                getValencyLayerText({ s: s6, p: p6 }),
                 getEletronsOnValencyLayerText(s6 + p6)
             ].join("")
         case 7:
             return [
-                p7 > 0 ? getValencyLayerText(`7s${s7} 7p${p7}`) : getValencyLayerText(`7s${s7}`),
+                getValencyLayerText({ s: s7, p: p7 }),
                 getEletronsOnValencyLayerText(s7 + p7)
             ].join("")
     }
