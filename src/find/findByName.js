@@ -1,7 +1,7 @@
 import { appendResult } from "../appendResult.js"
 import { Atom } from "../Atom.js"
 import { name_input } from "../constants.js"
-import { formatData, formatInput, formatLayers, formatValencyLayer } from "../formatter.js"
+import { formatData, formatInput, formatValencyLayer } from "../formatter.js"
 import atomos_info from "../info.js"
 
 const { nomes } = atomos_info
@@ -24,7 +24,6 @@ export function findByName() {
     const content = [
         formatInput(`Nome: ${name}<br><br>`),
         formatData(atomo),
-        formatLayers(atomo.layers),
         formatValencyLayer(atomo.valencyLayer, atomo.distribuition)
     ].join("")
 
