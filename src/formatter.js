@@ -32,7 +32,8 @@ export const formatData = (atom) => (
         `Número atômico: ${atom.num}<br>`,
         formatLocation(atom),
         formatEletronicDistribuition(atom.distribuition),
-        formatLayers(atom.layers)
+        formatLayers(atom.layers),
+        formatValencyLayer(atom)
     ].join("<br>") + "<br>"
 )
 
@@ -68,14 +69,14 @@ const formatEletronicDistribuition = ({
     ].join("<br>")
 )
 
-export function formatValencyLayer(
-    camadaValencia,
-    { s1, s2, p2, s3, p3, s4, p4, s5, p5, s6, p6, s7, p7 }
-) {
+export function formatValencyLayer({
+    valencyLayer,
+    distribuition: { s1, s2, p2, s3, p3, s4, p4, s5, p5, s6, p6, s7, p7 }
+}) {
     const getValencyLayerText = str => `<br>A camada de valência é: ${str}<br>`
     const getEletronsOnValencyLayerText = str => `Elétrons na camada de valência: ${str}`
 
-    switch (camadaValencia) {
+    switch (valencyLayer) {
         case 1:
             return [
                 getValencyLayerText(`1s${s1}`),

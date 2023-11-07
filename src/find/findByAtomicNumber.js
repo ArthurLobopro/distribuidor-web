@@ -1,7 +1,7 @@
 import { appendResult } from "../appendResult.js"
 import { Atom } from "../Atom.js"
 import { find_by_atomic_number_charge_input, find_by_atomic_number_input } from "../constants.js"
-import { formatData, formatInput, formatValencyLayer } from "../formatter.js"
+import { formatData, formatInput } from "../formatter.js"
 
 export function findByAtomicNumber() {
     const num = Number(find_by_atomic_number_input.value)
@@ -17,7 +17,6 @@ export function findByAtomicNumber() {
     const content = [
         formatInput(`Número Atômico: ${atomo.num}<br>Carga: ${carga}<br><br>`),
         formatData(atomo),
-        formatValencyLayer(atomo.valencyLayer, atomo.distribuition)
     ].join("")
 
     appendResult(content)

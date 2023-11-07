@@ -1,5 +1,5 @@
 import { Atom } from "../Atom.js"
-import { formatData, formatInput, formatValencyLayer } from "../formatter.js"
+import { formatData, formatInput } from "../formatter.js"
 
 import { appendResult } from "../appendResult.js"
 import {
@@ -70,7 +70,6 @@ export function findByEletronicDistribution() {
     const content = [
         formatInput(`Destribuição: ...${getEnd(distArray)}<br>Carga: ${carga}<br><br>`),
         formatData(atomo),
-        formatValencyLayer(atomo.valencyLayer, atomo.distribuition)
     ].join("")
 
     appendResult(content)
