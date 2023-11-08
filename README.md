@@ -10,5 +10,5 @@ A versão atual do código serve para mostrar minha evolução em programação 
 
 ## Possíveis futuras features a serem adicionadas
 
-[ ] Datalists de autocomplete na busca por nome/símbolo
-[ ] Verificação de Íons
+- [ ] Datalists de autocomplete na busca por nome/símbolo
+- [ ] Verificação de Íons
