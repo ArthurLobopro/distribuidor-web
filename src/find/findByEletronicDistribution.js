@@ -10,7 +10,7 @@ import {
     p4_input, p5_input, p6_input, p7_input,
     s1_input, s2_input, s3_input, s4_input,
     s5_input, s6_input, s7_input
-} from "../constants.js"
+} from "../domElements.js"
 
 const getEnd = (distArray) => {
     const subcamadas = ["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p"]

@@ -1,4 +1,4 @@
-import { result_wrapper } from "./constants.js"
+import { result_wrapper } from "./domElements.js"
 
 export const appendResult = (content) => {
     result_wrapper.appendChild(make_div(content))

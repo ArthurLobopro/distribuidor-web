@@ -1,6 +1,6 @@
 import { appendResult } from "../appendResult.js"
 import { Atom } from "../Atom.js"
-import { symbol_input } from "../constants.js"
+import { symbol_input } from "../domElements.js"
 import { formatData, formatInput } from "../formatter.js"
 import atomos_info from "../info.js"
 
