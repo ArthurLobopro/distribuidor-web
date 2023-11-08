@@ -1,12 +1,15 @@
-import { atomsData } from "./info.js"
+import { atomsData } from "./atomsData.js"
 
-export const getAtomName = num => atomsData.names[num - 1]
-export const getAtomSymbol = num => atomsData.symbols[num - 1]
+export const getAtomName = atomicNumber => atomsData.names[atomicNumber - 1]
+export const getAtomSymbol = atomicNumber => atomsData.symbols[atomicNumber - 1]
 
-export function getGroup(num) {
-    if ((num >= 57 && num <= 71) || (num >= 89 && num <= 103)) { return 3 }
+export function getGroup(atomicNumber) {
+    if (
+        atomicNumber >= 57 && atomicNumber <= 71 ||
+        atomicNumber >= 89 && atomicNumber <= 103
+    ) return 3
 
-    const grupos = [
+    const groups = [
         [1, 3, 11, 19, 37, 55, 87], //1
         [4, 12, 20, 38, 56, 88],    //2
         [21, 39],                   //3
@@ -26,7 +29,7 @@ export function getGroup(num) {
         [9, 17, 35, 53, 85]         //17
     ]
 
-    const groupIndex = grupos.findIndex(group => group.includes(num))
+    const groupIndex = groups.findIndex(group => group.includes(atomicNumber))
 
     return groupIndex === -1 ? 18 : groupIndex + 1
 }

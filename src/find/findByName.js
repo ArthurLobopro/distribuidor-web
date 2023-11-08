@@ -1,8 +1,8 @@
-import { appendResult } from "../appendResult.js"
 import { Atom } from "../Atom.js"
+import { appendResult } from "../appendResult.js"
+import { atomsData } from "../atomsData.js"
 import { name_input } from "../domElements.js"
 import { formatData, formatInput } from "../formatter.js"
-import { atomsData } from "../info.js"
 
 export function findByName() {
     const name = String(name_input.value).replace(/ /g, "")
