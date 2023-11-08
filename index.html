@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Distribuidor Eletrônico</title>
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="./index.css">
     <link rel="icon" href="./public/midia/atomo.png">
-    <meta name="description" content="Faz a distribuição eletrônica dos elétrons automaticamente, além de fazer buscas na tabela periódica fornecendo a distribução, nome, símbolo, número atômico, família e muito mais.">
+    <meta name="description"
+        content="Faz a distribuição eletrônica dos elétrons automaticamente, além de fazer buscas na tabela periódica fornecendo a distribução, nome, símbolo, número atômico, família e muito mais.">
+    <script src="./src/index.js" type="module"></script>
 </head>
+
 <body>
     <section id="menu">
         <div id="content">
-            <div id="dist">
+            <div id="distribuition-screen">
                 <div class="center">Buscar por distribuição</div><br>
                 <div id="sub-inputs">
                     <label>1s<input type="number" id="1s" value="1" min="1" max="2" class="number"></label><br>
@@ -34,42 +38,52 @@
                     <label>7s<input type="number" id="7s" value="0" min="0" max="2" class="number"></label>
                     <label>7p<input type="number" id="7p" value="0" min="0" max="6" class="number"></label><br><br>
                 </div>
-                <label>Carga: <input type="number" id="dist-carga" value="0" class="carga"></label><br> <br>
-                <input type="button" value="Enviar" id="bpde-btn">
-                <input type="button" value="Limpar" id="clean-btn"><br><br>
+                <label>Carga: <input type="number" id="distribuition-charge" value="0" class="carga"></label><br> <br>
+                <button id="find-by-eletronic-distribuition">Enviar</button>
+                <button id="clean-eletronic-distribuition">Limpar</button>
+                <br><br>
             </div>
-            <div id="numat" style="display: none;">
+
+            <div id="atomic-number-screen" style="display: none;">
                 <span class="width_full">Buscar por Número Atômico(número de prótons).</span>
-                    <div>
-                        <label>
-                            Num. Atômico:
-                            <input type="number" min="1" max="118" value="" id="num" autocomplete="off">
-                        </label><br><br>
-                        <label>
-                            Carga: 
-                            <input type="number" id="bpna-carga" value="0" class="carga">
-                        </label>
-                        <input type="button" value="Enviar" id="bpna">
-                    </div>
+                <div>
+                    <label>
+                        Num. Atômico:
+                        <input type="number" min="1" max="118" value="" id="find-by-atomic-number-input"
+                            autocomplete="off">
+                    </label><br><br>
+                    <label>
+                        Carga:
+                        <input type="number" id="find-by-atomic-number-charge" value="0" class="carga">
+                    </label>
+                    <button id="find-by-atomic-number">Enviar</button>
+                </div>
             </div>
-            <div id="name" style="display: none;">
+
+            <div id="name-or-symbol-screen" style="display: none;">
                 <div id="central">
                     <div class="center">
-                        <label>Busca por nome: <br> <input type="text" id="nome"></label> 
-                        <input type="button" id="bpn" value="Buscar"><br>
-                        <label>Busca por símbolo:<br> <input type="text" id="simbolo"></label>
-                        <input type="button" id="bps" value="Buscar">
+                        <label>Busca por nome: <br> <input type="text" id="name-input"></label>
+                        <button id="find-by-name">
+                            Buscar
+                        </button><br>
+                        <label>Busca por símbolo:<br> <input type="text" id="symbol-input"></label>
+                        <button id="find-by-symbol">
+                            Buscar
+                        </button>
                     </div><br>
-                    <span class="msg"><span class="atention">Atenção!!!</span> O programa não é case sensitive, porém é necessário por os acentos.</span>
+                    <span class="msg"><span class="atention">Atenção!!!</span> O programa não é case sensitive, porém é
+                        necessário por os acentos.</span>
                 </div>
             </div>
         </div>
-        <div id="div-input-type">
-            Buscar por: 
-            <select id="input-type">
-                <option value="dist" selected>Distribuição.</option>
-                <option value="numat">Número Atômico.</option>
-                <option value="name">Nome ou símbolo.</option>
+
+        <div id="div-action-type">
+            Buscar por:
+            <select id="action-type" data-oldValue="distribuition">
+                <option value="distribuition" selected>Distribuição.</option>
+                <option value="atomic-number">Número Atômico.</option>
+                <option value="name-or-symbol">Nome ou símbolo.</option>
                 <option value="all">Mostrar Todos.</option>
             </select>
         </div>
@@ -78,16 +92,16 @@
         independente de exixtir ou não ele será mostrado, por isso verifique se as informações inseridas estão corretas.
     </div><br><br> -->
     <div id="loading" style="display: none;"></div>
-    <section id="res">
+    <section id="result-wrapper">
         <span id="msg">
             Buscas feitas:
-            <div class="circle" id="remove-All">
+            <div class="circle" id="clear-results">
                 <img src="././public/midia/close-icon.png">
             </div>
         </span><br>
-        
+
     </section>
     <footer>&copy;Arthur Lobo</footer>
-    <script src="index.js" type="module"></script>
 </body>
+
 </html>

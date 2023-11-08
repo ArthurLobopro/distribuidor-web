@@ -1,35 +1,40 @@
 @import url(./public/fonts/css-import/RobotoSlab.css);
 @import url(./public/fonts/css-import/Inconsolata.css);
 
-*{
+* {
     box-sizing: border-box;
 }
-body{
+
+body {
     background-color: #56CCF2;
     padding: 0;
     margin: 0;
     height: calc(100vh - 11px);
     min-width: 320px;
 }
+
 section {
     border-radius: 10px;
     color: black;
     background-color: white;
     margin: auto;
 }
-footer{
+
+footer {
     font-family: 'Roboto Slab', cursive, Arial;
     color: white;
     width: max-content;
     margin: auto;
     font-size: 20px;
+
     @media screen and (max-width: 400px) {
         width: max-content;
         margin: 0 auto 10px;
     }
 }
-#numat{
-    border:2px solid blue;
+
+#atomic-number-screen {
+    border: 2px solid blue;
     border-radius: 5px;
     margin: 0 5px;
     text-align: center;
@@ -38,21 +43,25 @@ footer{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    & > div{
+
+    &>div {
         margin-top: 15px;
     }
 }
-#dist{
-    border:2px solid blue;
+
+#distribuition-screen {
+    border: 2px solid blue;
     padding: 10px;
     width: max-content;
     border-radius: 5px;
     text-align: left;
-    & #sub-inputs{
+
+    & #sub-inputs {
         width: max-content;
     }
 }
-#menu{
+
+#menu {
     width: max-content;
     margin: 10px auto 15px;
     padding: 10px 15px;
@@ -60,48 +69,59 @@ footer{
     flex-direction: column;
     font-weight: 500;
 }
-#res{
+
+#result-wrapper {
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
     width: 85%;
     display: none;
     margin: 0 auto 15px;
+
     @media screen and (max-width: 400px) {
         width: inherit;
         margin: 0 0 15px;
         justify-content: center;
     }
 }
-#menu, #res{
+
+#menu,
+#result-wrapper {
     font-family: "Inconsolata";
     flex-wrap: wrap;
     justify-content: center;
 }
-#div-input-type{
+
+#div-action-type {
     margin: 10px auto 5px;
 }
-#msg{
+
+#msg {
     width: 100%;
     text-align: center;
-    & > .circle{
+
+    &>.circle {
         float: right;
     }
 }
-.width_full{
+
+.width_full {
     width: 100%;
 }
-.carga{
+
+.carga {
     width: 100px;
 }
-div.flex{
+
+div.flex {
     display: flex;
     justify-content: center;
     align-items: center;
     height: inherit;
 }
-#name{
-    border:2px solid blue;
+
+#name-or-symbol-screen {
+    border: 2px solid blue;
     border-radius: 5px;
     margin: 0 auto 0px 5px;
     text-align: center;
@@ -109,68 +129,82 @@ div.flex{
     width: 340px;
     display: flex;
 }
-#central{
+
+#central {
     text-align: left;
     width: max-content;
     margin: auto;
 }
-.msg{
+
+.msg {
     margin: auto;
     text-align: left;
 }
-div.center{
+
+div.center {
     text-align: center;
 }
-.aviso{
+
+.aviso {
     border: 2px solid black;
     text-align: center;
 }
-.res{
-    border:2px solid blue;
+
+.res {
+    border: 2px solid blue;
     border-radius: 5px;
     width: max-content;
     height: 40%;
     padding: 10px;
-    margin: 10px 10px 0 0 ;
+    margin: 10px 10px 0 0;
     float: left;
 }
-.number{
+
+.number {
     width: 38px;
     appearance: textfield;
-    &::-webkit-inner-spin-button{
+
+    &::-webkit-inner-spin-button {
         display: none;
     }
+
     margin: 1px 0 0 0;
 }
-.atention{
+
+.atention {
     color: red;
     font-weight: bold;
 }
-.invisible{
+
+.invisible {
     display: none !important;
 }
+
 /*Botões e inputs*/
-input{
+input {
     border-radius: 2px;
     border-style: solid;
     border-width: 1px;
     border-color: rgb(118, 118, 118);
     box-sizing: border-box;
     padding: 1px;
-    &:invalid{
-        border-width:2px;
+
+    &:invalid {
+        border-width: 2px;
         outline: 1px solid red;
         outline-offset: -3px;
     }
-    &[type="button"]{
+
+    &[type="button"] {
         cursor: pointer;
         padding: 1px 3px;
     }
 }
+
 /* Função apagar div*/
-.circle{
+.circle {
     width: 18px;
-    float:right;
+    float: right;
     box-sizing: border-box;
     height: 18px;
     border: 1.5px solid black;
@@ -178,17 +212,21 @@ input{
     display: flex;
     margin: -8px -8px auto auto;
     user-select: none;
-    &:hover{
+    cursor: pointer;
+
+    &:hover {
         background-color: lightgray;
     }
-    & img{
+
+    & img {
         margin: auto;
         width: 10px;
         height: 10px;
     }
 }
+
 /*Fim Função apaga div*/
-#loading{
+#loading {
     width: 100px;
     height: 100px;
     border-radius: 50%;
@@ -197,7 +235,13 @@ input{
     margin: auto;
     animation: loop 2s linear infinite;
 }
-@keyframes loop{
-    0%{ transform: rotate(0deg);}
-    0%{ transform: rotate(360deg);}
+
+@keyframes loop {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    0% {
+        transform: rotate(360deg);
+    }
 }
