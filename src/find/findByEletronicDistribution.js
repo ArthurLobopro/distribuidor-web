@@ -11,15 +11,14 @@ import {
     s1_input, s2_input, s3_input, s4_input,
     s5_input, s6_input, s7_input
 } from "../domElements.js"
+import { sorted_sublayers } from "../util.js"
 
 const getEnd = (distArray) => {
-    const subcamadas = ["1s", "2s", "2p", "3s", "3p", "4s", "3d", "4p", "5s", "4d", "5p", "6s", "4f", "5d", "6p", "7s", "5f", "6d", "7p"]
-
     let f = distArray.indexOf(0)
 
-    f = f === -1 ? subcamadas.length : f
+    f = f === -1 ? sorted_sublayers.length : f
 
-    return `${subcamadas[f - 1] + distArray[f - 1]}`
+    return `${sorted_sublayers[f - 1] + distArray[f - 1]}`
 }
 
 function getDistribution() {

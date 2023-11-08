@@ -4,18 +4,18 @@ import { find_by_atomic_number_charge_input, find_by_atomic_number_input } from 
 import { formatData, formatInput } from "../formatter.js"
 
 export function findByAtomicNumber() {
-    const num = Number(find_by_atomic_number_input.value)
+    const atomicNumber = Number(find_by_atomic_number_input.value)
 
-    if (num <= 0 || num > 118) {
-        return alert(`Não existe um átomo de número atômico ${num}, por favor informe um valor entre 1 e 118`)
+    if (atomicNumber <= 0 || atomicNumber > 118) {
+        return alert(`Não existe um átomo de número atômico ${atomicNumber}, por favor informe um valor entre 1 e 118`)
     }
 
-    const carga = Number(find_by_atomic_number_charge_input.value)
+    const charge = Number(find_by_atomic_number_charge_input.value)
 
-    const atomo = new Atom(num, carga)
+    const atomo = new Atom(atomicNumber, charge)
 
     const content = [
-        formatInput(`Número Atômico: ${atomo.num}<br>Carga: ${carga}<br><br>`),
+        formatInput(`Número Atômico: ${atomicNumber}<br>Carga: ${charge}<br><br>`),
         formatData(atomo),
     ].join("")
 

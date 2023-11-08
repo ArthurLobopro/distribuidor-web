@@ -1,4 +1,4 @@
-const getById = id => document.getElementById(id)
+import { getById } from "./util.js"
 
 export const name_input = getById("name-input")
 export const find_by_name_button = getById("find-by-name")

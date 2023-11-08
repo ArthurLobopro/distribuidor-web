@@ -18,21 +18,12 @@ import {
     symbol_input
 } from "./domElements.js"
 
+import { atomsData } from "./atomsData.js"
 import { findByAtomicNumber } from "./find/findByAtomicNumber.js"
 import { findByEletronicDistribution } from "./find/findByEletronicDistribution.js"
 import { findByName } from "./find/findByName.js"
 import { findBySymbol } from "./find/findBySymbol.js"
-import atomData from "./info.js"
-
-const getById = id => document.getElementById(id)
-
-const sorted_sublayers = [
-    "1s", "2s", "2p", "3s",
-    "3p", "4s", "3d", "4p",
-    "5s", "4d", "5p", "6s",
-    "4f", "5d", "6p", "7s",
-    "5f", "6d", "7p"
-]
+import { getById, sorted_sublayers } from "./util.js"
 
 function doIfEnter(callback) {
     return event => { event.key === "Enter" && callback() }
@@ -95,7 +86,7 @@ distribuition_charge_input.onkeydown = doIfEnter(findByEletronicDistribution)
 find_by_eletronic_distribuition_button.onclick = findByEletronicDistribution
 clean_eletronic_distribuition_button.onclick = () => subcamadas_inputs.forEach(minifyInput)
 
-subcamadas_inputs.forEach(input => input.onclick = handleSubInput)
+subcamadas_inputs.forEach(input => input.onkeydown = handleSubInput)
 
 //Busca por número atômico
 find_by_atomic_number_input.onkeydown = doIfEnter(findByAtomicNumber)
@@ -123,7 +114,7 @@ const showAllAtoms = () => {
     setTimeout(() => {
         result_wrapper.classList.add("invisible")
 
-        atomData.nomes.forEach(name => {
+        atomsData.names.forEach(name => {
             name_input.value = name
             find_by_name_button.click()
         })
