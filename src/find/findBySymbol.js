@@ -4,7 +4,6 @@ import { atomsData } from "../atomsData.js"
 import { symbol_input } from "../domElements.js"
 import { formatData, formatInput } from "../formatter.js"
 
-
 export function findBySymbol() {
     const symbol = String(symbol_input.value).replace(/ /g, "")
 

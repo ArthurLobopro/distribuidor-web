@@ -1,4 +1,19 @@
-import { Atom } from "./Atom.js"
+export const formatInput = input => (
+    `<em>Dados Fornecidos:</em><br><br>${input}<em>Resultado:</em><br><br>`
+)
+
+/** @param {import("./Atom.js").Atom} atom */
+export const formatData = (atom) => (
+    [
+        formatName(atom),
+        formatSymbol(atom),
+        `Número atômico: ${atom.num}<br>`,
+        formatLocation(atom),
+        formatEletronicDistribuition(atom.distribuition),
+        formatLayers(atom.layers),
+        formatValencyLayer(atom)
+    ].join("<br>") + "<br>"
+)
 
 const formatName = ({ name, charge }) => (
     charge !== 0
@@ -18,23 +33,6 @@ const formatLocation = ({ group, period, family }) => (
         `Período: ${period}`,
         `Família: ${family}<br>`
     ].join("<br>")
-)
-
-export const formatInput = input => (
-    `<em>Dados Fornecidos:</em><br><br>${input}<em>Resultado:</em><br><br>`
-)
-
-/** @param {Atom} atom */
-export const formatData = (atom) => (
-    [
-        formatName(atom),
-        formatSymbol(atom),
-        `Número atômico: ${atom.num}<br>`,
-        formatLocation(atom),
-        formatEletronicDistribuition(atom.distribuition),
-        formatLayers(atom.layers),
-        formatValencyLayer(atom)
-    ].join("<br>") + "<br>"
 )
 
 const formatLayers = (layers) => (

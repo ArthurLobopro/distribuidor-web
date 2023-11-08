@@ -7,7 +7,9 @@ export function getGroup(atomicNumber) {
     if (
         atomicNumber >= 57 && atomicNumber <= 71 ||
         atomicNumber >= 89 && atomicNumber <= 103
-    ) return 3
+    ) {
+        return 3
+    }
 
     const groups = [
         [1, 3, 11, 19, 37, 55, 87], //1
@@ -34,28 +36,28 @@ export function getGroup(atomicNumber) {
     return groupIndex === -1 ? 18 : groupIndex + 1
 }
 
-export const getFamily = (num, grupo) => (
-    num == 1 ? "<br> Não possiu uma família específica." :
-        num != 1 && grupo == 1 ? "Metais Alcalinos" :
-            grupo == 2 ? "Metais Alcalinos Terrosos" :
-                grupo == 3 && num < 40 ? "Metais de transição" :
-                    num >= 57 && num <= 71 ? "Lantanídeos" :
-                        num >= 89 && num <= 103 ? "Actnideos" :
-                            grupo >= 4 && grupo <= 12 ? "Metais de transição" :
-                                grupo == 13 ? "Grupo do Boro" :
-                                    grupo == 14 ? "Grupo do Carbono" :
-                                        grupo == 15 ? "Grupo do Nitrogênio" :
-                                            grupo == 16 ? "Calcogênios" :
-                                                grupo == 17 ? "Halogênios" : "Gases Nobres"
+export const getFamily = (atomicNumber, group) => (
+    atomicNumber == 1 ? "<br> Não possiu uma família específica." :
+        atomicNumber != 1 && group == 1 ? "Metais Alcalinos" :
+            group == 2 ? "Metais Alcalinos Terrosos" :
+                group == 3 && atomicNumber < 40 ? "Metais de transição" :
+                    atomicNumber >= 57 && atomicNumber <= 71 ? "Lantanídeos" :
+                        atomicNumber >= 89 && atomicNumber <= 103 ? "Actnideos" :
+                            group >= 4 && group <= 12 ? "Metais de transição" :
+                                group == 13 ? "Grupo do Boro" :
+                                    group == 14 ? "Grupo do Carbono" :
+                                        group == 15 ? "Grupo do Nitrogênio" :
+                                            group == 16 ? "Calcogênios" :
+                                                group == 17 ? "Halogênios" : "Gases Nobres"
 )
 
-export const getPeriod = (num) => (
-    num == 1 || num == 2 ? 1 :
-        num >= 3 && num <= 10 ? 2 :
-            num >= 11 && num <= 18 ? 3 :
-                num >= 19 && num <= 36 ? 4 :
-                    num >= 37 && num <= 54 ? 5 :
-                        num >= 55 && num <= 86 ? 6 : 7
+export const getPeriod = (atomicNumber) => (
+    atomicNumber == 1 || atomicNumber == 2 ? 1 :
+        atomicNumber >= 3 && atomicNumber <= 10 ? 2 :
+            atomicNumber >= 11 && atomicNumber <= 18 ? 3 :
+                atomicNumber >= 19 && atomicNumber <= 36 ? 4 :
+                    atomicNumber >= 37 && atomicNumber <= 54 ? 5 :
+                        atomicNumber >= 55 && atomicNumber <= 86 ? 6 : 7
 )
 
 export const getLayersSum = ({
