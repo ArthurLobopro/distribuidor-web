@@ -1,5 +1,5 @@
-const atomos = {
-    nomes: [
+export const atomsData = {
+    names: [
         "Hidrogênio", "Hélio", "Lítio", "Berílio", "Boro", "Carbono", "Nitrogênio", "Oxigênio",
         "Flúor", "Neônio", "Sódio", "Magnésio", "Alumínio", "Silício", "Fósforo", "Enxofre",
         "Cloro", "Argônio", "Potássio", "Cálcio", "Escândio", "Titânio", "Vanádio", "Crômio",
@@ -17,7 +17,7 @@ const atomos = {
         "Roentgênio", "Copernício", "Nihônio", "Fleróvio", "Moscóvio", "Livermório", "Tennesso", "Oganessônio"
     ],
 
-    simbolos: [
+    symbols: [
         "H", "He", "Li", "Be", "B", "C", "N", "O", "F", "Ne", "Na", "Mg", "Al", "Si", "P", "S", "Cl",
         "Ar", "K", "Ca", "Sc", "Ti", "V", "Cr", "Mn", "Fe", "Co", "Ni", "Cu", "Zn", "Ga", "Ge", "As",
         "Se", "Br", "Kr", "Rb", "Sr", "Y", "Zr", "Nb", "Mo", "Tc", "Ru", "Rh", "Pd", "Ag", "Cd", "In",
@@ -28,5 +28,3 @@ const atomos = {
         "Fl", "Mc", "Lv", "Ts", "Og"
     ]
 }
-
-export default atomos

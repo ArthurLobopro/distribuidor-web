@@ -2,9 +2,8 @@ import { appendResult } from "../appendResult.js"
 import { Atom } from "../Atom.js"
 import { symbol_input } from "../domElements.js"
 import { formatData, formatInput } from "../formatter.js"
-import atomos_info from "../info.js"
+import { atomsData } from "../info.js"
 
-const { simbolos } = atomos_info
 
 export function findBySymbol() {
     const symbol = String(symbol_input.value).replace(/ /g, "")
@@ -13,7 +12,8 @@ export function findBySymbol() {
         alert("Forneça um símbolo para pesquisar.")
     }
 
-    const index = simbolos.findIndex(value => value.toLowerCase() === symbol.toLowerCase())
+    const index = atomsData.symbols.
+        findIndex(atomSymbol => atomSymbol.toLowerCase() === symbol.toLowerCase())
 
     if (index === -1) {
         return alert(`"${symbol}" não foi reconhecido encontrado , verifique se digitou corretamente.`)

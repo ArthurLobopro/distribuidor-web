@@ -1,7 +1,7 @@
-import atomos from "./info.js"
+import { atomsData } from "./info.js"
 
-export const getAtomName = num => atomos.nomes[num - 1]
-export const getAtomSymbol = num => atomos.simbolos[num - 1]
+export const getAtomName = num => atomsData.names[num - 1]
+export const getAtomSymbol = num => atomsData.symbols[num - 1]
 
 export function getGroup(num) {
     if ((num >= 57 && num <= 71) || (num >= 89 && num <= 103)) { return 3 }

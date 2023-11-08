@@ -2,9 +2,7 @@ import { appendResult } from "../appendResult.js"
 import { Atom } from "../Atom.js"
 import { name_input } from "../domElements.js"
 import { formatData, formatInput } from "../formatter.js"
-import atomos_info from "../info.js"
-
-const { nomes } = atomos_info
+import { atomsData } from "../info.js"
 
 export function findByName() {
     const name = String(name_input.value).replace(/ /g, "")
@@ -13,17 +11,18 @@ export function findByName() {
         alert("Forneça um nome para pesquisar")
     }
 
-    const index = nomes.findIndex(nome => nome.toLowerCase() === name.toLowerCase())
+    const index = atomsData.names
+        .findIndex(atomName => atomName.toLowerCase() === name.toLowerCase())
 
     if (index === -1) {
         return alert(`"${name}" não foi reconhecido como nome de um átomo, verifique se escreveu corretamente.`)
     }
 
-    const atomo = new Atom(index + 1)
+    const atom = new Atom(index + 1)
 
     const content = [
         formatInput(`Nome: ${name}<br><br>`),
-        formatData(atomo),
+        formatData(atom),
     ].join("")
 
     appendResult(content)

@@ -1,7 +1,7 @@
 import { Atom } from "../Atom.js"
+import { appendResult } from "../appendResult.js"
 import { formatData, formatInput } from "../formatter.js"
 
-import { appendResult } from "../appendResult.js"
 import {
     clean_eletronic_distribuition_button,
     d3_input, d4_input, d5_input,
@@ -57,18 +57,18 @@ export function findByEletronicDistribution() {
 
     const distArray = Object.entries(distribuition).map(([key, value]) => value)
 
-    const carga = Number(distribuition_charge_input.value)
+    const charge = Number(distribuition_charge_input.value)
 
-    const num = distArray.reduce((prev, current) => prev + current, 0) + carga
+    const atomicNumber = distArray.reduce((prev, current) => prev + current, 0) + charge
 
-    if (!(num > 0 && num <= 118)) {
+    if (!(atomicNumber > 0 && atomicNumber <= 118)) {
         return alert("Você informou algum número inválido, confira as informações e tente novamente")
     }
 
-    const atomo = new Atom(num, carga)
+    const atomo = new Atom(atomicNumber, charge)
 
     const content = [
-        formatInput(`Destribuição: ...${getEnd(distArray)}<br>Carga: ${carga}<br><br>`),
+        formatInput(`Destribuição: ...${getEnd(distArray)}<br>Carga: ${charge}<br><br>`),
         formatData(atomo),
     ].join("")
 
