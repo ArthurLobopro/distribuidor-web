@@ -16,7 +16,7 @@ import {
     name_or_symbol_screen,
     result_wrapper,
     symbol_input
-} from "./constants.js"
+} from "./domElements.js"
 
 import { findByAtomicNumber } from "./find/findByAtomicNumber.js"
 import { findByEletronicDistribution } from "./find/findByEletronicDistribution.js"
